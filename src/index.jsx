@@ -2,20 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import usersReducer from './reducers/usersReducer';
-import destinationsReducer from './reducers/destinationsReducers';
-
-// pour améliorer l'organisation, on combine plusieurs petits reducers plutôt que d'utiliser un énorme Reducer illisible:
-const globalReducer = combineReducers({
-  /* nom du premier reducer :  nom de l'import du premier */
-  users: usersReducer,
-  /* nom du deuxieme reducer :  nom de l'import du deuxieme */
-  destinations: destinationsReducer
-  /* nom du troisième reducer :  nom de l'import du troisième */
-});
+import globalReducer from './reducers/index';
 
 // Après avoir combiner les petits reducers, on peut enfin créer le store global (intégralité du state)
 const store = createStore(
