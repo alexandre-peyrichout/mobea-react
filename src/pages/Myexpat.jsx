@@ -17,11 +17,9 @@ import CheckCard from '../components/CheckCard';
 import Layout from '../components/Layout';
 
 export default function Myexpat() {
-  return (
-    <Layout>
-      <div>
-        <CheckCard />
-      </div>
-    </Layout>
-  );
+    return (
+        <Layout>
+            <CheckCard />
+        </Layout>
+    );
 }
