@@ -1,5 +1,5 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,6 +12,12 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Link from '@material-ui/core/Link';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText'
+
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -27,29 +33,32 @@ const useStyles = makeStyles(theme => ({
       display: 'block'
     }
   },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
-    },
-    marginRight: theme.spacing(2),
+  title_nav: {
+    letterSpacing: '0.3em',
+    marginRight: theme.spacing(6),
     marginLeft: 0,
-    width: '100%',
+    cursor: 'pointer',
+    borderBottom: '2mm ridge #F7CC00',
+    paddingBottom: '18px',
+    textAlign: 'center',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto'
-    }
+      marginLeft: theme.spacing(6),
+      width: '100%'
+    },
+    color: theme.palette.grey[800],
+    fontWeight: theme.typography.fontWeightRegular,
+    '&:hover': {
+      color: '#F7CC00'
+    },
+
   },
-  searchIcon: {
-    width: theme.spacing(7),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+  items: {
+    paddingTop: '0',
+    paddingBottom: '0'
+  },
+  list: {
+    paddingTop: '0',
+    paddingBottom: '0'
   },
   inputRoot: {
     color: 'inherit'
@@ -75,8 +84,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   navbar: {
-    backgroundColor: 'white',
-    color: 'black'
+    backgroundColor: '#fff',
+    color: '#000'
 }
 }));
 
@@ -161,7 +170,8 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
     </Menu>
   );
-
+    
+  
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.navbar}>
@@ -175,21 +185,39 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            OUIEXPAT
+            MOBEA
           </Typography>
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div> */}
+
+          <List className={classes.list}>
+
+            <ListItem className={classes.items}>
+                <ListItemText inset>
+                    <Link underline="none" href="/dashboard" className={classes.title_nav}>
+                        DASHBOARD
+                    </Link>
+                </ListItemText>
+
+
+                <ListItemText inset>
+                    <Link underline="none" href="/dashboard" className={classes.title_nav}>
+                        MYEXPAT
+                    </Link>
+                </ListItemText>
+
+
+                <ListItemText inset>
+                    <Link underline="none" href="/dashboard" className={classes.title_nav}>
+                        HAPPYEXPAT
+                    </Link>
+                </ListItemText>
+
+                <ListItemText inset>
+                    <Link underline="none" href="/dashboard" className={classes.title_nav}>
+                        EXPATRIATIONS
+                    </Link>
+                </ListItemText>
+            </ListItem >
+        </List>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
