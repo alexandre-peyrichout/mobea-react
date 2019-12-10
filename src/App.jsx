@@ -11,13 +11,9 @@ const App = () => (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Redirection} />
-
         <Route path="/login" component={Login} />
-
         <Route path="/signup" component={Signup} />
-
         <Route path="/dashboard" component={Dashboard} />
-
         <Route path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>
