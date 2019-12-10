@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/404';
 import Redirection from './pages/Redirect';
+import Myexpat from './pages/Myexpat';
 
 const App = () => (
   <div>
@@ -14,6 +15,7 @@ const App = () => (
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/myexpat" component={Myexpat} />
         <Route path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>
