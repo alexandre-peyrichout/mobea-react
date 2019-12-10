@@ -1,10 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import Layout from '../components/Layout';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   parent: {
     margin: '10px',
     display: 'grid',
