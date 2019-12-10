@@ -16,8 +16,7 @@ import Link from '@material-ui/core/Link';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText'
-
+import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -49,8 +48,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular,
     '&:hover': {
       color: '#F7CC00'
-    },
-
+    }
   },
   items: {
     paddingTop: '0',
@@ -87,7 +85,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#fff',
     color: '#000'
   }
-
 }));
 
 export default function PrimarySearchAppBar() {
@@ -172,7 +169,6 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.navbar}>
@@ -190,34 +186,31 @@ export default function PrimarySearchAppBar() {
           </Typography>
 
           <List className={classes.list}>
-
             <ListItem className={classes.items}>
               <ListItemText inset>
                 <Link underline="none" href="/dashboard" className={classes.title_nav}>
                   DASHBOARD
-                    </Link>
+                </Link>
               </ListItemText>
-
 
               <ListItemText inset>
                 <Link underline="none" href="/myexpat" className={classes.title_nav}>
                   MYEXPAT
-                    </Link>
+                </Link>
               </ListItemText>
-
 
               <ListItemText inset>
                 <Link underline="none" href="/dashboard" className={classes.title_nav}>
                   HAPPYEXPAT
-                    </Link>
+                </Link>
               </ListItemText>
 
               <ListItemText inset>
                 <Link underline="none" href="/dashboard" className={classes.title_nav}>
                   EXPATRIATIONS
-                    </Link>
+                </Link>
               </ListItemText>
-            </ListItem >
+            </ListItem>
           </List>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
