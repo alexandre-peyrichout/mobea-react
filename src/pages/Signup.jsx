@@ -62,7 +62,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center'
   },
   container: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    boxShadow: '10px 10px 10px grey'
   }
 }));
 
