@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
     flexGrow: '1',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     background: `url(${Background})`,
     backgroundPosition: 'center',
     backgroundSize: 'cover'
