@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 
 const useStyles = makeStyles(theme => ({
   parent: {
+    margin: '10px',
     display: 'grid',
     gridTemplateColumns: 'repeat(6, 1fr)',
     gridTemplateRows: 'repeat(6, 1fr)',
