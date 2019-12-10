@@ -4,16 +4,9 @@ import { Typography, Paper } from '@material-ui/core';
 import Layout from '../components/Layout';
 
 const useStyles = makeStyles(() => ({
-  content: {
-    maxWidth: '750px',
-    margin: 'auto'
-  },
-
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    height: '100%'
+  root: {
+    margin: 'auto',
+    padding: '10px'
   }
 }));
 
@@ -21,16 +14,12 @@ const NotFound = () => {
   const classes = useStyles();
   return (
     <Layout>
-      <div className={classes.container}>
-        <Paper className={classes.content}>
-          <Typography variant="h5" component="h3">
-            This is a sheet of paper.
-          </Typography>
-          <Typography component="p">
-            Paper can be used to build surface or other elements for your application.
-          </Typography>
-        </Paper>
-      </div>
+      <Paper className={classes.root}>
+        <Typography variant="h5" component="h3">
+          Erreur 404.
+        </Typography>
+        <Typography component="p">Oups, cette page n'existe pas.</Typography>
+      </Paper>
     </Layout>
   );
 };

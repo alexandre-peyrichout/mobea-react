@@ -10,7 +10,10 @@ const useStyles = makeStyles(() => ({
     minHeight: '100vh'
   },
   content: {
-    flexGrow: '1'
+    flexGrow: '1',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
   }
 }));
 
