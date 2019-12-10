@@ -18,7 +18,7 @@ const NotFound = () => {
         <Typography variant="h5" component="h3">
           Erreur 404.
         </Typography>
-        <Typography component="p">Oups, cette page n&aposexiste pas.</Typography>
+        <Typography component="p">Oups, cette page n'existe pas.</Typography>
       </Paper>
     </Layout>
   );

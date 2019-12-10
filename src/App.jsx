@@ -1,29 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import Redirect from './pages/Redirect';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/404';
+import Redirection from './pages/Redirect';
 
 const App = () => (
   <div>
     <BrowserRouter>
-      <div>
-        <Route path="/404" component={NotFound} />
-      </div>
-      <div>
-        <Route exact path="/" component={Redirect} />
-      </div>
-      <div>
+      <Switch>
+        <Route exact path="/" component={Redirection} />
+
         <Route path="/login" component={Login} />
-      </div>
-      <div>
+
         <Route path="/signup" component={Signup} />
-      </div>
-      <div>
+
         <Route path="/dashboard" component={Dashboard} />
-      </div>
+
+        <Route path="/404" component={NotFound} />
+        <Redirect to="/404" />
+      </Switch>
     </BrowserRouter>
   </div>
 );
