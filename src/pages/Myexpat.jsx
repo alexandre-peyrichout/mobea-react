@@ -13,12 +13,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Image from '../assets/bg.jpg';
-import CheckCard from '../components/CheckCard';
+import CheckCard from "../components/CheckCard";
 
-const Myexpat = () => (
-  <div>
-    <CheckCard />
-  </div>
-);
-
-export default CheckCard;
+export default function Myexpat() {
+    return (
+        <div>
+            <CheckCard />
+        </div>
+    )
+}

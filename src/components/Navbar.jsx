@@ -86,7 +86,7 @@ const useStyles = makeStyles(theme => ({
   navbar: {
     backgroundColor: '#fff',
     color: '#000'
-}
+  }
 
 }));
 
@@ -171,8 +171,8 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
     </Menu>
   );
-    
-  
+
+
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.navbar}>
@@ -192,33 +192,33 @@ export default function PrimarySearchAppBar() {
           <List className={classes.list}>
 
             <ListItem className={classes.items}>
-                <ListItemText inset>
-                    <Link underline="none" href="/dashboard" className={classes.title_nav}>
-                        DASHBOARD
+              <ListItemText inset>
+                <Link underline="none" href="/dashboard" className={classes.title_nav}>
+                  DASHBOARD
                     </Link>
-                </ListItemText>
+              </ListItemText>
 
 
-                <ListItemText inset>
-                    <Link underline="none" href="/dashboard" className={classes.title_nav}>
-                        MYEXPAT
+              <ListItemText inset>
+                <Link underline="none" href="/myexpat" className={classes.title_nav}>
+                  MYEXPAT
                     </Link>
-                </ListItemText>
+              </ListItemText>
 
 
-                <ListItemText inset>
-                    <Link underline="none" href="/dashboard" className={classes.title_nav}>
-                        HAPPYEXPAT
+              <ListItemText inset>
+                <Link underline="none" href="/dashboard" className={classes.title_nav}>
+                  HAPPYEXPAT
                     </Link>
-                </ListItemText>
+              </ListItemText>
 
-                <ListItemText inset>
-                    <Link underline="none" href="/dashboard" className={classes.title_nav}>
-                        EXPATRIATIONS
+              <ListItemText inset>
+                <Link underline="none" href="/dashboard" className={classes.title_nav}>
+                  EXPATRIATIONS
                     </Link>
-                </ListItemText>
+              </ListItemText>
             </ListItem >
-        </List>
+          </List>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
