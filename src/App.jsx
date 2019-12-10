@@ -3,12 +3,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Redirect from './pages/Redirect';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Navbar from '../src/components/Navbar';
 import Dashboard from './pages/Dashboard';
 
 const App = () => (
   <div>
-    <Navbar />
     <BrowserRouter>
       <div>
         <Route exact path="/" component={Redirect} />
