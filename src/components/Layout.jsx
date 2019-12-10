@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Background from '../assets/bg.jpg';
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -13,7 +14,10 @@ const useStyles = makeStyles(() => ({
     flexGrow: '1',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    background: `url(${Background})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover'
   }
 }));
 
