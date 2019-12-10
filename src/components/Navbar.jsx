@@ -85,10 +85,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#fff',
     color: '#000'
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 9866d8d705a2fea0810bfc485f5201770e1f0a9b
 }));
 
 export default function PrimarySearchAppBar() {
@@ -173,10 +169,6 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 9866d8d705a2fea0810bfc485f5201770e1f0a9b
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.navbar}>
@@ -198,51 +190,27 @@ export default function PrimarySearchAppBar() {
               <ListItemText inset>
                 <Link underline="none" href="/dashboard" className={classes.title_nav}>
                   DASHBOARD
-<<<<<<< HEAD
                 </Link>
               </ListItemText>
-
-              <ListItemText inset>
-                <Link underline="none" href="/dashboard" className={classes.title_nav}>
-                  MYEXPAT
-                </Link>
-              </ListItemText>
-
-              <ListItemText inset>
-                <Link underline="none" href="/dashboard" className={classes.title_nav}>
-                  HAPPYEXPAT
-                </Link>
-=======
-                    </Link>
-              </ListItemText>
-
 
               <ListItemText inset>
                 <Link underline="none" href="/myexpat" className={classes.title_nav}>
                   MYEXPAT
-                    </Link>
+                </Link>
               </ListItemText>
-
 
               <ListItemText inset>
                 <Link underline="none" href="/dashboard" className={classes.title_nav}>
                   HAPPYEXPAT
-                    </Link>
->>>>>>> 9866d8d705a2fea0810bfc485f5201770e1f0a9b
+                </Link>
               </ListItemText>
 
               <ListItemText inset>
                 <Link underline="none" href="/dashboard" className={classes.title_nav}>
                   EXPATRIATIONS
-<<<<<<< HEAD
                 </Link>
               </ListItemText>
             </ListItem>
-=======
-                    </Link>
-              </ListItemText>
-            </ListItem >
->>>>>>> 9866d8d705a2fea0810bfc485f5201770e1f0a9b
           </List>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
