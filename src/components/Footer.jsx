@@ -50,7 +50,7 @@ export default function Footer() {
           Site
         </Link>
         <Box className={classes.boxRight} />
-        <Link href="/test">Copyright OuiExpat</Link>
+        <Link href="/test">Copyright Mobea</Link>
       </Toolbar>
     </Container>
   );
