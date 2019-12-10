@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Image from '../assets/bg.jpg';
+import Background from '../assets/bg.jpg';
 
 function Copyright() {
   return (
@@ -50,7 +50,9 @@ const useStyles = makeStyles(theme => ({
     padding: '0 30px'
   },
   font: {
-    background: `url(${Image})`,
+    background: `url(${Background})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
     height: '100vh',
     width: '100vw',
     margin: '0',

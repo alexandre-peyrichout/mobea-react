@@ -21,7 +21,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 
 const useStyles = makeStyles(theme => ({
   grow: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -87,6 +87,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#fff',
     color: '#000'
 }
+
 }));
 
 export default function PrimarySearchAppBar() {
