@@ -10,17 +10,17 @@ const themeMobea = createMuiTheme({
       paper: '#fff',
       default: '#fafafa'
     },
-    secondary: {
-      light: 'rgba(255, 255, 139, 1)',
-      main: 'rgba(255, 221, 89, 1)',
-      dark: 'rgba(229, 170, 75, 1)',
-      contrastText: 'rgba(68, 51, 23, 1)'
-    },
     primary: {
       light: 'rgba(255, 219, 122, 1)',
       main: 'rgba(229, 170, 75, 1)',
       dark: 'rgba(175, 123, 26, 1)',
       contrastText: 'rgba(255, 255, 255, 1)'
+    },
+    secondary: {
+      light: 'rgba(255, 255, 139, 1)',
+      main: 'rgba(255, 221, 89, 1)',
+      dark: 'rgba(229, 170, 75, 1)',
+      contrastText: 'rgba(68, 51, 23, 1)'
     },
     error: {
       light: '#e57373',

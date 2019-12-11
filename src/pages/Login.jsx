@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
+import { Link as LinkRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -119,7 +120,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link component={LinkRouter} to="/signup" variant="body2">
                   Je n'ai pas de compte ? S'inscrire
                 </Link>
               </Grid>
