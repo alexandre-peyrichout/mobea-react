@@ -45,8 +45,12 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 3,
     color: 'white',
     height: 48,
-    padding: '0 30px'
+    padding: '0 30px',
+    '&:hover': {
+      backgroundColor: 'rgb(255, 140, 0)'
+    }
   },
+
   font: {
     background: `url(${Background})`,
     backgroundPosition: 'center',
@@ -61,8 +65,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center'
   },
   container: {
-    backgroundColor: 'white',
-    boxShadow: '10px 10px 10px grey'
+    backgroundColor: 'white'
   },
   logo: {
     height: '20vh'
@@ -79,7 +82,7 @@ export default function SignIn() {
         <div className={classes.paper}>
           <img className={classes.logo} alt="mobea-icon" src={require('../assets/logo.png')} />
           <Typography component="h1" variant="h5">
-            Sign in
+            Se connecter
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
@@ -88,7 +91,7 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Email"
               name="email"
               autoComplete="email"
               autoFocus
@@ -99,14 +102,14 @@ export default function SignIn() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Mot de passe"
               type="password"
               id="password"
               autoComplete="current-password"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              label="Se souvenir de moi"
             />
             <Button
               type="submit"
@@ -115,17 +118,17 @@ export default function SignIn() {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Se connecter
             </Button>
             <Grid container>
               <Grid item xs>
                 <Link href="http://tinytuba.com/" variant="body2">
-                  Forgot password?
+                  Mot de passe oublié ?
                 </Link>
               </Grid>
               <Grid item>
                 <Link href="/signup" variant="body2">
-                  Don&apos;t have an account? Sign Up
+                  Je n'ai pas de compte ? S'inscrire
                 </Link>
               </Grid>
             </Grid>
