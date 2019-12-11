@@ -2,15 +2,13 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Image from '../assets/bg.jpg';
+import Background from '../assets/bg.jpg';
 
 function Copyright() {
   return (
@@ -46,10 +44,15 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 3,
     color: 'white',
     height: 48,
-    padding: '0 30px'
+    padding: '0 30px',
+    '&:hover': {
+      backgroundColor: 'rgb(255, 140, 0)'
+    }
   },
   font: {
-    background: `url(${Image})`,
+    background: `url(${Background})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
     height: '100vh',
     width: '100vw',
     margin: '0',
@@ -60,8 +63,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center'
   },
   container: {
-    backgroundColor: 'white',
-    boxShadow: '10px 10px 10px grey'
+    backgroundColor: 'white'
   },
   logo: {
     height: '20vh'
@@ -78,7 +80,7 @@ export default function SignUp() {
         <div className={classes.paper}>
           <img className={classes.logo} alt="mobea-icon" src={require('../assets/logo.png')} />
           <Typography component="h1" variant="h5">
-            Sign up
+            S'inscrire
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
@@ -90,7 +92,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="Prénom"
                   autoFocus
                 />
               </Grid>
@@ -100,7 +102,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="Nom"
                   name="lastName"
                   autoComplete="lname"
                 />
@@ -111,7 +113,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="Email"
                   name="email"
                   autoComplete="email"
                 />
@@ -122,16 +124,10 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Mot de passe"
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
                 />
               </Grid>
             </Grid>
@@ -142,12 +138,12 @@ export default function SignUp() {
               color="primary"
               className={classes.submit}
             >
-              Sign Up
+              S'inscrire
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
                 <Link href="/Login" variant="body2">
-                  Already have an account? Sign in
+                  J'ai déjà un compte ? Se connecter
                 </Link>
               </Grid>
             </Grid>
