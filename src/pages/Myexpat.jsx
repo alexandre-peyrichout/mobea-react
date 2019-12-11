@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,24 +14,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Image from '../assets/bg.jpg';
 import Openselect from '../components/Openselect';
-=======
->>>>>>> 3e5ca8b99d73b2655489df2a0aa5e8801501b53a
 import CheckCard from '../components/CheckCard';
 import Layout from '../components/Layout';
 
 export default function Myexpat() {
-<<<<<<< HEAD
-    return (
-        <Layout>
-            <Openselect />
-            <CheckCard />
-        </Layout>
-    );
-=======
   return (
     <Layout>
+      <Openselect />
       <CheckCard />
     </Layout>
   );
->>>>>>> 3e5ca8b99d73b2655489df2a0aa5e8801501b53a
 }
