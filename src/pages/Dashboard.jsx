@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     margin: '10px',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr [de] 1fr',
-    gridTemplateRows: '1fr 1fr',
+    gridTemplateRows: 'auto 1fr 1fr',
     gridColumnGap: '8px',
     gridRowGap: '8px'
   },
