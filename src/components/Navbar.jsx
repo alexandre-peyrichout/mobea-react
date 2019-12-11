@@ -67,10 +67,6 @@ const useStyles = makeStyles(theme => ({
       display: 'none'
     }
   },
-  navbar: {
-    backgroundColor: '#fff',
-    color: '#000'
-  },
   toolbar: {
     minHeight: 0
   }
@@ -135,7 +131,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={4} color="primary">
             <MailIcon />
           </Badge>
         </IconButton>
@@ -143,7 +139,7 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+          <Badge badgeContent={11} color="primary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -165,7 +161,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" className={classes.navbar}>
+      <AppBar position="static" color="default">
         <Toolbar className={classes.toolbar}>
           <div className={classes.menu}>
             <IconButton
@@ -199,12 +195,12 @@ export default function PrimarySearchAppBar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
+              <Badge badgeContent={4} color="primary">
                 <MailIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
+              <Badge badgeContent={17} color="primary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
