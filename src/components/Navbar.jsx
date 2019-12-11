@@ -161,7 +161,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" color="default">
+      <AppBar color="default">
         <Toolbar className={classes.toolbar}>
           <div className={classes.menu}>
             <IconButton

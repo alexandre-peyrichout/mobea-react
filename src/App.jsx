@@ -4,14 +4,14 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/404';
-import Redirection from './pages/Redirect';
+import LandingPage from './pages/LandingPage';
 import Myexpat from './pages/Myexpat';
 
 const App = () => (
   <div>
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Redirection} />
+        <Route exact path="/" component={LandingPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/dashboard" component={Dashboard} />
