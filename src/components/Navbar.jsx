@@ -12,15 +12,18 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Link from '@material-ui/core/Link';
-
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1
+  },
+  menu: {
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -32,27 +35,9 @@ const useStyles = makeStyles(theme => ({
       display: 'block'
     }
   },
-  title_nav: {
-    letterSpacing: '0.3em',
-    marginRight: theme.spacing(6),
-    marginLeft: 0,
-    cursor: 'pointer',
-    borderBottom: '2mm ridge #F7CC00',
-    paddingBottom: '18px',
-    textAlign: 'center',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(6),
-      width: '100%'
-    },
-    color: theme.palette.grey[800],
-    fontWeight: theme.typography.fontWeightRegular,
-    '&:hover': {
-      color: '#F7CC00'
-    }
-  },
-  items: {
-    paddingTop: '0',
-    paddingBottom: '0'
+  tabs: {
+    flexGrow: 2,
+    flexDirection: 'center'
   },
   list: {
     paddingTop: '0',
@@ -92,6 +77,10 @@ export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
+  // TABS
+  const [value, setValue] = React.useState(0);
+  // FIN TABBS
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -110,6 +99,9 @@ export default function PrimarySearchAppBar() {
 
   const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   const menuId = 'primary-search-account-menu';
@@ -173,45 +165,35 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            MOBEA
-          </Typography>
+          <div className={classes.menu}>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="open drawer"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography className={classes.title} variant="h6" noWrap>
+              MOBEA
+            </Typography>
+          </div>
 
-          <List className={classes.list}>
-            <ListItem className={classes.items}>
-              <ListItemText inset>
-                <Link underline="none" href="/dashboard" className={classes.title_nav}>
-                  DASHBOARD
-                </Link>
-              </ListItemText>
+          <div className={classes.tabs}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              centered
+            >
+              <Tab label="DASHBOARD" href="/dashboard" />
+              <Tab label="MYEXPAT" href="/myexpat" />
+              <Tab label="HAPPYEXPAT" href="#" />
+              <Tab label="EXPATRIATIONS" href="#" />
+            </Tabs>
+          </div>
 
-              <ListItemText inset>
-                <Link underline="none" href="/myexpat" className={classes.title_nav}>
-                  MYEXPAT
-                </Link>
-              </ListItemText>
-
-              <ListItemText inset>
-                <Link underline="none" href="/dashboard" className={classes.title_nav}>
-                  HAPPYEXPAT
-                </Link>
-              </ListItemText>
-
-              <ListItemText inset>
-                <Link underline="none" href="/dashboard" className={classes.title_nav}>
-                  EXPATRIATIONS
-                </Link>
-              </ListItemText>
-            </ListItem>
-          </List>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
