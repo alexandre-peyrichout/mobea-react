@@ -187,8 +187,8 @@ export default function PrimarySearchAppBar() {
               textColor="primary"
               centered
             >
-              <Tab label="DASHBOARD" href="/dashboard" />
-              <Tab label="MYEXPAT" href="/myexpat" />
+              <Tab label="DASHBOARD" href="#" />
+              <Tab label="MYEXPAT" href="#" />
               <Tab label="HAPPYEXPAT" href="#" />
               <Tab label="EXPATRIATIONS" href="#" />
             </Tabs>
