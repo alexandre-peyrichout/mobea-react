@@ -12,9 +12,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
 
 const useStyles = makeStyles(() => ({
-  card: {
-    maxWidth: 345
-  },
+  card: {},
   avatar: {
     backgroundColor: red[500]
   },
@@ -41,11 +39,11 @@ export default function CheckCard() {
       <CardHeader
         className={classes.cardHeader}
         avatar={<VerifiedUserIcon fontSize="large" />}
-        action={
+        action={(
           <IconButton aria-label="settings">
             <MoreVertIcon />
           </IconButton>
-        }
+        )}
         title="ASSURANCE"
       />
 
