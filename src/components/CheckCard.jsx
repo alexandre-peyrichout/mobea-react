@@ -48,54 +48,54 @@ export default function CheckCard() {
       />
 
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          <div className={classes.container}>
-            <Checkbox
-              checked
-              inputProps={{
-                'aria-label': 'primary checkbox'
-              }}
-            />
-            lorem ipsum dolor
-            <InfoIcon className={classes.infos} color="disabled" />
-          </div>
-          <div className={classes.container}>
-            <Checkbox
-              inputProps={{
-                'aria-label': 'primary checkbox'
-              }}
-            />
-            lorem ipsum dolor
-            <InfoIcon className={classes.infos} color="disabled" />
-          </div>
-          <div className={classes.container}>
+        <div className={classes.container}>
+          <Checkbox
+            checked
+            inputProps={{
+              'aria-label': 'primary checkbox'
+            }}
+          />
+          lorem ipsum dolor
+          <InfoIcon className={classes.infos} color="disabled" />
+        </div>
+        <div className={classes.container}>
+          <Typography variant="body2" color="textSecondary" component="p">
             <Checkbox
               inputProps={{
                 'aria-label': 'primary checkbox'
               }}
             />
             lorem ipsum dolor
-            <InfoIcon className={classes.infos} color="disabled" />
-          </div>
-          <div className={classes.container}>
-            <Checkbox
-              inputProps={{
-                'aria-label': 'primary checkbox'
-              }}
-            />
-            lorem ipsum dolor
-            <InfoIcon className={classes.infos} color="disabled" />
-          </div>
-          <div className={classes.container}>
-            <Checkbox
-              inputProps={{
-                'aria-label': 'primary checkbox'
-              }}
-            />
-            lorem ipsum dolor
-            <InfoIcon className={classes.infos} color="disabled" />
-          </div>
-        </Typography>
+          </Typography>
+          <InfoIcon className={classes.infos} color="disabled" />
+        </div>
+        <div className={classes.container}>
+          <Checkbox
+            inputProps={{
+              'aria-label': 'primary checkbox'
+            }}
+          />
+          lorem ipsum dolor
+          <InfoIcon className={classes.infos} color="disabled" />
+        </div>
+        <div className={classes.container}>
+          <Checkbox
+            inputProps={{
+              'aria-label': 'primary checkbox'
+            }}
+          />
+          lorem ipsum dolor
+          <InfoIcon className={classes.infos} color="disabled" />
+        </div>
+        <div className={classes.container}>
+          <Checkbox
+            inputProps={{
+              'aria-label': 'primary checkbox'
+            }}
+          />
+          lorem ipsum dolor
+          <InfoIcon className={classes.infos} color="disabled" />
+        </div>
       </CardContent>
     </Card>
   );
