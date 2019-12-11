@@ -37,10 +37,10 @@ export default function Footer() {
         <Link className={classes.bottomLinks} href="/test">
           CGU
         </Link>
-        <Link className={classes.bottomLinks} href="/test">
+        <Link className={classes.bottomLinks} href="/faq">
           FAQ
         </Link>
-        <Link className={classes.bottomLinks} href="/test">
+        <Link className={classes.bottomLinks} href="/politique">
           Politique de confidentialité
         </Link>
         <Link className={classes.bottomLinks} href="/test">
