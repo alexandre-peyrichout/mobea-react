@@ -5,9 +5,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
+import { Link as LinkRouter } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
+import Link from '@material-ui/core/Link';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -185,10 +187,12 @@ export default function PrimarySearchAppBar() {
               textColor="primary"
               centered
             >
-              <Tab label="DASHBOARD" href="#" className={classes.tab} />
-              <Tab label="MYEXPAT" href="#" className={classes.tab} />
-              <Tab label="HAPPYEXPAT" href="#" className={classes.tab} />
-              <Tab label="EXPATRIATIONS" href="#" className={classes.tab} />
+              <Link component={LinkRouter} to="/dashboard">
+                <Tab label="DASHBOARD" className={classes.tab} />
+              </Link>
+              <Tab label="MYEXPAT" className={classes.tab} />
+              <Tab label="HAPPYEXPAT" className={classes.tab} />
+              <Tab label="EXPATRIATIONS" className={classes.tab} />
             </Tabs>
           </div>
 
