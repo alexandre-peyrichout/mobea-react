@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
       display: 'block'
     }
   },
+  tab: { padding: '20px 0' },
   tabs: {
     flexGrow: 2,
     flexDirection: 'center'
@@ -69,6 +70,9 @@ const useStyles = makeStyles(theme => ({
   navbar: {
     backgroundColor: '#fff',
     color: '#000'
+  },
+  toolbar: {
+    minHeight: 0
   }
 }));
 
@@ -164,7 +168,7 @@ export default function PrimarySearchAppBar() {
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.navbar}>
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <div className={classes.menu}>
             <IconButton
               edge="start"
@@ -187,10 +191,10 @@ export default function PrimarySearchAppBar() {
               textColor="primary"
               centered
             >
-              <Tab label="DASHBOARD" href="#" />
-              <Tab label="MYEXPAT" href="#" />
-              <Tab label="HAPPYEXPAT" href="#" />
-              <Tab label="EXPATRIATIONS" href="#" />
+              <Tab label="DASHBOARD" href="#" className={classes.tab} />
+              <Tab label="MYEXPAT" href="#" className={classes.tab} />
+              <Tab label="HAPPYEXPAT" href="#" className={classes.tab} />
+              <Tab label="EXPATRIATIONS" href="#" className={classes.tab} />
             </Tabs>
           </div>
 
