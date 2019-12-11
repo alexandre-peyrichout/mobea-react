@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Background from '../assets/bg.jpg';
+import Logo from '../assets/logo.png';
 
 function Copyright() {
   return (
@@ -30,25 +31,16 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center'
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
-  },
   form: {
     width: '100%',
     marginTop: theme.spacing(1)
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    background: '#E8CA52',
     border: 0,
     borderRadius: 3,
-    color: 'white',
     height: 48,
-    padding: '0 30px',
-    '&:hover': {
-      backgroundColor: 'rgb(255, 140, 0)'
-    }
+    padding: '0 30px'
   },
 
   font: {
@@ -68,7 +60,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'white'
   },
   logo: {
-    height: '20vh'
+    height: '25vh'
   }
 }));
 
@@ -80,7 +72,7 @@ export default function SignIn() {
       <Container className={classes.container} component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <img className={classes.logo} alt="mobea-icon" src={require('../assets/logo.png')} />
+          <img className={classes.logo} alt="mobea-icon" src={Logo} />
           <Typography component="h1" variant="h5">
             Se connecter
           </Typography>

@@ -50,7 +50,7 @@ export default function ImageAvatars() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.container} fixed>
+    <Card className={classes.container}>
       <div className={classes.settingsDiv}>
         <IconButton aria-label="settings">
           <SettingsIcon style={{ color: grey[50] }} />

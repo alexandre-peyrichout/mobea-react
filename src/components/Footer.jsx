@@ -31,10 +31,10 @@ export default function Footer() {
     <Container component="div">
       <Toolbar className={classes.root}>
         <Box className={classes.boxLeft}>
-          <Link href="/test">Logo</Link>
+          <Link href="/#">Mobea</Link>
         </Box>
         <Box className={classes.boxMiddle} />
-        <Link className={classes.bottomLinks} href="/test">
+        <Link className={classes.bottomLinks} href="/#">
           CGU
         </Link>
         <Link className={classes.bottomLinks} href="/faq">
@@ -43,14 +43,14 @@ export default function Footer() {
         <Link className={classes.bottomLinks} href="/politique">
           Politique de confidentialité
         </Link>
-        <Link className={classes.bottomLinks} href="/test">
+        <Link className={classes.bottomLinks} href="/#">
           Contact
         </Link>
-        <Link className={classes.bottomLinks} href="/test">
+        <Link className={classes.bottomLinks} href="/#">
           Site
         </Link>
         <Box className={classes.boxRight} />
-        <Link href="/test">Copyright Mobea</Link>
+        <Link href="/#">Copyright Mobea</Link>
       </Toolbar>
     </Container>
   );
