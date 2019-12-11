@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import { Container, IconButton } from '@material-ui/core';
+import { Card, IconButton } from '@material-ui/core';
 import grey from '@material-ui/core/colors/grey';
 import SettingsIcon from '@material-ui/icons/Settings';
 
@@ -50,7 +50,7 @@ export default function ImageAvatars() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.container} fixed>
+    <Card className={classes.container} fixed>
       <div className={classes.settingsDiv}>
         <IconButton aria-label="settings">
           <SettingsIcon style={{ color: grey[50] }} />
@@ -65,6 +65,6 @@ export default function ImageAvatars() {
       </div>
       <div className={classes.nameDiv}>Name Placeholder</div>
       <div className={classes.titleDiv}>TITLE</div>
-    </Container>
+    </Card>
   );
 }
