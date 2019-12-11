@@ -5,7 +5,6 @@ import Layout from '../components/Layout';
 import Avatar from '../components/DashboardAvatar';
 import CheckCard from '../components/CheckCard';
 
-
 const useStyles = makeStyles(() => ({
   parent: {
     margin: '10px',
@@ -15,8 +14,8 @@ const useStyles = makeStyles(() => ({
     gridColumnGap: '8px',
     gridRowGap: '8px'
   },
-  div1: { gridArea: '1 / 2 / 2 / 4' },
-  div2: { gridArea: '1 / 1 / 2 / 2' },
+  div1: { gridArea: '1 / 1 / 2 / 2' },
+  div2: { gridArea: '1 / 2 / 2 / 4' },
   div3: { gridArea: '2 / 1 / 3 / 2' },
   div4: { gridArea: '2 / 2 / 3 / de' },
   div5: { gridArea: '2 / de / 3 / 4' }
@@ -27,7 +26,7 @@ export default function FullWidthGrid() {
   return (
     <Layout>
       <div className={classes.parent}>
-        <Paper className={classes.div1}>1</Paper>
+        <Avatar className={classes.div1}>1</Avatar>
         <Paper className={classes.div2}>2</Paper>
         <CheckCard className={classes.div3} />
         <CheckCard className={classes.div4} />
