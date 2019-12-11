@@ -4,8 +4,6 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Checkbox from '@material-ui/core/Checkbox';
 import InfoIcon from '@material-ui/icons/Info';
@@ -13,9 +11,6 @@ import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
 
 const useStyles = makeStyles(() => ({
   card: {},
-  avatar: {
-    backgroundColor: red[500]
-  },
   cardHeader: {
     backgroundColor: 'lightgrey'
   },
@@ -59,14 +54,12 @@ export default function CheckCard() {
           <InfoIcon className={classes.infos} color="disabled" />
         </div>
         <div className={classes.container}>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <Checkbox
-              inputProps={{
-                'aria-label': 'primary checkbox'
-              }}
-            />
-            lorem ipsum dolor
-          </Typography>
+          <Checkbox
+            inputProps={{
+              'aria-label': 'primary checkbox'
+            }}
+          />
+          lorem ipsum dolor
           <InfoIcon className={classes.infos} color="disabled" />
         </div>
         <div className={classes.container}>
