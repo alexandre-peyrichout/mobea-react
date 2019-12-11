@@ -2,7 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Layout from '../components/Layout';
+import Avatar from '../components/DashboardAvatar';
 import CheckCard from '../components/CheckCard';
+
 
 const useStyles = makeStyles(() => ({
   parent: {
