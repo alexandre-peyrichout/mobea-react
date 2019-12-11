@@ -5,10 +5,14 @@ function LandingPage() {
   return (
     <div>
       landing page a faire:
+      <br />
       <Link to="/login">Login</Link>
-      <Link to="/signup">Login</Link>
-      <Link to="/dashboard">Login</Link>
-      <Link to="/404">Login</Link>
+      <br />
+      <Link to="/signup">signup</Link>
+      <br />
+      <Link to="/dashboard">dashboard</Link>
+      <br />
+      <Link to="/404">erreur 404</Link>
     </div>
   );
 }
