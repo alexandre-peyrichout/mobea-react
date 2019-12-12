@@ -2,8 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Layout from '../components/Layout';
+import Openselect from '../components/Openselect';
 import Avatar from '../components/DashboardAvatar';
 import CheckCard from '../components/CheckCard';
+import Flag from 'react-world-flags';
 
 const useStyles = makeStyles(() => ({
   parent: {
@@ -27,7 +29,9 @@ export default function FullWidthGrid() {
     <Layout>
       <div className={classes.parent}>
         <Avatar className={classes.div1}>1</Avatar>
-        <Paper className={classes.div2}>2</Paper>
+        <Paper className={classes.div2}><Openselect />
+          <Flag code={504} width="40" />
+          <h3>Tanger</h3></Paper>
         <CheckCard className={classes.div3} />
         <CheckCard className={classes.div4} />
         <CheckCard className={classes.div5} />
