@@ -2,20 +2,25 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Layout from '../components/Layout';
+import Openselect from '../components/Openselect';
+import Avatar from '../components/DashboardAvatar';
+import CheckCard from '../components/CheckCard';
+import Flag from 'react-world-flags';
 
 const useStyles = makeStyles(() => ({
   parent: {
     margin: '10px',
     display: 'grid',
-    gridTemplateColumns: 'repeat(6, 1fr)',
-    gridTemplateRows: 'repeat(6, 1fr)',
+    gridTemplateColumns: '1fr 1fr [de] 1fr',
+    gridTemplateRows: 'auto 1fr 1fr',
     gridColumnGap: '8px',
     gridRowGap: '8px'
   },
-  div1: { gridArea: '1 / 1 / 7 / 3' },
-  div2: { gridArea: '1 / 3 / 3 / 7' },
-  div3: { gridArea: '3 / 3 / 7 / 5' },
-  div4: { gridArea: '3 / 5 / 7 / 7' }
+  div1: { gridArea: '1 / 1 / 2 / 2' },
+  div2: { gridArea: '1 / 2 / 2 / 4' },
+  div3: { gridArea: '2 / 1 / 3 / 2' },
+  div4: { gridArea: '2 / 2 / 3 / de' },
+  div5: { gridArea: '2 / de / 3 / 4' }
 }));
 
 export default function FullWidthGrid() {
@@ -23,10 +28,17 @@ export default function FullWidthGrid() {
   return (
     <Layout>
       <div className={classes.parent}>
-        <Paper className={classes.div1}>1</Paper>
-        <Paper className={classes.div2}>2</Paper>
-        <Paper className={classes.div3}>3</Paper>
-        <Paper className={classes.div4}>4</Paper>
+        <Avatar className={classes.div1}>1</Avatar>
+        <Paper className={classes.div2}>
+          <Openselect />
+          <Flag code={504} width="40" />
+          <h3>Tanger</h3>
+        </Paper>
+        <CheckCard className={classes.div3} />
+        <CheckCard className={classes.div4} />
+        <CheckCard className={classes.div5} />
+        <CheckCard className={classes.div6} />
+        <CheckCard className={classes.div7} />
       </div>
     </Layout>
   );

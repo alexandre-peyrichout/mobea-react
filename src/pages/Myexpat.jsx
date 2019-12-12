@@ -13,13 +13,15 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Image from '../assets/bg.jpg';
+import Openselect from '../components/Openselect';
 import CheckCard from '../components/CheckCard';
 import Layout from '../components/Layout';
 
 export default function Myexpat() {
-    return (
-        <Layout>
-            <CheckCard />
-        </Layout>
-    );
+  return (
+    <Layout>
+      <Openselect />
+      <CheckCard />
+    </Layout>
+  );
 }

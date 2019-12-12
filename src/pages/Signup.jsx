@@ -1,18 +1,16 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
+import { Link as LinkRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Image from '../assets/bg.jpg';
+import Background from '../assets/bg.jpg';
+import Logo from '../assets/logo.png';
 
 function Copyright() {
   return (
@@ -28,30 +26,26 @@ function Copyright() {
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(0),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
-  },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(1)
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    background: 'linear-gradient(45deg, #3D9CC2 30%, #F7CC00 90%)',
     border: 0,
     borderRadius: 3,
-    color: 'white',
     height: 48,
     padding: '0 30px'
   },
   font: {
-    background: `url(${Image})`,
+    background: `url(${Background})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
     height: '100vh',
     width: '100vw',
     margin: '0',
@@ -62,8 +56,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center'
   },
   container: {
-    backgroundColor: 'white',
-    boxShadow: '10px 10px 10px grey'
+    backgroundColor: 'white'
+  },
+  logo: {
+    height: '20vh'
   }
 }));
 
@@ -75,11 +71,9 @@ export default function SignUp() {
       <Container className={classes.container} component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <img className={classes.logo} alt="mobea-icon" src={Logo} />
           <Typography component="h1" variant="h5">
-            Sign up
+            S'inscrire
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
@@ -91,7 +85,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="Prénom"
                   autoFocus
                 />
               </Grid>
@@ -101,7 +95,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="Nom"
                   name="lastName"
                   autoComplete="lname"
                 />
@@ -112,7 +106,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="Email"
                   name="email"
                   autoComplete="email"
                 />
@@ -123,16 +117,10 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Mot de passe"
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
                 />
               </Grid>
             </Grid>
@@ -143,12 +131,12 @@ export default function SignUp() {
               color="primary"
               className={classes.submit}
             >
-              Sign Up
+              S'inscrire
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
-                <Link href="/Login" variant="body2">
-                  Already have an account? Sign in
+                <Link component={LinkRouter} to="/Login" variant="body2">
+                  J'ai déjà un compte ? Se connecter
                 </Link>
               </Grid>
             </Grid>
