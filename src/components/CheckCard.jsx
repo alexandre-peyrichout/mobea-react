@@ -34,11 +34,11 @@ export default function CheckCard() {
       <CardHeader
         className={classes.cardHeader}
         avatar={<VerifiedUserIcon fontSize="large" />}
-        action={(
+        action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
           </IconButton>
-        )}
+        }
         title="ASSURANCE"
       />
 

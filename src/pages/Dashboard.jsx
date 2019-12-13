@@ -29,9 +29,11 @@ export default function FullWidthGrid() {
     <Layout>
       <div className={classes.parent}>
         <Avatar className={classes.div1}>1</Avatar>
-        <Paper className={classes.div2}><Openselect />
+        <Paper className={classes.div2}>
+          <Openselect />
           <Flag code={504} width="40" />
-          <h3>Tanger</h3></Paper>
+          <h3>Tanger</h3>
+        </Paper>
         <CheckCard className={classes.div3} />
         <CheckCard className={classes.div4} />
         <CheckCard className={classes.div5} />
