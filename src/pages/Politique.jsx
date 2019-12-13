@@ -9,13 +9,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3, 2),
   },
   title: {
-    color: '#fff',
-    backgroundColor: '#E8CA52',
     textAlign: 'center'
-    },
-  subtitle: {
-    color: 'rgb(255, 140, 0)'
-  }
+    }
   }));
 
 export default function PaperSheet() {
@@ -27,12 +22,12 @@ export default function PaperSheet() {
     <Paper className={classes.root}>
 
       <div >
-      <Typography className={classes.title} variant="h4">
+      <Typography className={classes.title} color="primary" variant="h4">
         POLITIQUE DE CONFIDENTIALITE
       </Typography>
       </div>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       1.Collecte de l’information
       </Typography>
       Nous recueillons des informations lorsque vous vous inscrivez sur notre site, lorsque vous vous connectez à votre compte, et / ou lorsque vous vous déconnectez. 
@@ -41,7 +36,7 @@ export default function PaperSheet() {
       Plusieurs offres de services sont répertoriées et vous ferez le choix selon votre profil et votre destination.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       2. Utilisation des informations
       </Typography>
       Toute les informations que nous recueillons auprès de vous peuvent être utilisées pour :
@@ -53,14 +48,14 @@ export default function PaperSheet() {
       • Administrer un concours, une promotion, ou une enquête
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       3. Confidentialité du commerce en ligne
       </Typography>
       Nous sommes les seuls propriétaires des informations recueillies sur ce site. 
       Vos informations personnelles ne seront pas vendues, échangées, transférées, ou données à une autre société pour n’importe quelle raison, sans votre consentement, en dehors de ce qui est nécessaire pour répondre à une demande.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       4. Divulgation à des tiers
       </Typography>
       Nous ne vendons, n’échangeons et ne transférons pas vos informations personnelles identifiables à des tiers. 
@@ -69,24 +64,25 @@ export default function PaperSheet() {
       Les informations non-privées, cependant, peuvent être fournies à d’autres parties pour le marketing, la publicité, ou d’autres utilisations.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       5. Protection des informations
       </Typography>
       Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles. 
       Nous protégeons également vos informations hors ligne. 
       Les ordinateurs et serveurs utilisés pour stocker des informations personnelles identifiables sont conservés dans un environnement sécurisé.
+      
       Est-ce que nous utilisons des cookies ?
       Oui. Nos cookies améliorent l’accès à notre site et identifient les visiteurs réguliers. En outre, nos cookies améliorent l’expérience d’utilisateur grâce au suivi et au ciblage de ses intérêts. Cependant, cette utilisation des cookies n’est en aucune façon liée à des informations personnelles identifiables sur notre site.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       6. Se désabonner
       </Typography>
       Nous utilisons l’adresse e-mail que vous fournissez pour vous envoyer des informations et mises à jour relatives à votre commande, des nouvelles de l’entreprise de façon occasionnelle, des informations sur des produits liés, etc. 
       Si à n’importe quel moment vous souhaitez-vous désinscrire et ne plus recevoir d’e-mails, des instructions de désabonnement détaillées sont incluses en bas de chaque e-mail.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       7. Consentement
       </Typography>
       En utilisant notre site, vous consentez à notre politique de confidentialité.

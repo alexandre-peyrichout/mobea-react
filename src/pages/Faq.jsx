@@ -9,13 +9,9 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3, 2),
   },
   title: {
-    color: '#fff',
-    backgroundColor: '#E8CA52',
     textAlign: 'center'
-    },
-  subtitle: {
-    color: 'rgb(255, 140, 0)'
-  }
+    }
+
   }));
 
 export default function PaperSheet() {
@@ -27,12 +23,12 @@ export default function PaperSheet() {
     <Paper className={classes.root}>
 
       <div >
-      <Typography className={classes.title} variant="h4">
+      <Typography className={classes.title} color="primary" variant="h4">
         FOIRE AUX QUESTIONS
       </Typography>
       </div>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Qu'est-ce que MOBEA ?
       </Typography>
       Mobea est une application web. 
@@ -41,19 +37,19 @@ export default function PaperSheet() {
       Plusieurs offres de services sont répertoriées et vous ferez le choix selon votre profil et votre destination.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Est-ce que MOBEA est une application gratuite ?
       </Typography>
       Evidemment ! c'est affirmatif.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Sur quels téléphones puis-je l'utiliser ?
       </Typography>
       Mobea couvre les iphones avec IOS et les téléphones Android aussi.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Quand utiliser Mobea ?
       </Typography>
       Nous recommandons de laisser l'application active 24/7 avec notre communauté HappExpat. 
@@ -61,7 +57,7 @@ export default function PaperSheet() {
       Cela peut être très utile de partager vos conseils, retours, avis en temps réel sur un endroit ou un produit/ service avec votre entourage et les autres utilisateurs ou partager votre passion et/ou loisir avec les nouveaux arrivés dans votre ville " Happy expat" et les aider à s'intégrer dans leur nouvel environnement.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Comment s'assurer de la précision des informations partagées sur la plateforme ? 
       </Typography>
       Il est important d'activer à la fois le GPS et le wifi sur votre téléphone (même non connecté à un réseau donné). 
@@ -69,7 +65,7 @@ export default function PaperSheet() {
       Vous avez besoin d'être connecté au sein de l'application et votre téléphone allumé pour être localisé et partager vos news et celles des Happy Expat. 
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Comment inviter quelqu'un ? 
       </Typography>
       L'ajout de vos amis ou futurs amis vous sera proposé lors de la création de votre compte en renseignant leurs noms ou en les sélectionnant directement depuis vos contacts. 
@@ -77,20 +73,20 @@ export default function PaperSheet() {
       Dans le menu de votre profil, cliquer sur "Inviter un contact".
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Dans quels pays le service est-il disponible ? 
       </Typography>
       Au départ, nous serons présents dans les grandes métropoles. 
       Par la suite, notre objectif est d'être présent aux quatre coins du monde dès que tu trouveras une once de connexion aux données mobile ou un accès à réseau Wifi.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Comment contacter votre équipe ? 
       </Typography>
       Rien de plus simple : contact@mobea.co
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Comment supprimer mon compte et l'ensemble des données associées ?
       </Typography>
       Envoyez-nous un mail contact@mobea.co
@@ -100,7 +96,7 @@ export default function PaperSheet() {
       Vos remarques sont plus qu’appréciées. 
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Un des membres est hors-ligne. Pourquoi ?
       </Typography>
       Généralement, c’est dû à la perte de sa connexion. 
@@ -108,20 +104,20 @@ export default function PaperSheet() {
       Dans tous les cas, n’hésitez pas à lui demander de relancer l’application pour le retrouver. 
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Comment supprimer un membre ?
       </Typography>
       Atteindre la dernière sur l’écran principal pour faire apparaître les paramètres. 
       Cliquez sur votre liste de Happy Expat et glissez avec votre doigt sur le prénom que vous souhaitez supprimer de la gauche vers la droite.
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Combien de personnes puis-je ajouter à mon réseau ?
       </Typography>
       Aucune limite, alors invitez-en le plus grand nombre !
       <br/>
       <br/>
-      <Typography className={classes.subtitle} variant="h5">
+      <Typography className={classes.subtitle} color="primary" variant="h6">
       Comment faire pour obtenir d’avance d’aide ?
       </Typography>
       N’hésitez surtout pas à nous contacter par mail sur : contact@mobea.co pour toute demande d’aide, retours d’utilisations ou autres remarques pour continuer d’améliorer le service. 
