@@ -1,11 +1,16 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Container, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import fond from '../assets/bgold.jpg';
 import logo from '../assets/logo.png';
 import LandingBar from '../components/LandingBar';
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
+import TextsmsOutlinedIcon from '@material-ui/icons/TextsmsOutlined';
+import EventNoteOutlinedIcon from '@material-ui/icons/EventNoteOutlined';
+import PhoneIphoneOutlinedIcon from '@material-ui/icons/PhoneIphoneOutlined';
 
 const useStyles = makeStyles(() => ({
   contain: {
@@ -25,8 +30,11 @@ const useStyles = makeStyles(() => ({
     padding: '0'
   },
   propos: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     width: '100%',
-    height: '200px'
+    minHeight: '100vh'
   },
 
   zonecentrale: {
@@ -73,7 +81,23 @@ function LandingPage() {
         </Container>
       </Container>
       <Container className={classes.propos}>
-        <Typography>A PROPOS</Typography>
+        <Typography variant="h3">A PROPOS</Typography>
+        <iframe
+          width="800"
+          height="450"
+          src="https://www.youtube.com/embed/bh7znN9kMS8"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+
+        <Grid container spacing={1}>
+          <Grid container item xs={6} md={2}></Grid>
+          <Grid container item xs={6} md={2}></Grid>
+          <Grid container item xs={6} md={2}></Grid>
+          <Grid container item xs={6} md={2}></Grid>
+          <Grid container item xs={6} md={2}></Grid>
+        </Grid>
       </Container>
     </Container>
   );
