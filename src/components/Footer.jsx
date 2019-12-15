@@ -12,11 +12,13 @@ const useStyles = makeStyles(() => ({
     padding: '20px 5px',
     height: '60px',
     margin: 'auto',
-    opacity: 0.5
+    opacity: 0.5,
+    filter: 'grayscale(1)'
   },
   bottomLinks: {
     margin: 'auto',
-    padding: '10px'
+    padding: '0 10px',
+    color: 'grey'
   }
 }));
 
@@ -26,37 +28,43 @@ export default function Footer() {
   return (
     <Grid container>
       <Grid item xs={12} sm={3} spacing={1}>
-        <Toolbar>
-          <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
-            <img src={logo} alt="logo" className={classes.logo} />
-          </Link>
-        </Toolbar>
+        <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
+          <img src={logo} alt="logo" className={classes.logo} />
+        </Link>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Toolbar>
-          <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
-            CGU
-          </Link>
-          <Link className={classes.bottomLinks} component={LinkRouter} to="/faq">
-            FAQ
-          </Link>
-          <Link className={classes.bottomLinks} component={LinkRouter} to="/politique">
-            Politique de confidentialité
-          </Link>
-          <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
-            Contact
-          </Link>
-          <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
-            Site
-          </Link>
-        </Toolbar>
+        <Grid container>
+          <Grid item xs={12} sm={2}>
+            <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
+              CGU
+            </Link>
+          </Grid>
+          <Grid item xs={12} sm={2}>
+            <Link className={classes.bottomLinks} component={LinkRouter} to="/faq">
+              FAQ
+            </Link>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Link className={classes.bottomLinks} component={LinkRouter} to="/politique">
+              Confidentialité
+            </Link>
+          </Grid>
+          <Grid item xs={12} sm={2}>
+            <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
+              Contact
+            </Link>
+          </Grid>
+          <Grid item xs={12} sm={2}>
+            <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
+              Site
+            </Link>
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item xs={12} sm={3}>
-        <Toolbar>
-          <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
-            Copyright Mobea
-          </Link>
-        </Toolbar>
+        <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
+          Copyright Mobea
+        </Link>
       </Grid>
     </Grid>
   );
