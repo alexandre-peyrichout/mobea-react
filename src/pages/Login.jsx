@@ -61,7 +61,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'white'
   },
   logo: {
-    height: '25vh'
+    padding: '10px 0',
+    height: '10vh'
   }
 }));
 
