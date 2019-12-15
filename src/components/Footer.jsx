@@ -2,25 +2,21 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import { Link as LinkRouter } from 'react-router-dom';
 import { Container, Box } from '@material-ui/core';
+import logo from '../assets/logo.png';
 
 const useStyles = makeStyles(() => ({
-  root: {
-    '& a': {
-      color: 'grey'
-    },
-    '& a:hover': {
-      textDecoration: 'none'
-    }
-  },
-  boxRight: {
-    marginLeft: 'auto'
-  },
-  boxMiddle: {
-    marginLeft: '5%'
+  logo: {
+    padding: '20px 5px',
+    height: '60px',
+    margin: 'auto',
+    opacity: 0.5
   },
   bottomLinks: {
-    padding: '1rem'
+    margin: 'auto',
+    padding: '10px'
   }
 }));
 
@@ -28,30 +24,40 @@ export default function Footer() {
   const classes = useStyles();
 
   return (
-    <Container component="div">
-      <Toolbar className={classes.root}>
-        <Box className={classes.boxLeft}>
-          <Link href="/#">Mobea</Link>
-        </Box>
-        <Box className={classes.boxMiddle} />
-        <Link className={classes.bottomLinks} href="/#">
-          CGU
-        </Link>
-        <Link className={classes.bottomLinks} href="/faq">
-          FAQ
-        </Link>
-        <Link className={classes.bottomLinks} href="/politique">
-          Politique de confidentialité
-        </Link>
-        <Link className={classes.bottomLinks} href="/#">
-          Contact
-        </Link>
-        <Link className={classes.bottomLinks} href="/#">
-          Site
-        </Link>
-        <Box className={classes.boxRight} />
-        <Link href="/#">Copyright Mobea</Link>
-      </Toolbar>
-    </Container>
+    <Grid container>
+      <Grid item xs={12} sm={3} spacing={1}>
+        <Toolbar>
+          <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
+            <img src={logo} alt="logo" className={classes.logo} />
+          </Link>
+        </Toolbar>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <Toolbar>
+          <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
+            CGU
+          </Link>
+          <Link className={classes.bottomLinks} component={LinkRouter} to="/faq">
+            FAQ
+          </Link>
+          <Link className={classes.bottomLinks} component={LinkRouter} to="/politique">
+            Politique de confidentialité
+          </Link>
+          <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
+            Contact
+          </Link>
+          <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
+            Site
+          </Link>
+        </Toolbar>
+      </Grid>
+      <Grid item xs={12} sm={3}>
+        <Toolbar>
+          <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
+            Copyright Mobea
+          </Link>
+        </Toolbar>
+      </Grid>
+    </Grid>
   );
 }
