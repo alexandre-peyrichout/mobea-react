@@ -1,45 +1,35 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import { Paper, Grid } from '@material-ui/core';
 import Layout from '../components/Layout';
-import Openselect from '../components/Openselect';
 import Avatar from '../components/DashboardAvatar';
-import CheckCard from '../components/CheckCard';
-import Flag from 'react-world-flags';
 
-const useStyles = makeStyles(() => ({
-  parent: {
-    margin: '10px',
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr [de] 1fr',
-    gridTemplateRows: 'auto 1fr 1fr',
-    gridColumnGap: '8px',
-    gridRowGap: '8px'
-  },
-  div1: { gridArea: '1 / 1 / 2 / 2' },
-  div2: { gridArea: '1 / 2 / 2 / 4' },
-  div3: { gridArea: '2 / 1 / 3 / 2' },
-  div4: { gridArea: '2 / 2 / 3 / de' },
-  div5: { gridArea: '2 / de / 3 / 4' }
-}));
+const useStyles = makeStyles(() => ({}));
 
 export default function FullWidthGrid() {
   const classes = useStyles();
   return (
     <Layout>
-      <div className={classes.parent}>
-        <Avatar className={classes.div1}>1</Avatar>
-        <Paper className={classes.div2}>
-          <Openselect />
-          <Flag code={504} width="40" />
-          <h3>Tanger</h3>
-        </Paper>
-        <CheckCard className={classes.div3} />
-        <CheckCard className={classes.div4} />
-        <CheckCard className={classes.div5} />
-        <CheckCard className={classes.div6} />
-        <CheckCard className={classes.div7} />
-      </div>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={4}>
+          <Avatar />
+        </Grid>
+        <Grid item xs={12} sm={8}>
+          <Paper>2</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <Paper>3</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <Paper>4</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <Paper>5</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <Paper>6</Paper>
+        </Grid>
+      </Grid>
     </Layout>
   );
 }
