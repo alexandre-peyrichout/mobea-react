@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
     minHeight: '100vh'
   },
   content: {
-    paddingTop: '62px',
+    padding: '72px 8px 8px 8px',
     flexGrow: '1',
     display: 'flex',
     flexDirection: 'column',
