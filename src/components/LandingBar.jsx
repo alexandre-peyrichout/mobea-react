@@ -10,7 +10,8 @@ const useStyles = makeStyles(() => ({
     flexGrow: 1
   },
   login: {
-    marginLeft: '80%'
+    marginLeft: '80%',
+    color: 'white'
   },
   logo: {
     width: '70px'
@@ -19,6 +20,10 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     marginRight: 'auto'
+  },
+  landingBar: {
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    boxShadow: 'unset'
   }
 }));
 
@@ -27,7 +32,7 @@ export default function LandingBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.landingBar} position="static" color="inherit">
         <Toolbar>
           <div className={classes.contain}>
             <img className={classes.logo} src={logo} alt="" />
