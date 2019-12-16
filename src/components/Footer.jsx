@@ -1,10 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { Link as LinkRouter } from 'react-router-dom';
-import { Container, Box } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import logo from '../assets/logo.png';
 
 const useStyles = makeStyles(() => ({
@@ -19,6 +18,10 @@ const useStyles = makeStyles(() => ({
     margin: 'auto',
     padding: '0 10px',
     color: 'grey'
+  },
+  footer: { minHeight: '100px' },
+  center: {
+    textAlign: 'center'
   }
 }));
 
@@ -26,45 +29,59 @@ export default function Footer() {
   const classes = useStyles();
 
   return (
-    <Grid container>
+    <Grid container className={classes.footer} alignContent="center" alignItems="center">
       <Grid item xs={12} sm={3} spacing={1}>
-        <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
-          <img src={logo} alt="logo" className={classes.logo} />
-        </Link>
+        <Container className={classes.center}>
+          <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
+            <img src={logo} alt="logo" className={classes.logo} />
+          </Link>
+        </Container>
       </Grid>
       <Grid item xs={12} sm={6}>
         <Grid container>
-          <Grid item xs={12} sm={2}>
-            <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
-              CGU
-            </Link>
+          <Grid item xs={12} sm={6}>
+            <Container className={classes.center}>
+              <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
+                CGU
+              </Link>
+            </Container>
           </Grid>
-          <Grid item xs={12} sm={2}>
-            <Link className={classes.bottomLinks} component={LinkRouter} to="/faq">
-              FAQ
-            </Link>
+          <Grid item xs={12} sm={6}>
+            <Container className={classes.center}>
+              <Link className={classes.bottomLinks} component={LinkRouter} to="/faq">
+                FAQ
+              </Link>
+            </Container>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Container className={classes.center}>
+              <Link className={classes.bottomLinks} component={LinkRouter} to="/politique">
+                Confidentialité
+              </Link>
+            </Container>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Container className={classes.center}>
+              <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
+                Contact
+              </Link>
+            </Container>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Link className={classes.bottomLinks} component={LinkRouter} to="/politique">
-              Confidentialité
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={2}>
-            <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
-              Contact
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={2}>
-            <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
-              Site
-            </Link>
+            <Container className={classes.center}>
+              <Link className={classes.bottomLinks} component={LinkRouter} to="/#">
+                Site
+              </Link>
+            </Container>
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} sm={3}>
-        <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
-          Copyright Mobea
-        </Link>
+        <Container className={classes.center}>
+          <Link component={LinkRouter} to="/#" className={classes.bottomLinks}>
+            Copyright Mobea
+          </Link>
+        </Container>
       </Grid>
     </Grid>
   );
