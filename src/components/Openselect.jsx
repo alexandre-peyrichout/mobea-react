@@ -4,7 +4,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
+import SettingsOutlined from '@material-ui/icons/SettingsOutlined';
+import { IconButton } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -14,6 +15,10 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120
+  },
+  config: {
+    display: 'flex',
+    justifyContent: 'flex-end'
   }
 }));
 
@@ -36,6 +41,12 @@ export default function Openselect() {
 
   return (
     <div>
+      <div className={classes.config}>
+      <h5>Configurer mon expatriation</h5>
+      <IconButton>
+        <SettingsOutlined fontSize="medium" />
+      </IconButton>
+      </div>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-controlled-open-select-label">Country</InputLabel>
         <Select
@@ -55,6 +66,7 @@ export default function Openselect() {
           <MenuItem value={30}>Tunisia</MenuItem>
         </Select>
       </FormControl>
+      
     </div>
   );
 }
