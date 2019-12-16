@@ -11,6 +11,20 @@ import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import TextsmsOutlinedIcon from '@material-ui/icons/TextsmsOutlined';
 import EventNoteOutlinedIcon from '@material-ui/icons/EventNoteOutlined';
 import PhoneIphoneOutlinedIcon from '@material-ui/icons/PhoneIphoneOutlined';
+import clsx from 'clsx';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import { red } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles(() => ({
   contain: {
@@ -56,6 +70,19 @@ const useStyles = makeStyles(() => ({
     fontWeight: 'bold',
     width: '40%',
     wordBreak: 'break-all'
+  },
+  card: {
+    maxWidth: 345
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%' // 16:9
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)'
+  },
+  avatar: {
+    backgroundColor: red[500]
   }
 }));
 
@@ -92,11 +119,96 @@ function LandingPage() {
         ></iframe>
 
         <Grid container spacing={1}>
-          <Grid container item xs={6} md={2}></Grid>
-          <Grid container item xs={6} md={2}></Grid>
-          <Grid container item xs={6} md={2}></Grid>
-          <Grid container item xs={6} md={2}></Grid>
-          <Grid container item xs={6} md={2}></Grid>
+          <Grid container item xs={6} md={2}>
+            <Card className={classes.card}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    R
+                  </Avatar>
+                }
+                title="Shrimp and Chorizo Paella"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  This impressive paella is a perfect party dish and a fun meal to cook together
+                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid container item xs={6} md={2}>
+            <Card className={classes.card}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    R
+                  </Avatar>
+                }
+                title="Shrimp and Chorizo Paella"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  This impressive paella is a perfect party dish and a fun meal to cook together
+                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid container item xs={6} md={2}>
+            <Card className={classes.card}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    R
+                  </Avatar>
+                }
+                title="Shrimp and Chorizo Paella"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  This impressive paella is a perfect party dish and a fun meal to cook together
+                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid container item xs={6} md={2}>
+            <Card className={classes.card}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    R
+                  </Avatar>
+                }
+                title="Shrimp and Chorizo Paella"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  This impressive paella is a perfect party dish and a fun meal to cook together
+                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid container item xs={6} md={2}>
+            <Card className={classes.card}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    R
+                  </Avatar>
+                }
+                title="Shrimp and Chorizo Paella"
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  This impressive paella is a perfect party dish and a fun meal to cook together
+                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
       </Container>
     </Container>
