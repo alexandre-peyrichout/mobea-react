@@ -5,7 +5,6 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/404';
 import LandingPage from './pages/LandingPage';
-import Myexpat from './pages/Myexpat';
 import Faq from './pages/Faq';
 import Politique from './pages/Politique';
 
@@ -17,7 +16,6 @@ const App = () => (
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/myexpat" component={Myexpat} />
         <Route path="/faq" component={Faq} />
         <Route path="/politique" component={Politique} />
         <Route path="/404" component={NotFound} />

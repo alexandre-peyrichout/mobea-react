@@ -6,13 +6,13 @@ import Layout from '../components/Layout';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(3, 2),
+    padding: theme.spacing(3, 2)
   },
   title: {
     textAlign: 'center'
-    }
-
-  }));
+  },
+  
+}));
 
 export default function PaperSheet() {
   const classes = useStyles();
