@@ -4,13 +4,13 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import Checkbox from '@material-ui/core/Checkbox';
 import InfoIcon from '@material-ui/icons/Info';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
 
 const useStyles = makeStyles(() => ({
-  card: {},
+  card: { width: '100%', maxWidth: '700px', height: '100%' },
   cardHeader: {
     backgroundColor: 'lightgrey'
   },
@@ -36,7 +36,7 @@ export default function CheckCard() {
         avatar={<VerifiedUserIcon fontSize="large" />}
         action={
           <IconButton aria-label="settings">
-            <MoreVertIcon />
+            <ArrowDropDownCircleIcon />
           </IconButton>
         }
         title="ASSURANCE"
