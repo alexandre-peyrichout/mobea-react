@@ -10,17 +10,19 @@ const useStyles = makeStyles(theme => ({
   logo: {
     height: '60px',
     opacity: 0.5,
-    filter: 'grayscale(1)'
-  },
-  flexItem: {
-    minHeight: '100%',
-    padding: '5px 0px',
-
+    filter: 'grayscale(1)',
     [theme.breakpoints.down('xs')]: {
-      padding: '20px 0px'
+      padding: '15px 0px'
     }
   },
+  flexItem: {
+    minHeight: '100%'
+  },
   bottomLinks: {
+    padding: '5px 0',
+    [theme.breakpoints.down('xs')]: {
+      padding: '10px 0px'
+    },
     fontSize: 'calc(0.5rem + 0.5vw)',
     color: 'darkgrey',
     '&:hover': {
