@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     height: '60px',
     opacity: 0.5,
     filter: 'grayscale(1)',
-    paddingLeft: '10px',
+    paddingLeft: '20px',
     [theme.breakpoints.down('xs')]: {
       padding: '15px 0px'
     }
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     minHeight: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingRight: '10px',
+    paddingRight: '20px',
     [theme.breakpoints.down('xs')]: {
       justifyContent: 'center',
       paddingRight: '0px'
