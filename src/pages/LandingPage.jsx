@@ -12,6 +12,7 @@ import PhoneIphoneOutlinedIcon from '@material-ui/icons/PhoneIphoneOutlined';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(() => ({
     backgroundRepeat: 'no-repeat'
   },
   container: {
-    minWidth: '100vw',
+    minWidth: '100%',
     minHeight: '100vh',
     margin: '0',
     padding: '0'
@@ -59,8 +60,14 @@ const useStyles = makeStyles(() => ({
   },
   boldText: {
     fontWeight: 'bold',
-    width: '40%',
-    wordBreak: 'break-all'
+    maxWidth: '66%',
+    wordBreak: 'break-all',
+    marginBottom: '4%',
+    marginTop: '2%',
+    ['@media (max-width:961px)']: {
+      maxWidth: '95%',
+
+    }
   },
   card: {
     maxWidth: 345
@@ -73,26 +80,47 @@ const useStyles = makeStyles(() => ({
     transform: 'rotate(180deg)'
   },
   frame: {
-    marginBottom: '3%'
+    marginBottom: '3%',
+    width: "800px",
+    height: '460px',
+    ['@media (max-width:961px)']: {
+      width: '95%',
+      height: '180px'
+    }
+
   },
   header: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   apropos: {
     marginBottom: '3%',
     marginTop: '3%'
+  },
+  title: {
+    fontWeight: 'bold',
+    maxWidth: '40%',
+    marginBottom: '4%',
+    marginTop: '2%',
+    fontSize: '4em',
+    ['@media (max-width:961px)']: {
+      fontSize: '3em',
+      maxWidth: '95%'
+    }
   }
+
 }));
+
+
 
 function LandingPage() {
   const classes = useStyles();
   return (
-    <Container className={classes.container}>
+    <Container className={classes.container} >
       <Container className={classes.contain}>
         <LandingBar />
         <Container className={classes.zonecentrale}>
-          <Typography variant="h2" className={classes.boldText}>
+          <Typography className={classes.title}>
             Expérience
           </Typography>
           <Typography className={classes.boldText}>
@@ -113,8 +141,6 @@ function LandingPage() {
         <iframe
           title="video"
           className={classes.frame}
-          width="800"
-          height="450"
           src="https://www.youtube.com/embed/bh7znN9kMS8"
           frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -127,7 +153,7 @@ function LandingPage() {
               <CardHeader
                 className={classes.header}
                 avatar={<PhoneIphoneOutlinedIcon fontSize="large" />}
-                title="Une application mobile intelligente"
+                title={<Typography variant="body1">Une application mobile intelligente</Typography>}
                 align="center"
               />
               <CardContent>
@@ -143,7 +169,7 @@ function LandingPage() {
               <CardHeader
                 className={classes.header}
                 avatar={<ShareOutlinedIcon fontSize="large" />}
-                title="Organisez"
+                title={<Typography variant="body1">Organisez</Typography>}
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
@@ -158,7 +184,7 @@ function LandingPage() {
               <CardHeader
                 className={classes.header}
                 avatar={<TextsmsOutlinedIcon fontSize="large" />}
-                title="Des rencontres approuvées"
+                title={<Typography variant="body1">Des rencontres approuvées</Typography>}
                 align="center"
               />
               <CardContent>
@@ -175,7 +201,7 @@ function LandingPage() {
               <CardHeader
                 className={classes.header}
                 avatar={<EventNoteOutlinedIcon fontSize="large" />}
-                title="Connectez vous avec les autres expatrié(e)s"
+                title={<Typography variant="body1">Connectez vous avec les autres expatrié(e)s</Typography>}
                 align="center"
               />
               <CardContent>
@@ -191,7 +217,7 @@ function LandingPage() {
               <CardHeader
                 className={classes.header}
                 avatar={<CreateOutlinedIcon fontSize="large" />}
-                title="Personnalisez votre application"
+                title={<Typography variant="body1">Personnalisez votre application</Typography>}
                 align="center"
               />
               <CardContent>

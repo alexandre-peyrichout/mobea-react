@@ -7,14 +7,16 @@ import logo from '../assets/logo.png';
 
 const useStyles = makeStyles(() => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   login: {
-    marginLeft: '80%',
+    marginRight: '2%',
     color: 'white'
   },
   logo: {
-    width: '70px'
+    width: '210px',
+    marginLeft: '3%',
+    marginTop: '6%'
   },
   contain: {
     display: 'flex',
