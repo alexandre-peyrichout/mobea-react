@@ -127,12 +127,11 @@ function LandingPage() {
                     R
                   </Avatar>
                 }
-                title="Shrimp and Chorizo Paella"
+                title="Une application mobile intelligente"
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  This impressive paella is a perfect party dish and a fun meal to cook together
-                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                  Grâce à votre communauté proactive et collaborative : le partage n'aura plus de secrets pour vous.
                 </Typography>
               </CardContent>
             </Card>
@@ -145,12 +144,11 @@ function LandingPage() {
                     R
                   </Avatar>
                 }
-                title="Shrimp and Chorizo Paella"
+                title="Organisez"
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  This impressive paella is a perfect party dish and a fun meal to cook together
-                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                  Recherchez des expatrié.e.s et organisez votre expatriation depuis votre mobile: votre destination, vos démarches, votre installation...
                 </Typography>
               </CardContent>
             </Card>
@@ -163,12 +161,11 @@ function LandingPage() {
                     R
                   </Avatar>
                 }
-                title="Shrimp and Chorizo Paella"
+                title="Des rencontres approuvées"
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  This impressive paella is a perfect party dish and a fun meal to cook together
-                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                  Grâce à notre algorithme, notre application vous propose les amis qui vous complètent, partagent vos passions et que vous n'auriez probablement jamais croisés.
                 </Typography>
               </CardContent>
             </Card>
@@ -181,12 +178,11 @@ function LandingPage() {
                     R
                   </Avatar>
                 }
-                title="Shrimp and Chorizo Paella"
+                title="Connectez vous avec les autres expatrié(e)s"
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  This impressive paella is a perfect party dish and a fun meal to cook together
-                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                  Restez connéecté.e.s. Suivez et partagez avec les expatrié.e.s puis organisez vos Meet up selon vos profils et préférences.
                 </Typography>
               </CardContent>
             </Card>
@@ -199,12 +195,11 @@ function LandingPage() {
                     R
                   </Avatar>
                 }
-                title="Shrimp and Chorizo Paella"
+                title="Personnalisez votre application"
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  This impressive paella is a perfect party dish and a fun meal to cook together
-                  with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                  Partagez vos loisirs, passions et préférences: créez votre profil personnel et dites-nous en plus à propos de vos expériences d'expatriation et vos modes de vie.
                 </Typography>
               </CardContent>
             </Card>
