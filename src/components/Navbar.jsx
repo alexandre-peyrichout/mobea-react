@@ -99,12 +99,17 @@ const Navbar2 = () => {
   return (
     <AppBar color="default" className={classes.AppBar}>
       <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit">
-          <MenuIcon onClick={toggleDrawer('left', true)} />
-          <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
-            {sideList('left')}
-          </Drawer>
+        <IconButton
+          onClick={toggleDrawer('left', true)}
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+        >
+          <MenuIcon />
         </IconButton>
+        <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
+          {sideList('left')}
+        </Drawer>
         <img src={logo} alt="logo" className={classes.logo} />
         <IconButton
           edge="end"

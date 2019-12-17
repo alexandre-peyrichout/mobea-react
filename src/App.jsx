@@ -7,7 +7,6 @@ import NotFound from './pages/404';
 import LandingPage from './pages/LandingPage';
 import Faq from './pages/Faq';
 import Politique from './pages/Politique';
-import ChecklistPage from './pages/ChecklistPage';
 
 const App = () => (
   <div>
@@ -19,7 +18,7 @@ const App = () => (
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/faq" component={Faq} />
         <Route path="/politique" component={Politique} />
-        <Route path="/liste" component={ChecklistPage} />
+
         <Route path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>
