@@ -6,6 +6,7 @@ import { Paper } from '@material-ui/core';
 const useStyles = makeStyles(() => ({
   img: {
     width: '100%',
+    borderRadius: '10px',
     height: '600px'
   },
   paper: {
