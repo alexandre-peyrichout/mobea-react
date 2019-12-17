@@ -4,8 +4,8 @@ import { Grid } from '@material-ui/core';
 import Layout from '../components/Layout';
 import ContainerAvatarNews from '../components/ContainerAvatarNews';
 import CheckCard from '../components/CheckCard';
-
-import CompTempImg from '../components/compTempImg';
+import MyExpat from '../components/MyExpat';
+// import CompTempImg from '../components/compTempImg';
 
 const useStyles = makeStyles(() => ({
   img: {
@@ -27,7 +27,8 @@ export default function FullWidthGrid() {
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={classes.minHeight}>
           {/* composant temporaire qui sera remplaçé par celui de Steph */}
-          <CompTempImg />
+          {/* <CompTempImg /> */}
+          <MyExpat />
         </Grid>
         <Grid item xs={12} sm={12} md={4} className={classes.minHeight}>
           <CheckCard />

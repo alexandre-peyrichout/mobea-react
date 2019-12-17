@@ -1,5 +1,11 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Fragment } from 'react';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import SettingsOutlined from '@material-ui/icons/SettingsOutlined';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { Card, IconButton } from '@material-ui/core';
 import VpnKeyOutlined from '@material-ui/icons/VpnKeyOutlined';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
@@ -13,9 +19,27 @@ import QuestionAnswer from '@material-ui/icons/QuestionAnswerOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 
-
-
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
+  button: {
+    display: 'block',
+    marginTop: theme.spacing(2)
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+    marginTop: 0
+  },
+  config: {
+    display: 'flex',
+    justifyContent: 'flex-end'
+  },
+  root: {
+    flexGrow: 1,
+  },
+  margin: {
+    width: '30%',
+    margin: theme.spacing(1),
+  },
   container: {
     padding: '0px',
   },
@@ -36,15 +60,83 @@ const useStyles = makeStyles(() => ({
   add: {
     border: '1px dashed'
   }
- 
 }));
 
+//TASKS
 
-export default function Needs() {
+const BorderLinearProgress = withStyles({
+    root: {
+      height: 15,
+      borderRadius: 20,
+      backgroundColor: 'rgba(255, 219, 122, 1)',
+    },
+    bar: {
+      borderRadius: 20,
+      backgroundColor: 'rgba(229, 170, 75, 1)',
+    },
+  })(LinearProgress);
+
+
+export default function Openselect() {
   const classes = useStyles();
+  const [country, setCountry] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+
+  const handleChange = event => {
+    setCountry(event.target.value);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   return (
-    <Card className={classes.container}>
+
+    <Fragment>
+    <div>
+      <div className={classes.config}>
+      <h5>Configurer mon expatriation</h5>
+      <IconButton>
+        <SettingsOutlined fontSize="medium" />
+      </IconButton>
+      </div>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">Country</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={country}
+          onChange={handleChange}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={10}>Morocco</MenuItem>
+          <MenuItem value={20}>Germany</MenuItem>
+          <MenuItem value={30}>Tunisia</MenuItem>
+        </Select>
+      </FormControl>
+      
+    </div>
+
+      <div className={classes.root}>
+          <h5>24% des tâches effectuées</h5>
+        <BorderLinearProgress
+          className={classes.margin}
+          variant="determinate"
+          color="secondary"
+          value={50}
+        />
+      </div>
+
+<Card className={classes.container}>
       <div className={classes.firstBloc}>
       <h5>Besoins</h5>
       <div className={classes.bloc}>
@@ -116,5 +208,8 @@ export default function Needs() {
       </div>
       </div>
     </Card>
-  );
+
+      </Fragment>
+    );
 }
+
