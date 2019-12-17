@@ -11,12 +11,30 @@ const useStyles = makeStyles(theme => ({
     height: '60px',
     opacity: 0.5,
     filter: 'grayscale(1)',
+    paddingLeft: '10px',
     [theme.breakpoints.down('xs')]: {
       padding: '15px 0px'
     }
   },
   flexItem: {
     minHeight: '100%'
+  },
+  flexItemStart: {
+    minHeight: '100%',
+    alignItems: 'flex-start',
+    [theme.breakpoints.down('xs')]: {
+      alignItems: 'center'
+    }
+  },
+  flexItemEnd: {
+    minHeight: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingRight: '10px',
+    [theme.breakpoints.down('xs')]: {
+      justifyContent: 'center',
+      paddingRight: '0px'
+    }
   },
   bottomLinks: {
     padding: '5px 0',
@@ -45,9 +63,8 @@ export default function Footer() {
           display="flex"
           flexDirection="column"
           justifyContent="space-around"
-          alignItems="center"
           alignContent="center"
-          className={classes.flexItem}
+          className={classes.flexItemStart}
         >
           <Link underline="none" component={LinkRouter} to="/#" className={classes.bottomLinks}>
             <img src={logo} alt="logo" className={classes.logo} />
@@ -89,12 +106,7 @@ export default function Footer() {
       </Grid>
 
       <Grid item xs={12} sm={3} className={classes.gridItem}>
-        <Box
-          display="flex"
-          justifyContent="space-around"
-          alignItems="center"
-          className={classes.flexItem}
-        >
+        <Box display="flex" justifyContent="space-around" className={classes.flexItemEnd}>
           <Link underline="none" component={LinkRouter} to="/#" className={classes.bottomLinks}>
             Copyright Mobea
           </Link>
