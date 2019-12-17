@@ -95,7 +95,7 @@ export default function Footer() {
             Confidentialité
           </Link>
           <Box className={classes.separator}>|</Box>
-          <Link underline="none" className={classes.bottomLinks} component={LinkRouter} to="/#">
+          <Link underline="none" className={classes.bottomLinks} component={LinkRouter} to="/contact">
             Contact
           </Link>
           <Box className={classes.separator}>|</Box>
