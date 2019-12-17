@@ -26,6 +26,7 @@ export default function FullWidthGrid() {
           <ContainerAvatarNews />
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={classes.minHeight}>
+          {/* composant temporaire qui sera remplaçé par celui de Steph */}
           <CompTempImg />
         </Grid>
         <Grid item xs={12} sm={12} md={4} className={classes.minHeight}>
