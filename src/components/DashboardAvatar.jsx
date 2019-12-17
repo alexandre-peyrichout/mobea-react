@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     padding: '0px',
+    height: '100%',
     backgroundImage: 'url(https://images4.alphacoders.com/106/thumb-1920-106826.jpg)'
   },
   bigAvatar: {

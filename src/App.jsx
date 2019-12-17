@@ -18,6 +18,7 @@ const App = () => (
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/faq" component={Faq} />
         <Route path="/politique" component={Politique} />
+
         <Route path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>
