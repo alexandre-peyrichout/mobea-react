@@ -13,6 +13,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -64,9 +65,8 @@ const useStyles = makeStyles(() => ({
     wordBreak: 'break-all',
     marginBottom: '4%',
     marginTop: '2%',
-    ['@media (max-width:961px)']: {
-      maxWidth: '95%',
-
+    '@media (max-width:961px)': {
+      maxWidth: '95%'
     }
   },
   card: {
@@ -81,17 +81,16 @@ const useStyles = makeStyles(() => ({
   },
   frame: {
     marginBottom: '3%',
-    width: "800px",
+    width: '800px',
     height: '460px',
-    ['@media (max-width:961px)']: {
+    '@media (max-width:961px)': {
       width: '95%',
       height: '180px'
     }
-
   },
   header: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   apropos: {
     marginBottom: '3%',
@@ -103,26 +102,21 @@ const useStyles = makeStyles(() => ({
     marginBottom: '4%',
     marginTop: '2%',
     fontSize: '4em',
-    ['@media (max-width:961px)']: {
+    '@media (max-width:961px)': {
       fontSize: '3em',
       maxWidth: '95%'
     }
   }
-
 }));
-
-
 
 function LandingPage() {
   const classes = useStyles();
   return (
-    <Container className={classes.container} >
+    <Container className={classes.container}>
       <Container className={classes.contain}>
         <LandingBar />
         <Container className={classes.zonecentrale}>
-          <Typography className={classes.title}>
-            Expérience
-          </Typography>
+          <Typography className={classes.title}>Expérience</Typography>
           <Typography className={classes.boldText}>
             IPSET LOREM DE MERDUM SEC FLUCTUAT NEC MERGITUR AMABIT
             UGHEUIGHEIGHEIUFHERIUOGHIUHIUZHBGIUZHFIUHZIURGFHZIRHZIFHNIEURHFIFHIUERHGIZGNIEHGIJGNBEIGUIGBEGIBEGEBGIJERBGIJERGIEGNIJERBGERBNOGBNRJIOGBEIGBEIHGBNEIGJEBNGIENGIJEBNGIENBGIJEBGIEBGHIERBGIJERGBEIORJGIEJGBERIJGNIEGNEIRJNEIJGNEIJGBIEJGB
@@ -147,7 +141,12 @@ function LandingPage() {
           allowfullscreen
         ></iframe>
 
-        <Grid container spacing={1} justify="center" style={{ minHeight: '35vh' }}>
+        <Grid
+          container
+          spacing={1}
+          justify="center"
+          style={{ minHeight: '35vh', marginBottom: '30px' }}
+        >
           <Grid container item xs={6} md={2} justify="center">
             <Card className={classes.card}>
               <CardHeader
@@ -201,7 +200,11 @@ function LandingPage() {
               <CardHeader
                 className={classes.header}
                 avatar={<EventNoteOutlinedIcon fontSize="large" />}
-                title={<Typography variant="body1">Connectez vous avec les autres expatrié(e)s</Typography>}
+                title={
+                  <Typography variant="body1">
+                    Connectez vous avec les autres expatrié(e)s
+                  </Typography>
+                }
                 align="center"
               />
               <CardContent>
@@ -230,6 +233,7 @@ function LandingPage() {
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </Container>
   );
 }
