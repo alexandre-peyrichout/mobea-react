@@ -73,7 +73,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center'
   },
   wrapper2: {
-    padding: '40px 0',
+    padding: '41.5px 0',
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
