@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 import Layout from '../components/Layout';
 import ContainerAvatarNews from '../components/ContainerAvatarNews';
 import CheckCard from '../components/CheckCard';
-import MyExpat from '../components/MyExpat';
+import MyExpat from '../components/MyExpat2';
 // import CompTempImg from '../components/compTempImg';
 
 const useStyles = makeStyles(() => ({

@@ -4,6 +4,8 @@ import Avatar from '@material-ui/core/Avatar';
 import { Card, IconButton } from '@material-ui/core';
 import grey from '@material-ui/core/colors/grey';
 import SettingsIcon from '@material-ui/icons/Settings';
+import Background from '../assets/bgold.jpg';
+import AvatarImg from '../assets/avatar.png';
 
 const useStyles = makeStyles(theme => ({
   avatarDiv: {
@@ -17,7 +19,9 @@ const useStyles = makeStyles(theme => ({
   container: {
     padding: '0px',
     height: '100%',
-    backgroundImage: 'url(https://images4.alphacoders.com/106/thumb-1920-106826.jpg)'
+    background: `url(${Background})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover'
   },
   bigAvatar: {
     width: 80,
@@ -38,7 +42,6 @@ const useStyles = makeStyles(theme => ({
   },
   titleDiv: {
     color: 'white',
-    fontWeight: 'bold',
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
@@ -58,14 +61,10 @@ export default function ImageAvatars() {
         </IconButton>
       </div>
       <div className={classes.avatarDiv}>
-        <Avatar
-          alt="placeholder"
-          src="https://ih0.redbubble.net/image.824129891.2971/mp,840x830,matte,f8f8f8,t-pad,750x1000,f8f8f8.u1.jpg"
-          className={classes.bigAvatar}
-        />
+        <Avatar alt="placeholder" src={AvatarImg} className={classes.bigAvatar} />
       </div>
-      <div className={classes.nameDiv}>Name Placeholder</div>
-      <div className={classes.titleDiv}>TITLE</div>
+      <div className={classes.nameDiv}>Camille Dupont</div>
+      <div className={classes.titleDiv}>Titre</div>
     </Card>
   );
 }
