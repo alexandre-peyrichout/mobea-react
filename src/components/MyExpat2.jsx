@@ -33,7 +33,8 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column'
   },
   childTop: {
-    padding: '8px 8px 8px 16px'
+    padding: '8px 8px 8px 16px',
+    backgroundColor: 'rgba(255, 255, 255,0.85)'
   },
   childBottom: {
     padding: '8px',
@@ -71,7 +72,8 @@ const useStyles = makeStyles(() => ({
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255,0.85)'
   },
   wrapper2: {
     padding: '41.5px 0',
@@ -191,7 +193,7 @@ const MyExpat2 = () => {
             <Card className={classes.wrapper}>
               <Badge badgeContent={4} color="primary" className={classes.badge}>
                 <IconButton className={classes.iconOnTop}>
-                  <Tooltip title="Logement" placement="top">
+                  <Tooltip title="Logement" placement="bottom">
                     <VpnKeyOutlined fontSize="large" />
                   </Tooltip>
                 </IconButton>
@@ -208,7 +210,7 @@ const MyExpat2 = () => {
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
               <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Assurances" placement="top">
+                <Tooltip title="Assurances" placement="bottom">
                   <VerifiedUserIcon fontSize="large" />
                 </Tooltip>
               </IconButton>
@@ -224,7 +226,7 @@ const MyExpat2 = () => {
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
               <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Santé" placement="top">
+                <Tooltip title="Santé" placement="bottom">
                   <FavoriteBorderIcon fontSize="large" />
                 </Tooltip>
               </IconButton>
@@ -240,7 +242,7 @@ const MyExpat2 = () => {
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
               <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Emploi" placement="top">
+                <Tooltip title="Emploi" placement="bottom">
                   <WorkOutline fontSize="large" />
                 </Tooltip>
               </IconButton>
@@ -256,7 +258,7 @@ const MyExpat2 = () => {
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
               <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Administratif" placement="top">
+                <Tooltip title="Administratif" placement="bottom">
                   <Assignment fontSize="large" />
                 </Tooltip>
               </IconButton>
@@ -272,7 +274,7 @@ const MyExpat2 = () => {
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
               <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Banque" placement="top">
+                <Tooltip title="Banque" placement="bottom">
                   <AccountBalance fontSize="large" />
                 </Tooltip>
               </IconButton>
@@ -287,7 +289,7 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper2}>
-              <Tooltip title="Ajouter ma propre liste" placement="top">
+              <Tooltip title="Ajouter ma propre liste" placement="bottom">
                 <Fab color="primary" aria-label="add">
                   <AddIcon />
                 </Fab>
