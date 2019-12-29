@@ -12,7 +12,8 @@ import {
   LinearProgress,
   CircularProgress,
   Grid,
-  Tooltip
+  Tooltip,
+  Badge
 } from '@material-ui/core';
 import { SettingsOutlined, Delete, VpnKeyOutlined } from '@material-ui/icons/';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
@@ -95,6 +96,9 @@ const useStyles = makeStyles(() => ({
   listTitle: {
     fontSize: '1.5rem',
     color: 'white'
+  },
+  badge: {
+    zIndex: '3'
   }
 }));
 
@@ -185,11 +189,13 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Logement" placement="top">
-                  <VpnKeyOutlined fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={4} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop}>
+                  <Tooltip title="Logement" placement="top">
+                    <VpnKeyOutlined fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 color="secondary"
                 variant="determinate"
