@@ -85,7 +85,11 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255,0.3)'
+    backgroundColor: 'rgba(255, 255, 255,0.3)',
+
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255,0.6)'
+    }
   },
 
   fabProgress: {
