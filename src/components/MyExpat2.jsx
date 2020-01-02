@@ -73,8 +73,12 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255,0.85)'
+    backgroundColor: 'rgba(255, 255, 255,0.85)',
+    '&:hover': {
+      backgroundColor: 'white'
+    }
   },
+
   wrapper2: {
     padding: '41.5px 0',
     position: 'relative',
