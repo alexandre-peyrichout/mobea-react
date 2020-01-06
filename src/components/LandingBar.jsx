@@ -4,10 +4,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import logo from '../assets/logo.png';
+import { Link as LinkRouter } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles(() => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   login: {
     marginRight: '2%',
@@ -39,9 +41,11 @@ export default function LandingBar() {
           <div className={classes.contain}>
             <img className={classes.logo} src={logo} alt="" />
           </div>
-          <Button variant="outlined" color="inherit" className={classes.login}>
-            Login
-          </Button>
+          <Link underline="none" className={classes.loginLinks} component={LinkRouter} to="/login">
+            <Button Button variant="outlined" color="inherit" className={classes.login}>
+              Login
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
