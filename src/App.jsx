@@ -29,5 +29,4 @@ const App = () => (
     </Context.Provider>
   </div>
 );
-
 export default App;

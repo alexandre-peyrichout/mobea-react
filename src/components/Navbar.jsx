@@ -7,9 +7,7 @@ import logo from '../assets/logo.png';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -18,6 +16,16 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Link as LinkRouter } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+import DashboardAvatar from './DashboardAvatar';
+import HomeIcon from '@material-ui/icons/Home';
+import Avatar from '@material-ui/core/Avatar';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
+import ListIcon from '@material-ui/icons/List';
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 
 const useStyles = makeStyles(() => ({
   list: {
@@ -30,6 +38,9 @@ const useStyles = makeStyles(() => ({
     padding: '5px',
     height: '60px',
     margin: 'auto'
+  },
+  titleProfil: {
+    textAlign: 'center'
   }
 }));
 
@@ -85,40 +96,60 @@ const Navbar2 = () => {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Accueil" />
-        </ListItem>
+        <Link underline="none" component={LinkRouter} to="/#">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <HomeIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Accueil" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Ma destination" />
-        </ListItem>
+        <Link underline="none" component={LinkRouter} to="/#">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <FlightTakeoffIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Ma destination" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Mes listes" />
-        </ListItem>
+        <Link underline="none" component={LinkRouter} to="/#">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <ListIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Mes listes" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Contact" />
-        </ListItem>
+        <Link underline="none" component={LinkRouter} to="contact">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <ContactSupportIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Contact" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="FAQ" />
-        </ListItem>
+        <Link underline="none" component={LinkRouter} to="faq">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <QuestionAnswerIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="FAQ" />
+          </ListItem>
+        </Link>
       </List>
     </div>
   );
@@ -162,13 +193,16 @@ const Navbar2 = () => {
             aria-labelledby="scroll-dialog-title"
             aria-describedby="scroll-dialog-description"
           >
-            <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
+            <DialogTitle id="scroll-dialog-title" className={classes.titleProfil}>
+              Mon profil
+            </DialogTitle>
             <DialogContent dividers={scroll === 'paper'}>
               <DialogContentText
                 id="scroll-dialog-description"
                 ref={descriptionElementRef}
                 tabIndex={-1}
               >
+                <DashboardAvatar />
                 {[...new Array(50)]
                   .map(
                     () => `Cras mattis consectetur purus sit amet fermentum.
