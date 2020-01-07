@@ -9,6 +9,9 @@ import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import TextsmsOutlinedIcon from '@material-ui/icons/TextsmsOutlined';
 import EventNoteOutlinedIcon from '@material-ui/icons/EventNoteOutlined';
 import PhoneIphoneOutlinedIcon from '@material-ui/icons/PhoneIphoneOutlined';
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -62,7 +65,7 @@ const useStyles = makeStyles(() => ({
   boldText: {
     fontWeight: 'bold',
     maxWidth: '66%',
-    wordBreak: 'break-all',
+    wordBreak: 'normal',
     marginBottom: '4%',
     marginTop: '2%',
     '@media (max-width:961px)': {
@@ -92,7 +95,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  apropos: {
+  titles: {
     marginBottom: '3%',
     marginTop: '3%'
   },
@@ -116,10 +119,11 @@ function LandingPage() {
       <Container className={classes.contain}>
         <LandingBar />
         <Container className={classes.zonecentrale}>
-          <Typography className={classes.title}>Expérience</Typography>
+          <Typography className={classes.title}>Notre histoire</Typography>
           <Typography className={classes.boldText}>
-            IPSET LOREM DE MERDUM SEC FLUCTUAT NEC MERGITUR AMABIT
-            UGHEUIGHEIGHEIUFHERIUOGHIUHIUZHBGIUZHFIUHZIURGFHZIRHZIFHNIEURHFIFHIUERHGIZGNIEHGIJGNBEIGUIGBEGIBEGEBGIJERBGIJERGIEGNIJERBGERBNOGBNRJIOGBEIGBEIHGBNEIGJEBNGIENGIJEBNGIENBGIJEBGIEBGHIERBGIJERGBEIORJGIEJGBERIJGNIEGNEIRJNEIJGNEIJGBIEJGB
+            Une réelle volonté d'accompagner les diasporas, les bi- nationaux et les expatriés souhaitant s'installer entre la France et le Maroc pour une courte ou une longue durée.
+  MOBEA sera la boite à outils idéale pour bien préparer votre mobilité entre les deux rives. Grâce à notre algorithme, notre application collaborative, vous permettra de préparer, organiser, communiquer, partager, networker, et surtout se faire de nouveaux ami(e)s sur place avant même votre arrivée !
+  En fonction de votre profil, vos loisirs, vos passions et vos préférences, MOBEA vous proposera les ami(e)s qui vous complètent, partagent vos intérêts et que vous n'auriez probablement jamais croisés.
           </Typography>
           <div>
             <Button type="submit" variant="contained" color="primary" className={classes.submit}>
@@ -129,7 +133,7 @@ function LandingPage() {
         </Container>
       </Container>
       <Container className={classes.propos}>
-        <Typography className={classes.apropos} variant="h3">
+        <Typography className={classes.titles} variant="h3">
           A PROPOS
         </Typography>
         <iframe
@@ -147,18 +151,22 @@ function LandingPage() {
           justify="center"
           style={{ minHeight: '35vh', marginBottom: '30px' }}
         >
+
+          <Typography className={classes.titles} variant="h3">
+            FONCTIONNALITES
+        </Typography>
+
           <Grid container item xs={6} md={2} justify="center">
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<PhoneIphoneOutlinedIcon fontSize="large" />}
-                title={<Typography variant="body1">Une application mobile intelligente</Typography>}
+                avatar={<PlaylistAddCheckIcon fontSize="large" />}
+                title={<Typography variant="body1">checklists</Typography>}
                 align="center"
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Grâce à votre communauté proactive et collaborative : le partage n'aura plus de
-                  secrets pour vous.
+                  Préparez et organisez cotre mobilité avant, pendant et après votre installation (votre destination, vos démarches, vos transferts...)
                 </Typography>
               </CardContent>
             </Card>
@@ -167,13 +175,12 @@ function LandingPage() {
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<ShareOutlinedIcon fontSize="large" />}
-                title={<Typography variant="body1">Organisez</Typography>}
+                avatar={<ChatBubbleOutlineIcon fontSize="large" />}
+                title={<Typography variant="body1">chat en ligne</Typography>}
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Recherchez des expatrié.e.s et organisez votre expatriation depuis votre mobile:
-                  votre destination, vos démarches, votre installation...
+                  Ecangez et partagez avec des personnes en situation de départ ou déjà installées qui ont les mêmes problématiques, intérêts, passions, profession
                 </Typography>
               </CardContent>
             </Card>
@@ -182,15 +189,13 @@ function LandingPage() {
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<TextsmsOutlinedIcon fontSize="large" />}
-                title={<Typography variant="body1">Des rencontres approuvées</Typography>}
+                avatar={<ThumbUpIcon fontSize="large" />}
+                title={<Typography variant="body1">retours d'expérience certifiés</Typography>}
                 align="center"
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Grâce à notre algoritme, notre application vous propose les amis qui vous
-                  complètent, partagent vos passions et que vous n'auriez probablement jamais
-                  croisés.
+                  Partagez vos tips : créez votre profil et dites nous ce que la mobilité vous apporte dans vos expériences professionnelles et personnelles
                 </Typography>
               </CardContent>
             </Card>
