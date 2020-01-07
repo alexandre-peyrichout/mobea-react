@@ -18,7 +18,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Link as LinkRouter } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
-import DashboardAvatar from './DashboardAvatar';
+// import DashboardAvatar from './DashboardAvatar';
+import ProfilForm from './ProfilForm';
 import HomeIcon from '@material-ui/icons/Home';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -202,7 +203,8 @@ const Navbar2 = () => {
                 ref={descriptionElementRef}
                 tabIndex={-1}
               >
-                <DashboardAvatar />
+                <ProfilForm />
+                {/* <DashboardAvatar />
                 {[...new Array(50)]
                   .map(
                     () => `Cras mattis consectetur purus sit amet fermentum.
@@ -210,7 +212,7 @@ Cras justo odio, dapibus ac facilisis in, egestas eget quam.
 Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
 Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
                   )
-                  .join('\n')}
+                  .join('\n')} */}
               </DialogContentText>
             </DialogContent>
             <DialogActions>
