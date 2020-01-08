@@ -5,19 +5,13 @@ import Button from '@material-ui/core/Button';
 import fond from '../assets/marrakech.jpg';
 import fond2 from '../assets/morocco.jpg';
 import LandingBar from '../components/LandingBar';
-import AutoCarousel from './components/AutoCarousel';
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
-import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
-import TextsmsOutlinedIcon from '@material-ui/icons/TextsmsOutlined';
-import EventNoteOutlinedIcon from '@material-ui/icons/EventNoteOutlined';
-import PhoneIphoneOutlinedIcon from '@material-ui/icons/PhoneIphoneOutlined';
+import DemoCarousel from '../components/AutoCarousel';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Footer from '../components/Footer';
 
 const useStyles = makeStyles(() => ({
@@ -33,7 +27,7 @@ const useStyles = makeStyles(() => ({
     backgroundImage: `url("${fond}")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: 'no-repeat'
   },
   container: {
     minWidth: '100%',
@@ -60,15 +54,22 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     justifyContent: 'space-around',
     padding: '10%',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    '& div': {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center'
+    }
   },
+
   submit: {
     width: '100px'
   },
   boldText: {
     fontWeight: 'bold',
-    maxWidth: '66%',
+    maxWidth: '100%',
     wordBreak: 'normal',
+    padding: '0 15%',
     marginBottom: '4%',
     marginTop: '1%',
     textAlign: 'justify',
@@ -110,7 +111,7 @@ const useStyles = makeStyles(() => ({
     marginTop: '2%',
     '@media (max-width:961px)': {
       fontSize: '3em',
-      maxWidth: '95%',
+      maxWidth: '95%'
     }
   },
 
@@ -118,7 +119,7 @@ const useStyles = makeStyles(() => ({
     backgroundImage: `url("${fond2}")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: 'no-repeat'
   },
   description: {
     backgroundColor: 'black',
@@ -135,9 +136,7 @@ function LandingPage() {
         <LandingBar />
         <Container className={classes.zonecentrale}>
           <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
-          <Typography className={classes.boldText}>
-            Entre France & Maroc
-          </Typography>
+          <Typography className={classes.boldText}>Entre France & Maroc</Typography>
           <div>
             <Button type="submit" variant="contained" color="primary" className={classes.submit}>
               S'inscrire
@@ -152,20 +151,24 @@ function LandingPage() {
         justify="center"
         style={{ minHeight: '35vh', marginTop: '30px', marginBottom: '30px' }}
       >
-        <Grid container item xs={6} justify='center'>
+        <Grid container item xs={6} justify="center">
           <Container className={classes.description}>
             <Typography className={classes.title}>Notre histoire</Typography>
             <Typography className={classes.boldText}>
-              Une réelle volonté d'accompagner les diasporas, les bi- nationaux et les expatriés souhaitant s'installer entre la France et le Maroc pour une courte ou une longue durée.
-    MOBEA sera la boite à outils idéale pour bien préparer votre mobilité entre les deux rives. Grâce à notre algorithme, notre application collaborative, vous permettra de préparer, organiser, communiquer, partager, networker, et surtout se faire de nouveaux ami(e)s sur place avant même votre arrivée !
-    En fonction de votre profil, vos loisirs, vos passions et vos préférences, MOBEA vous proposera les ami(e)s qui vous complètent, partagent vos intérêts et que vous n'auriez probablement jamais croisés.
-          </Typography>
+              Une réelle volonté d'accompagner les diasporas, les bi- nationaux et les expatriés
+              souhaitant s'installer entre la France et le Maroc pour une courte ou une longue
+              durée. MOBEA sera la boite à outils idéale pour bien préparer votre mobilité entre les
+              deux rives. Grâce à notre algorithme, notre application collaborative, vous permettra
+              de préparer, organiser, communiquer, partager, networker, et surtout se faire de
+              nouveaux ami(e)s sur place avant même votre arrivée ! En fonction de votre profil, vos
+              loisirs, vos passions et vos préférences, MOBEA vous proposera les ami(e)s qui vous
+              complètent, partagent vos intérêts et que vous n'auriez probablement jamais croisés.
+            </Typography>
           </Container>
         </Grid>
-        <Grid container item xs={6} justify='center'>
+        <Grid container item xs={6} justify="center">
           <Container className={classes.descriptionImg}></Container>
         </Grid>
-
       </Grid>
 
       <Container className={classes.propos}>
@@ -191,7 +194,6 @@ function LandingPage() {
           justify="center"
           style={{ minHeight: '35vh', marginBottom: '30px' }}
         >
-
           <Grid container item xs={6} md={4} justify="center">
             <Card className={classes.card}>
               <CardHeader
@@ -202,7 +204,8 @@ function LandingPage() {
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Préparez et organisez cotre mobilité avant, pendant et après votre installation (votre destination, vos démarches, vos transferts...)
+                  Préparez et organisez cotre mobilité avant, pendant et après votre installation
+                  (votre destination, vos démarches, vos transferts...)
                 </Typography>
               </CardContent>
             </Card>
@@ -217,7 +220,8 @@ function LandingPage() {
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Echangez et partagez avec des personnes en situation de départ ou déjà installées qui ont les mêmes problématiques, intérêts, passions, profession
+                  Echangez et partagez avec des personnes en situation de départ ou déjà installées
+                  qui ont les mêmes problématiques, intérêts, passions, profession
                 </Typography>
               </CardContent>
             </Card>
@@ -233,13 +237,14 @@ function LandingPage() {
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Partagez vos tips : créez votre profil et dites nous ce que la mobilité vous apporte dans vos expériences professionnelles et personnelles
+                  Partagez vos tips : créez votre profil et dites nous ce que la mobilité vous
+                  apporte dans vos expériences professionnelles et personnelles
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
 
-          <AutoCarousel />
+          <DemoCarousel />
           {/* <Grid container item xs={6} md={2}>
             <Card className={classes.card}>
               <CardHeader
@@ -277,7 +282,6 @@ function LandingPage() {
               </CardContent>
             </Card>
           </Grid> */}
-
         </Grid>
       </Container>
       <Footer />
