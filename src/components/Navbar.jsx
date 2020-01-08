@@ -43,6 +43,9 @@ const useStyles = makeStyles(() => ({
     height: '60px',
     margin: 'auto'
   },
+  logodiv: {
+    margin: 'auto'
+  },
   titleProfil: {
     textAlign: 'center'
   },
@@ -214,7 +217,9 @@ const Navbar2 = () => {
         <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
           {sideList('left')}
         </Drawer>
-        <img src={logo} alt="logo" className={classes.logo} />
+        <Link className={classes.logodiv} href="dashboard#top">
+          <img src={logo} alt="logo" className={classes.logo} />
+        </Link>
         <IconButton
           edge="end"
           color="inherit"
