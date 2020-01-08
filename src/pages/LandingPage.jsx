@@ -2,18 +2,16 @@ import React from 'react';
 import { Container, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import fond from '../assets/bgold.jpg';
+import fond from '../assets/marrakech.jpg';
+import fond2 from '../assets/morocco.jpg';
 import LandingBar from '../components/LandingBar';
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
-import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
-import TextsmsOutlinedIcon from '@material-ui/icons/TextsmsOutlined';
-import EventNoteOutlinedIcon from '@material-ui/icons/EventNoteOutlined';
-import PhoneIphoneOutlinedIcon from '@material-ui/icons/PhoneIphoneOutlined';
+import DemoCarousel from '../components/AutoCarousel';
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-// import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Footer from '../components/Footer';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -36,6 +34,7 @@ const useStyles = makeStyles(() => ({
     margin: '0',
     padding: '0'
   },
+
   propos: {
     display: 'flex',
     flexDirection: 'column',
@@ -54,17 +53,25 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     justifyContent: 'space-around',
     padding: '10%',
-    alignItems: 'center'
+    alignItems: 'flex-end',
+    '& div': {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center'
+    }
   },
+
   submit: {
     width: '100px'
   },
   boldText: {
     fontWeight: 'bold',
-    maxWidth: '66%',
-    wordBreak: 'break-all',
+    maxWidth: '100%',
+    wordBreak: 'normal',
+    padding: '0 15%',
     marginBottom: '4%',
-    marginTop: '2%',
+    marginTop: '1%',
+    textAlign: 'justify',
     '@media (max-width:961px)': {
       maxWidth: '95%'
     }
@@ -92,20 +99,31 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  apropos: {
+  titles: {
     marginBottom: '3%',
     marginTop: '3%'
   },
   title: {
     fontWeight: 'bold',
-    maxWidth: '40%',
-    marginBottom: '4%',
+    fontSize: '3em',
+    marginBottom: '1%',
     marginTop: '2%',
-    fontSize: '4em',
     '@media (max-width:961px)': {
       fontSize: '3em',
       maxWidth: '95%'
     }
+  },
+
+  descriptionImg: {
+    backgroundImage: `url("${fond2}")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  },
+  description: {
+    backgroundColor: 'black',
+    color: '#e2b439',
+    textAlign: 'center'
   }
 }));
 
@@ -116,11 +134,8 @@ function LandingPage() {
       <Container className={classes.contain}>
         <LandingBar />
         <Container className={classes.zonecentrale}>
-          <Typography className={classes.title}>Expérience</Typography>
-          <Typography className={classes.boldText}>
-            IPSET LOREM DE MERDUM SEC FLUCTUAT NEC MERGITUR AMABIT
-            UGHEUIGHEIGHEIUFHERIUOGHIUHIUZHBGIUZHFIUHZIURGFHZIRHZIFHNIEURHFIFHIUERHGIZGNIEHGIJGNBEIGUIGBEGIBEGEBGIJERBGIJERGIEGNIJERBGERBNOGBNRJIOGBEIGBEIHGBNEIGJEBNGIENGIJEBNGIENBGIJEBGIEBGHIERBGIJERGBEIORJGIEJGBERIJGNIEGNEIRJNEIJGNEIJGBIEJGB
-          </Typography>
+          <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
+          <Typography className={classes.boldText}>Entre France & Maroc</Typography>
           <div>
             <Button type="submit" variant="contained" color="primary" className={classes.submit}>
               S'inscrire
@@ -128,8 +143,35 @@ function LandingPage() {
           </div>
         </Container>
       </Container>
+
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        style={{ minHeight: '35vh', marginTop: '30px', marginBottom: '30px' }}
+      >
+        <Grid container item xs={6} justify="center">
+          <Container className={classes.description}>
+            <Typography className={classes.title}>Notre histoire</Typography>
+            <Typography className={classes.boldText}>
+              Une réelle volonté d'accompagner les diasporas, les bi- nationaux et les expatriés
+              souhaitant s'installer entre la France et le Maroc pour une courte ou une longue
+              durée. MOBEA sera la boite à outils idéale pour bien préparer votre mobilité entre les
+              deux rives. Grâce à notre algorithme, notre application collaborative, vous permettra
+              de préparer, organiser, communiquer, partager, networker, et surtout se faire de
+              nouveaux ami(e)s sur place avant même votre arrivée ! En fonction de votre profil, vos
+              loisirs, vos passions et vos préférences, MOBEA vous proposera les ami(e)s qui vous
+              complètent, partagent vos intérêts et que vous n'auriez probablement jamais croisés.
+            </Typography>
+          </Container>
+        </Grid>
+        <Grid container item xs={6} justify="center">
+          <Container className={classes.descriptionImg}></Container>
+        </Grid>
+      </Grid>
+
       <Container className={classes.propos}>
-        <Typography className={classes.apropos} variant="h3">
+        {/* <Typography className={classes.titles} variant="h3">
           A PROPOS
         </Typography>
         <iframe
@@ -139,7 +181,11 @@ function LandingPage() {
           frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        ></iframe>
+        ></iframe> */}
+
+        <Typography className={classes.titles} variant="h3">
+          FONCTIONNALITES
+        </Typography>
 
         <Grid
           container
@@ -147,55 +193,58 @@ function LandingPage() {
           justify="center"
           style={{ minHeight: '35vh', marginBottom: '30px' }}
         >
-          <Grid container item xs={6} md={2} justify="center">
+          <Grid container item xs={6} md={4} justify="center">
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<PhoneIphoneOutlinedIcon fontSize="large" />}
-                title={<Typography variant="body1">Une application mobile intelligente</Typography>}
+                avatar={<PlaylistAddCheckIcon fontSize="large" />}
+                title={<Typography variant="body1">checklists</Typography>}
                 align="center"
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Grâce à votre communauté proactive et collaborative : le partage n'aura plus de
-                  secrets pour vous.
+                  Préparez et organisez cotre mobilité avant, pendant et après votre installation
+                  (votre destination, vos démarches, vos transferts...)
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid container item xs={6} md={2}>
+
+          <Grid container item xs={6} md={4}>
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<ShareOutlinedIcon fontSize="large" />}
-                title={<Typography variant="body1">Organisez</Typography>}
+                avatar={<ChatBubbleOutlineIcon fontSize="large" />}
+                title={<Typography variant="body1">chat en ligne</Typography>}
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Recherchez des expatrié.e.s et organisez votre expatriation depuis votre mobile:
-                  votre destination, vos démarches, votre installation...
+                  Echangez et partagez avec des personnes en situation de départ ou déjà installées
+                  qui ont les mêmes problématiques, intérêts, passions, profession
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid container item xs={6} md={2}>
+
+          <Grid container item xs={6} md={4}>
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<TextsmsOutlinedIcon fontSize="large" />}
-                title={<Typography variant="body1">Des rencontres approuvées</Typography>}
+                avatar={<ThumbUpIcon fontSize="large" />}
+                title={<Typography variant="body1">retours d'expérience certifiés</Typography>}
                 align="center"
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Grâce à notre algoritme, notre application vous propose les amis qui vous
-                  complètent, partagent vos passions et que vous n'auriez probablement jamais
-                  croisés.
+                  Partagez vos tips : créez votre profil et dites nous ce que la mobilité vous
+                  apporte dans vos expériences professionnelles et personnelles
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid container item xs={6} md={2}>
+
+          <DemoCarousel />
+          {/* <Grid container item xs={6} md={2}>
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
@@ -215,6 +264,7 @@ function LandingPage() {
               </CardContent>
             </Card>
           </Grid>
+
           <Grid container item xs={6} md={2}>
             <Card className={classes.card}>
               <CardHeader
@@ -230,7 +280,7 @@ function LandingPage() {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
       <Footer />
