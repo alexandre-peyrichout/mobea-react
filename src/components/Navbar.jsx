@@ -27,12 +27,9 @@ import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import ListIcon from '@material-ui/icons/List';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-<<<<<<< HEAD
 import Conf from '../pages/Politique';
 import Faq from '../pages/Faq';
-=======
 import SaveIcon from '@material-ui/icons/Save';
->>>>>>> 5b6bd577a90b9d284810a5dacd13164e1870ccbf
 
 const useStyles = makeStyles(() => ({
   list: {
