@@ -5,6 +5,14 @@ import Grid from '@material-ui/core/Grid';
 import { Link as LinkRouter } from 'react-router-dom';
 import { Box } from '@material-ui/core';
 import logo from '../assets/logo.png';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Conf from '../pages/Politique';
+import Faq from '../pages/Faq';
 
 const useStyles = makeStyles(theme => ({
   logo: {
@@ -44,7 +52,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: 'calc(0.5rem + 0.5vw)',
     color: 'darkgrey',
     '&:hover': {
-      color: 'grey'
+      color: 'grey',
+      cursor: 'pointer'
     }
   },
   separator: {
@@ -55,6 +64,29 @@ const useStyles = makeStyles(theme => ({
 
 export default function Footer() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [scroll, setScroll] = React.useState('paper');
+  const [modal, SetModal] = React.useState('test');
+
+  const handleClickOpen = (scrollType, modal) => () => {
+    setOpen(true);
+    setScroll(scrollType);
+    SetModal(modal);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const descriptionElementRef = React.useRef(null);
+  React.useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [open]);
 
   return (
     <Grid container>
@@ -78,40 +110,73 @@ export default function Footer() {
           alignItems="center"
           className={classes.flexItem}
         >
-          <Link underline="none" className={classes.bottomLinks} component={LinkRouter} to="/#">
-            CGU
-          </Link>
-          <Box className={classes.separator}>|</Box>
-          <Link underline="none" className={classes.bottomLinks} component={LinkRouter} to="/faq">
+          <Link
+            underline="none"
+            className={classes.bottomLinks}
+            onClick={handleClickOpen('paper', 'faq')}
+          >
             FAQ
           </Link>
           <Box className={classes.separator}>|</Box>
           <Link
             underline="none"
             className={classes.bottomLinks}
-            component={LinkRouter}
-            to="/politique"
+            onClick={handleClickOpen('paper', 'confidentialité')}
           >
             Confidentialité
           </Link>
           <Box className={classes.separator}>|</Box>
-          <Link underline="none" className={classes.bottomLinks} component={LinkRouter} to="/contact">
+          <Link
+            component="a"
+            underline="none"
+            className={classes.bottomLinks}
+            href="mailto:test@gmail.com"
+          >
             Contact
-          </Link>
-          <Box className={classes.separator}>|</Box>
-          <Link underline="none" className={classes.bottomLinks} component={LinkRouter} to="/#">
-            Site
           </Link>
         </Box>
       </Grid>
 
       <Grid item xs={12} sm={3} className={classes.gridItem}>
         <Box display="flex" justifyContent="space-around" className={classes.flexItemEnd}>
-          <Link underline="none" component={LinkRouter} to="/#" className={classes.bottomLinks}>
-            Copyright Mobea
+          <Link
+            underline="none"
+            className={classes.bottomLinks}
+            onClick={handleClickOpen('paper', 'copyright')}
+          >
+            Copyright
           </Link>
         </Box>
       </Grid>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        scroll={scroll}
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+      >
+        <DialogTitle id="scroll-dialog-title">
+          {modal === 'confidentialité' && 'Politique de confidentialité'}
+          {modal === 'faq' && 'Foire aux questions'}
+          {modal === 'copyright' && 'Détails'}
+        </DialogTitle>
+        <DialogContent dividers={scroll === 'paper'}>
+          <DialogContentText
+            id="scroll-dialog-description"
+            ref={descriptionElementRef}
+            tabIndex={-1}
+          >
+            {modal === 'confidentialité' && <Conf />}
+            {modal === 'faq' && <Faq />}
+            {modal === 'copyright' && 'Copyright 2016 - 2020'}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Grid>
   );
 }
