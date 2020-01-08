@@ -6,8 +6,35 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarImg from '../assets/avatar.png';
 import TextField from '@material-ui/core/TextField';
-// import SaveIcon from '@material-ui/icons/Save';
+import MenuItem from '@material-ui/core/MenuItem';
 
+// import SaveIcon from '@material-ui/icons/Save';
+const situations = [
+  {
+    value: 'célibataire',
+    label: 'célibataire'
+  },
+  {
+    value: 'marié',
+    label: 'marié'
+  },
+  {
+    value: 'concubinage ou pacsé',
+    label: 'concubinage ou pacsé'
+  },
+  {
+    value: 'séparé',
+    label: 'séparé'
+  },
+  {
+    value: 'divorcé',
+    label: 'divorcé'
+  },
+  {
+    value: 'veuf',
+    label: 'veuf'
+  }
+];
 const useStyles = makeStyles(theme => ({
   root: {
     '& .MuiTextField-root': {
@@ -69,6 +96,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function IconLabelButtons() {
   const classes = useStyles();
+  const [situation, setSituation] = React.useState();
+
+  const handleChange = event => {
+    setSituation(event.target.value);
+  };
+
   return (
     <wrapper>
       <div>
@@ -180,6 +213,24 @@ export default function IconLabelButtons() {
           </Button>
         </div> */}
       </div>
+      <form className={classes.root} noValidate autoComplete="off">
+        <div>
+          <TextField
+            id="standard-select"
+            select
+            label="Situation"
+            value={situation}
+            onChange={handleChange}
+            helperText="Sélectionner votre situation actuelle"
+          >
+            {situations.map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </div>
+      </form>
     </wrapper>
   );
 }
