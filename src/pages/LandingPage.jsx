@@ -2,8 +2,10 @@ import React from 'react';
 import { Container, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import fond from '../assets/bgold.jpg';
+import fond from '../assets/marrakech.jpg';
+import fond2 from '../assets/morocco.jpg';
 import LandingBar from '../components/LandingBar';
+import AutoCarousel from './components/AutoCarousel';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import TextsmsOutlinedIcon from '@material-ui/icons/TextsmsOutlined';
@@ -31,7 +33,7 @@ const useStyles = makeStyles(() => ({
     backgroundImage: `url("${fond}")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
   },
   container: {
     minWidth: '100%',
@@ -39,6 +41,7 @@ const useStyles = makeStyles(() => ({
     margin: '0',
     padding: '0'
   },
+
   propos: {
     display: 'flex',
     flexDirection: 'column',
@@ -57,7 +60,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     justifyContent: 'space-around',
     padding: '10%',
-    alignItems: 'center'
+    alignItems: 'flex-end'
   },
   submit: {
     width: '100px'
@@ -67,7 +70,8 @@ const useStyles = makeStyles(() => ({
     maxWidth: '66%',
     wordBreak: 'normal',
     marginBottom: '4%',
-    marginTop: '2%',
+    marginTop: '1%',
+    textAlign: 'justify',
     '@media (max-width:961px)': {
       maxWidth: '95%'
     }
@@ -101,14 +105,25 @@ const useStyles = makeStyles(() => ({
   },
   title: {
     fontWeight: 'bold',
-    maxWidth: '40%',
-    marginBottom: '4%',
+    fontSize: '3em',
+    marginBottom: '1%',
     marginTop: '2%',
-    fontSize: '4em',
     '@media (max-width:961px)': {
       fontSize: '3em',
-      maxWidth: '95%'
+      maxWidth: '95%',
     }
+  },
+
+  descriptionImg: {
+    backgroundImage: `url("${fond2}")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  },
+  description: {
+    backgroundColor: 'black',
+    color: '#e2b439',
+    textAlign: 'center'
   }
 }));
 
@@ -119,11 +134,9 @@ function LandingPage() {
       <Container className={classes.contain}>
         <LandingBar />
         <Container className={classes.zonecentrale}>
-          <Typography className={classes.title}>Notre histoire</Typography>
+          <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
           <Typography className={classes.boldText}>
-            Une réelle volonté d'accompagner les diasporas, les bi- nationaux et les expatriés souhaitant s'installer entre la France et le Maroc pour une courte ou une longue durée.
-  MOBEA sera la boite à outils idéale pour bien préparer votre mobilité entre les deux rives. Grâce à notre algorithme, notre application collaborative, vous permettra de préparer, organiser, communiquer, partager, networker, et surtout se faire de nouveaux ami(e)s sur place avant même votre arrivée !
-  En fonction de votre profil, vos loisirs, vos passions et vos préférences, MOBEA vous proposera les ami(e)s qui vous complètent, partagent vos intérêts et que vous n'auriez probablement jamais croisés.
+            Entre France & Maroc
           </Typography>
           <div>
             <Button type="submit" variant="contained" color="primary" className={classes.submit}>
@@ -132,8 +145,31 @@ function LandingPage() {
           </div>
         </Container>
       </Container>
+
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        style={{ minHeight: '35vh', marginTop: '30px', marginBottom: '30px' }}
+      >
+        <Grid container item xs={6} justify='center'>
+          <Container className={classes.description}>
+            <Typography className={classes.title}>Notre histoire</Typography>
+            <Typography className={classes.boldText}>
+              Une réelle volonté d'accompagner les diasporas, les bi- nationaux et les expatriés souhaitant s'installer entre la France et le Maroc pour une courte ou une longue durée.
+    MOBEA sera la boite à outils idéale pour bien préparer votre mobilité entre les deux rives. Grâce à notre algorithme, notre application collaborative, vous permettra de préparer, organiser, communiquer, partager, networker, et surtout se faire de nouveaux ami(e)s sur place avant même votre arrivée !
+    En fonction de votre profil, vos loisirs, vos passions et vos préférences, MOBEA vous proposera les ami(e)s qui vous complètent, partagent vos intérêts et que vous n'auriez probablement jamais croisés.
+          </Typography>
+          </Container>
+        </Grid>
+        <Grid container item xs={6} justify='center'>
+          <Container className={classes.descriptionImg}></Container>
+        </Grid>
+
+      </Grid>
+
       <Container className={classes.propos}>
-        <Typography className={classes.titles} variant="h3">
+        {/* <Typography className={classes.titles} variant="h3">
           A PROPOS
         </Typography>
         <iframe
@@ -143,7 +179,11 @@ function LandingPage() {
           frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        ></iframe>
+        ></iframe> */}
+
+        <Typography className={classes.titles} variant="h3">
+          FONCTIONNALITES
+        </Typography>
 
         <Grid
           container
@@ -152,11 +192,7 @@ function LandingPage() {
           style={{ minHeight: '35vh', marginBottom: '30px' }}
         >
 
-          <Typography className={classes.titles} variant="h3">
-            FONCTIONNALITES
-        </Typography>
-
-          <Grid container item xs={6} md={2} justify="center">
+          <Grid container item xs={6} md={4} justify="center">
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
@@ -171,7 +207,8 @@ function LandingPage() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid container item xs={6} md={2}>
+
+          <Grid container item xs={6} md={4}>
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
@@ -180,12 +217,13 @@ function LandingPage() {
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Ecangez et partagez avec des personnes en situation de départ ou déjà installées qui ont les mêmes problématiques, intérêts, passions, profession
+                  Echangez et partagez avec des personnes en situation de départ ou déjà installées qui ont les mêmes problématiques, intérêts, passions, profession
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid container item xs={6} md={2}>
+
+          <Grid container item xs={6} md={4}>
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
@@ -200,7 +238,9 @@ function LandingPage() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid container item xs={6} md={2}>
+
+          <AutoCarousel />
+          {/* <Grid container item xs={6} md={2}>
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
@@ -220,6 +260,7 @@ function LandingPage() {
               </CardContent>
             </Card>
           </Grid>
+
           <Grid container item xs={6} md={2}>
             <Card className={classes.card}>
               <CardHeader
@@ -235,7 +276,8 @@ function LandingPage() {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>
+          </Grid> */}
+
         </Grid>
       </Container>
       <Footer />
