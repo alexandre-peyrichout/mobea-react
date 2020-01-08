@@ -27,8 +27,12 @@ import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import ListIcon from '@material-ui/icons/List';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+<<<<<<< HEAD
 import Conf from '../pages/Politique';
 import Faq from '../pages/Faq';
+=======
+import SaveIcon from '@material-ui/icons/Save';
+>>>>>>> 5b6bd577a90b9d284810a5dacd13164e1870ccbf
 
 const useStyles = makeStyles(() => ({
   list: {
@@ -44,6 +48,11 @@ const useStyles = makeStyles(() => ({
   },
   titleProfil: {
     textAlign: 'center'
+  },
+  blocSave: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
 }));
 
@@ -246,12 +255,24 @@ const Navbar2 = () => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} color="primary">
+              <div className={classes.blocSave}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="medium"
+                  className={classes.button}
+                  startIcon={<SaveIcon />}
+                >
+                  Sauvegarder et mettre à jour
+                </Button>
+              </div>
+
+              {/* <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
               <Button onClick={handleClose} color="primary">
                 Subscribe
-              </Button>
+              </Button> */}
             </DialogActions>
           </Dialog>
           <MenuItem onClick={handleClose}>Se déconnecter</MenuItem>
