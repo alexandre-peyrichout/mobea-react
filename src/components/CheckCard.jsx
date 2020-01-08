@@ -42,7 +42,7 @@ export default function CheckCard() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} id="card">
       <div className={classes.flex}>
         <VerifiedUserIcon className={classes.icon} fontSize="medium" />
         <Typography variant="h3" className={classes.listTitle}>
