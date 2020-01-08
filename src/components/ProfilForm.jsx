@@ -6,7 +6,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarImg from '../assets/avatar.png';
 import TextField from '@material-ui/core/TextField';
-import SaveIcon from '@material-ui/icons/Save';
+// import SaveIcon from '@material-ui/icons/Save';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,13 +22,13 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     marginBottom: 15
   },
-  blocSave: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 15,
-    marginTop: 20
-  },
+  // blocSave: {
+  //   display: 'flex',
+  //   flexDirection: 'row',
+  //   justifyContent: 'center',
+  //   marginBottom: 15,
+  //   marginTop: 20
+  // },
   titlePartie: {
     borderBottom: '1px solid black',
     marginBottom: '20px',
@@ -168,7 +168,7 @@ export default function IconLabelButtons() {
             />
           </div>
         </form>
-        <div className={classes.blocSave}>
+        {/* <div className={classes.blocSave}>
           <Button
             variant="contained"
             color="primary"
@@ -178,7 +178,7 @@ export default function IconLabelButtons() {
           >
             Sauvegarder et mettre à jour
           </Button>
-        </div>
+        </div> */}
       </div>
     </wrapper>
   );

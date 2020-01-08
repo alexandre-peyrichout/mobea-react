@@ -27,6 +27,7 @@ import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import ListIcon from '@material-ui/icons/List';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import SaveIcon from '@material-ui/icons/Save';
 
 const useStyles = makeStyles(() => ({
   list: {
@@ -42,6 +43,11 @@ const useStyles = makeStyles(() => ({
   },
   titleProfil: {
     textAlign: 'center'
+  },
+  blocSave: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
 }));
 
@@ -216,12 +222,24 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} color="primary">
+              <div className={classes.blocSave}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="medium"
+                  className={classes.button}
+                  startIcon={<SaveIcon />}
+                >
+                  Sauvegarder et mettre à jour
+                </Button>
+              </div>
+
+              {/* <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
               <Button onClick={handleClose} color="primary">
                 Subscribe
-              </Button>
+              </Button> */}
             </DialogActions>
           </Dialog>
           <MenuItem onClick={handleClose}>Se déconnecter</MenuItem>
