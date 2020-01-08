@@ -12,7 +12,7 @@ import Context from './context/Context';
 
 const App = () => (
   <div>
-    <Context.Provider value={{ test: 'test du state' }}>
+    <Context.Provider value={{ Context }}>
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={LandingPage} />
@@ -29,5 +29,4 @@ const App = () => (
     </Context.Provider>
   </div>
 );
-
 export default App;

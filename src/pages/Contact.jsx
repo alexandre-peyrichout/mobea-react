@@ -48,7 +48,7 @@ export default function MediaCard() {
         />
         <CardContent>
           <Typography color="primary" gutterBottom variant="h5" component="h2" className={classes.title}>
-            MOBEA
+            CONTACTEZ-NOUS
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p" className={classes.subtitle}>
             Une application web gratuite, qui sera à la fois collaborative et participative, dont le but est d'accompagner les expatriés avant, pendant et après l'expatriation.

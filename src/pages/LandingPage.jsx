@@ -12,7 +12,6 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import Footer from '../components/Footer';
 
 const useStyles = makeStyles(() => ({
   root: {
