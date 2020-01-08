@@ -11,6 +11,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Conf from '../pages/Politique';
+import Faq from '../pages/Faq';
 
 const useStyles = makeStyles(theme => ({
   logo: {
@@ -111,14 +113,6 @@ export default function Footer() {
           <Link
             underline="none"
             className={classes.bottomLinks}
-            onClick={handleClickOpen('paper', 'cgu')}
-          >
-            CGU
-          </Link>
-          <Box className={classes.separator}>|</Box>
-          <Link
-            underline="none"
-            className={classes.bottomLinks}
             onClick={handleClickOpen('paper', 'faq')}
           >
             FAQ
@@ -133,19 +127,12 @@ export default function Footer() {
           </Link>
           <Box className={classes.separator}>|</Box>
           <Link
+            component="a"
             underline="none"
             className={classes.bottomLinks}
-            onClick={handleClickOpen('paper', 'Contact')}
+            href="mailto:test@gmail.com"
           >
             Contact
-          </Link>
-          <Box className={classes.separator}>|</Box>
-          <Link
-            underline="none"
-            className={classes.bottomLinks}
-            onClick={handleClickOpen('paper', 'Site')}
-          >
-            Site
           </Link>
         </Box>
       </Grid>
@@ -155,7 +142,7 @@ export default function Footer() {
           <Link
             underline="none"
             className={classes.bottomLinks}
-            onClick={handleClickOpen('paper', 'Copyright')}
+            onClick={handleClickOpen('paper', 'copyright')}
           >
             Copyright
           </Link>
@@ -168,14 +155,20 @@ export default function Footer() {
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle id="scroll-dialog-title">{modal}</DialogTitle>
+        <DialogTitle id="scroll-dialog-title">
+          {modal === 'confidentialité' && 'Politique de confidentialité'}
+          {modal === 'faq' && 'Foire aux questions'}
+          {modal === 'copyright' && 'Détails'}
+        </DialogTitle>
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText
             id="scroll-dialog-description"
             ref={descriptionElementRef}
             tabIndex={-1}
           >
-            {modal === 'cgu' ? 'Texte du CGU' : 'autre'}
+            {modal === 'confidentialité' && <Conf />}
+            {modal === 'faq' && <Faq />}
+            {modal === 'copyright' && 'Copyright 2016 - 2020'}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
