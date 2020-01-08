@@ -27,6 +27,8 @@ import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import ListIcon from '@material-ui/icons/List';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import Conf from '../pages/Politique';
+import Faq from '../pages/Faq';
 
 const useStyles = makeStyles(() => ({
   list: {
@@ -52,15 +54,23 @@ const Navbar2 = () => {
   });
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
+  const [modal, SetModal] = React.useState('test');
 
-  const handleClickOpen = scrollType => () => {
-    setOpen(true);
+  const handleClickOpen = (scrollType, modal) => () => {
+    if (modal === 'faq') {
+      setOpen2(true);
+    } else {
+      setOpen(true);
+    }
     setScroll(scrollType);
+    SetModal(modal);
   };
 
   const handleClose = () => {
     setOpen(false);
+    setOpen2(false);
   };
 
   const descriptionElementRef = React.useRef(null);
@@ -108,7 +118,7 @@ const Navbar2 = () => {
           </ListItem>
         </Link>
 
-        <Link underline="none" component={LinkRouter} to="/#">
+        <Link underline="none" href="#destination">
           <ListItem button>
             <ListItemAvatar>
               <Avatar>
@@ -119,7 +129,7 @@ const Navbar2 = () => {
           </ListItem>
         </Link>
 
-        <Link underline="none" component={LinkRouter} to="/#">
+        <Link underline="none" href="#card">
           <ListItem button>
             <ListItemAvatar>
               <Avatar>
@@ -130,7 +140,7 @@ const Navbar2 = () => {
           </ListItem>
         </Link>
 
-        <Link underline="none" component={LinkRouter} to="contact">
+        <Link underline="none" target="_blank" href="mailto:contact@mobea.fr">
           <ListItem button>
             <ListItemAvatar>
               <Avatar>
@@ -141,7 +151,7 @@ const Navbar2 = () => {
           </ListItem>
         </Link>
 
-        <Link underline="none" component={LinkRouter} to="faq">
+        <Link underline="none" onClick={handleClickOpen('paper', 'faq')}>
           <ListItem button>
             <ListItemAvatar>
               <Avatar>
@@ -157,6 +167,35 @@ const Navbar2 = () => {
 
   return (
     <AppBar color="default" className={classes.AppBar}>
+      <Dialog
+        open={open2}
+        onClose={handleClose}
+        scroll={scroll}
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+      >
+        <DialogTitle id="scroll-dialog-title">
+          {modal === 'confidentialité' && 'Politique de confidentialité'}
+          {modal === 'faq' && 'Foire aux questions'}
+          {modal === 'copyright' && 'Détails'}
+        </DialogTitle>
+        <DialogContent dividers={scroll === 'paper'}>
+          <DialogContentText
+            id="scroll-dialog-description"
+            ref={descriptionElementRef}
+            tabIndex={-1}
+          >
+            {modal === 'confidentialité' && <Conf />}
+            {modal === 'faq' && <Faq />}
+            {modal === 'copyright' && 'Copyright 2016 - 2020'}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Toolbar>
         <IconButton
           onClick={toggleDrawer('left', true)}
@@ -204,15 +243,6 @@ const Navbar2 = () => {
                 tabIndex={-1}
               >
                 <ProfilForm />
-                {/* <DashboardAvatar />
-                {[...new Array(50)]
-                  .map(
-                    () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
-                  )
-                  .join('\n')} */}
               </DialogContentText>
             </DialogContent>
             <DialogActions>

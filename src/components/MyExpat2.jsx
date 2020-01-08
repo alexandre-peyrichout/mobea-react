@@ -144,7 +144,7 @@ const MyExpat2 = () => {
   };
   return (
     <div className={classes.parent}>
-      <Card className={classes.childTop}>
+      <Card className={classes.childTop} id="destination">
         <div className={classes.config}>
           <Typography variant="p" className={classes.configTitle}>
             Configurer mon expatriation
