@@ -1,10 +1,23 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+import PersonIcon from '@material-ui/icons/Person';
+import AddIcon from '@material-ui/icons/Add';
+import Typography from '@material-ui/core/Typography';
+import { blue } from '@material-ui/core/colors';
+
 import {
   Card,
   Fab,
   IconButton,
-  Typography,
   MenuItem,
   Select,
   InputLabel,
@@ -13,11 +26,12 @@ import {
   CircularProgress,
   Grid,
   Tooltip,
-  Badge
+  Badge,
+  withStyles
 } from '@material-ui/core';
 import { SettingsOutlined, Delete, VpnKeyOutlined } from '@material-ui/icons/';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
-import AddIcon from '@material-ui/icons/Add';
+
 import AddCircle from '@material-ui/icons/AddCircle';
 import WorkOutline from '@material-ui/icons/WorkOutlineOutlined';
 import Assignment from '@material-ui/icons/AssignmentOutlined';
@@ -25,6 +39,9 @@ import AccountBalance from '@material-ui/icons/AccountBalanceOutlined';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const useStyles = makeStyles(() => ({
+  add: {
+    padding: '20px'
+  },
   parent: {
     width: '100%',
     height: '100%',
@@ -130,6 +147,7 @@ const MyExpat2 = () => {
   const classes = useStyles();
   const [country, setCountry] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
 
   const handleChange = event => {
     setCountry(event.target.value);
@@ -137,10 +155,15 @@ const MyExpat2 = () => {
 
   const handleClose = () => {
     setOpen(false);
+    setOpen2(false);
   };
 
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const handleOpen2 = () => {
+    setOpen2(true);
   };
   return (
     <div className={classes.parent}>
@@ -298,13 +321,16 @@ const MyExpat2 = () => {
           <Grid item xs={4}>
             <Card className={classes.wrapper2}>
               <Tooltip title="Ajouter ma propre liste" placement="bottom">
-                <Fab color="primary" aria-label="add">
+                <Fab color="primary" aria-label="add" onClick={handleOpen2}>
                   <AddIcon />
                 </Fab>
               </Tooltip>
             </Card>
           </Grid>
         </Grid>
+        <Dialog onClose={handleClose} open={open2}>
+          <Card className={classes.add}>Cette fonctionnalité sera bientôt disponible.</Card>
+        </Dialog>
       </Card>
     </div>
   );
