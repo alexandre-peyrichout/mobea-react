@@ -124,7 +124,10 @@ const useStyles = makeStyles(() => ({
   description: {
     backgroundColor: 'black',
     color: '#e2b439',
-    textAlign: 'center'
+    textAlign: 'center',
+    '@media (max-width:961px)': {
+      maxWidth: '100%'
+    }
   }
 }));
 
@@ -149,9 +152,9 @@ function LandingPage() {
         container
         spacing={1}
         justify="center"
-        style={{ minHeight: '35vh', marginTop: '30px', marginBottom: '30px' }}
+        style={{ minHeight: '35vh', marginTop: '30px', marginBottom: '30px', maxWidth: '100%' }}
       >
-        <Grid container item xs={6} justify="center">
+        <Grid container item xs={12} md={6} justify="center">
           <Container className={classes.description}>
             <Typography className={classes.title}>Notre histoire</Typography>
             <Typography className={classes.boldText}>
@@ -166,24 +169,12 @@ function LandingPage() {
             </Typography>
           </Container>
         </Grid>
-        <Grid container item xs={6} justify="center">
+        <Grid container item xs={0} md={6} justify="center">
           <Container className={classes.descriptionImg}></Container>
         </Grid>
       </Grid>
 
       <Container className={classes.propos}>
-        {/* <Typography className={classes.titles} variant="h3">
-          A PROPOS
-        </Typography>
-        <iframe
-          title="video"
-          className={classes.frame}
-          src="https://www.youtube.com/embed/bh7znN9kMS8"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe> */}
-
         <Typography className={classes.titles} variant="h3">
           FONCTIONNALITES
         </Typography>
@@ -211,7 +202,7 @@ function LandingPage() {
             </Card>
           </Grid>
 
-          <Grid container item xs={6} md={4}>
+          <Grid container item xs={6} md={4} justify="center">
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
@@ -227,7 +218,7 @@ function LandingPage() {
             </Card>
           </Grid>
 
-          <Grid container item xs={6} md={4}>
+          <Grid container item xs={6} md={4} justify="center">
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
@@ -243,47 +234,10 @@ function LandingPage() {
               </CardContent>
             </Card>
           </Grid>
-
-          <DemoCarousel />
-          {/* <Grid container item xs={6} md={2}>
-            <Card className={classes.card}>
-              <CardHeader
-                className={classes.header}
-                avatar={<EventNoteOutlinedIcon fontSize="large" />}
-                title={
-                  <Typography variant="body1">
-                    Connectez vous avec les autres expatrié(e)s
-                  </Typography>
-                }
-                align="center"
-              />
-              <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Restez connéecté.e.s. Suivez et partagez avec les expatrié.e.s puis organisez vos
-                  Meet up selon vos profils et préférences.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid container item xs={6} md={2}>
-            <Card className={classes.card}>
-              <CardHeader
-                className={classes.header}
-                avatar={<CreateOutlinedIcon fontSize="large" />}
-                title={<Typography variant="body1">Personnalisez votre application</Typography>}
-                align="center"
-              />
-              <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p" align="center">
-                  Partagez vos loisirs, passions et préférences: créez votre profil personnel et
-                  dites-nous en plus à propos de vos expériences d'expatriation et vos modes de vie.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid> */}
         </Grid>
+        <DemoCarousel />
       </Container>
+
       <Footer />
     </Container>
   );

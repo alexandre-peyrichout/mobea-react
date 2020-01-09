@@ -59,6 +59,9 @@ const useStyles = makeStyles(theme => ({
   separator: {
     color: 'grey',
     margin: '0px 5px'
+  },
+  grid: {
+    width: '50%'
   }
 }));
 
@@ -89,7 +92,7 @@ export default function Footer() {
   }, [open]);
 
   return (
-    <Grid container>
+    <Grid container className={classes.grid}>
       <Grid item xs={12} sm={3}>
         <Box
           display="flex"

@@ -74,7 +74,7 @@ export default function ImageAvatars() {
     }
   }, [open]);
 
-  const handleClickOpen = (scrollType, modal) => () => {
+  const handleClickOpen = scrollType => () => {
     setOpen(true);
     setScroll(scrollType);
     SetModal(modal);
