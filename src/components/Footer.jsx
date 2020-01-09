@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     margin: '0px 5px'
   },
   grid: {
-    width: '50%'
+    width: '100%'
   }
 }));
 

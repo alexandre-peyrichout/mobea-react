@@ -110,7 +110,7 @@ const useStyles = makeStyles(() => ({
     marginBottom: '1%',
     marginTop: '2%',
     '@media (max-width:961px)': {
-      fontSize: '3em',
+      fontSize: '2em',
       maxWidth: '95%'
     }
   },
@@ -127,6 +127,15 @@ const useStyles = makeStyles(() => ({
     textAlign: 'center',
     '@media (max-width:961px)': {
       maxWidth: '100%'
+    }
+  },
+
+  carousel: {
+    maxWidth: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    '@media (max-width:961px)': {
+      display: 'none'
     }
   }
 }));
@@ -175,7 +184,7 @@ function LandingPage() {
       </Grid>
 
       <Container className={classes.propos}>
-        <Typography className={classes.titles} variant="h3">
+        <Typography className={classes.title} >
           FONCTIONNALITES
         </Typography>
 
@@ -235,7 +244,9 @@ function LandingPage() {
             </Card>
           </Grid>
         </Grid>
-        <DemoCarousel />
+        <Container className={classes.carousel}>
+          <DemoCarousel />
+        </Container>
       </Container>
 
       <Footer />
