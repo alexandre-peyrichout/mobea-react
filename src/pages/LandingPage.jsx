@@ -131,7 +131,7 @@ const useStyles = makeStyles(() => ({
   },
 
   carousel: {
-    maxWidth: '100%',
+    maxHeigth: '4%',
     display: 'flex',
     justifyContent: 'center',
     '@media (max-width:961px)': {
