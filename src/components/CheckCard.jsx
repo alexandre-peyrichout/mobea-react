@@ -68,6 +68,7 @@ export default function CheckCard() {
             inputProps={{
               'aria-label': 'primary checkbox'
             }}
+            color="primary"
           />
           lorem ipsum dolor
         </Card>
@@ -76,6 +77,7 @@ export default function CheckCard() {
             inputProps={{
               'aria-label': 'primary checkbox'
             }}
+            color="primary"
           />
           lorem ipsum dolor
         </Card>
@@ -84,6 +86,7 @@ export default function CheckCard() {
             inputProps={{
               'aria-label': 'primary checkbox'
             }}
+            color="primary"
           />
           lorem ipsum dolor
         </Card>
@@ -92,6 +95,7 @@ export default function CheckCard() {
             inputProps={{
               'aria-label': 'primary checkbox'
             }}
+            color="primary"
           />
           lorem ipsum dolor
         </Card>
