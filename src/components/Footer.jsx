@@ -11,6 +11,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Context from '../context/Context';
 import Conf from '../pages/Politique';
 import Faq from '../pages/Faq';
 
@@ -67,18 +68,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function Footer() {
   const classes = useStyles();
+  const [show_FAQ, setShow_FAQ] = React.useContext(Context);
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
   const [modal, SetModal] = React.useState('test');
 
   const handleClickOpen = (scrollType, modal) => () => {
-    setOpen(true);
+    setShow_FAQ(true);
     setScroll(scrollType);
     SetModal(modal);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setShow_FAQ(false);
   };
 
   const descriptionElementRef = React.useRef(null);
@@ -152,7 +154,7 @@ export default function Footer() {
         </Box>
       </Grid>
       <Dialog
-        open={open}
+        open={show_FAQ}
         onClose={handleClose}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
