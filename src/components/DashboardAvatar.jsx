@@ -117,13 +117,6 @@ export default function ImageAvatars() {
               Sauvegarder et mettre à jour
             </Button>
           </div>
-
-          {/* <Button onClick={handleClose} color="primary">
-                Cancel
-              </Button>
-              <Button onClick={handleClose} color="primary">
-                Subscribe
-              </Button> */}
         </DialogActions>
       </Dialog>
       <div className={classes.settingsDiv}>

@@ -1,10 +1,13 @@
 import React from 'react';
 
 const Context = React.createContext({
-    faq_modal: true,
-    politique_modal: true,
-    profil_modal: true
-  }
-);
+  show_FAQ: false,
+  show_PROFILE: false,
+  show_POLITIQUE: false,
+  show_CONTACT: false,
+  show_COPYRIGHT: false,
+  show_ADD_DESTINATION: false,
+  show_DELETE_DESTINATION: false
+});
 
 export default Context;
