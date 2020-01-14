@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link as LinkRouter } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import fond from '../assets/marrakech.jpg';
 import fond2 from '../assets/morocco.jpg';
@@ -50,17 +52,31 @@ const useStyles = makeStyles(() => ({
     minWidth: '100%',
     minHeight: '80vh',
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left',
     color: 'white',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-around',
     padding: '10%',
-    alignItems: 'center',
+    alignItems: 'left',
     '& div': {
       width: '100%',
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'space-around'
+    }
+  },
+  buttons: {
+    marginTop: '12%',
+    '@media (max-width:961px)': {
+      flexDirection: 'column',
+      marginTop: '4%'
+    }
+  },
+  login: {
+    width: '200px',
+    height: '50px',
+    '@media (max-width:961px)': {
+      marginBottom: '2em'
     }
   },
 
@@ -75,7 +91,7 @@ const useStyles = makeStyles(() => ({
     padding: '0 15%',
     marginBottom: '4%',
     marginTop: '1%',
-    textAlign: 'justify',
+    textAlign: 'left',
     '@media (max-width:961px)': {
       maxWidth: '95%'
     }
@@ -117,10 +133,16 @@ const useStyles = makeStyles(() => ({
     marginTop: '2%',
     '@media (max-width:961px)': {
       fontSize: '2em',
-      maxWidth: '95%'
+      maxWidth: '95%',
+      marginBottom: 0
     }
   },
-
+  subTitle: {
+    fontSize: '3em',
+    '@media (max-width:961px)': {
+      fontSize: '1em'
+    }
+  },
   descriptionImg: {
     backgroundImage: `url("${fond2}")`,
     backgroundSize: 'cover',
@@ -157,8 +179,13 @@ function LandingPage() {
         <LandingBar />
         <Container className={classes.zonecentrale}>
           <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
-          <Typography className={classes.boldText}>Entre France & Maroc</Typography>
-          <div>
+          <Typography className={classes.subTitle}>Entre France & Maroc</Typography>
+          <div className={classes.buttons}>
+            <Link underline="none" className={classes.loginLinks} component={LinkRouter} to="/login">
+              <Button type="submit" variant="contained" color="secondary" className={classes.login}>
+                Accès à mon espace
+            </Button>
+            </Link>
             <Button type="submit" variant="contained" color="primary" className={classes.submit}>
               S'inscrire
             </Button>
