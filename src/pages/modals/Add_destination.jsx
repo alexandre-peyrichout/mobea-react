@@ -10,7 +10,7 @@ import Context from '../../context/Context';
 import ProfilForm from '../../components/ProfilForm';
 import SaveIcon from '@material-ui/icons/Save';
 
-const Profil = () => {
+const Add_destination = () => {
   const { show_PROFIL, setShow_PROFIL } = useContext(Context);
 
   return (
@@ -39,4 +39,4 @@ const Profil = () => {
   );
 };
 
-export default Profil;
+export default Add_destination;

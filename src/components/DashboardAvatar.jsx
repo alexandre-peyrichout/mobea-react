@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import { Card, IconButton } from '@material-ui/core';
@@ -6,14 +6,7 @@ import grey from '@material-ui/core/colors/grey';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Background from '../assets/bgold.jpg';
 import AvatarImg from '../assets/avatar.png';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import ProfilForm from './ProfilForm';
-import SaveIcon from '@material-ui/icons/Save';
+import Context from '../context/Context';
 
 const useStyles = makeStyles(theme => ({
   avatarDiv: {
@@ -60,67 +53,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function ImageAvatars() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState('paper');
-  const [modal, SetModal] = React.useState('test');
-
-  const descriptionElementRef = React.useRef(null);
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
-
-  const handleClickOpen = scrollType => () => {
-    setOpen(true);
-    setScroll(scrollType);
-    SetModal(modal);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const { setShow_PROFIL } = useContext(Context);
 
   return (
     <Card className={classes.container}>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-      >
-        <DialogTitle id="scroll-dialog-title" className={classes.titleProfil}>
-          Mon profil
-        </DialogTitle>
-        <DialogContent dividers={scroll === 'paper'}>
-          <DialogContentText
-            id="scroll-dialog-description"
-            ref={descriptionElementRef}
-            tabIndex={-1}
-          >
-            <ProfilForm />
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <div className={classes.blocSave}>
-            <Button
-              variant="contained"
-              color="primary"
-              size="medium"
-              className={classes.button}
-              startIcon={<SaveIcon />}
-            >
-              Sauvegarder et mettre à jour
-            </Button>
-          </div>
-        </DialogActions>
-      </Dialog>
       <div className={classes.settingsDiv}>
-        <IconButton aria-label="settings" onClick={handleClickOpen('paper')}>
+        <IconButton onClick={() => setShow_PROFIL(true)}>
           <SettingsIcon style={{ color: grey[50] }} />
         </IconButton>
       </div>
