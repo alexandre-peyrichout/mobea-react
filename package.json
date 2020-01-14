@@ -45,5 +45,5 @@
   "devDependencies": {
     "eslint-plugin-jsx-a11y": "^6.2.3"
   },
-  "proxy": " https://localhost:3000"
+  "proxy": "https://localhost:3000"
 }
