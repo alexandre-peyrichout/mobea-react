@@ -113,7 +113,7 @@ export default function SignIn() {
               variant="contained"
               color="primary"
               className={classes.submit}
-              href="/dashboard"
+              href="https://eager-roentgen-a69bd8.netlify.com/login"
             >
               Se connecter
             </Button>

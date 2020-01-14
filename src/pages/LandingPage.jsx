@@ -106,7 +106,7 @@ const useStyles = makeStyles(() => ({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: '3em',
+    fontSize: '6em',
     marginBottom: '1%',
     marginTop: '2%',
     '@media (max-width:961px)': {
