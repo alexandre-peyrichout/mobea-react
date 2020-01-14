@@ -13,6 +13,8 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Footer from '../components/Footer';
+import Nora from '../assets/Nora.jpg';
+import Yannick from '../assets/Yannick.jpg';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -165,6 +167,39 @@ const useStyles = makeStyles(() => ({
   textBloc: {
     color: 'white'
   },
+  proposEquipe: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    minWidth: '100%',
+    minHeight: '100vh',
+    backgroundColor: 'white'
+  },
+  blocEquipe: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  textEquipe: {
+    fontWeight: 'bold'
+  },
+  titleEquipe: {
+    color: "black",
+    fontWeight: 'bold',
+    fontSize: '3em',
+    borderBottom: '10px solid #e2b439',
+    marginBottom: '10%',
+    marginTop: '2%',
+    '@media (max-width:961px)': {
+      fontSize: '2em',
+      maxWidth: '95%'
+    }
+  },
+  avatarEquipe: {
+    height: '200px',
+    width: '200px',
+    borderRadius: '50%'
+  },
 
   carousel: {
     maxHeigth: '4%',
@@ -282,13 +317,40 @@ function LandingPage() {
         </Grid>
       </Container>
 
+
+
+
+      <Container className={classes.proposEquipe}>
+        <Typography className={classes.titleEquipe} >
+          EQUIPE
+        </Typography>
+
+        <div className={classes.blocEquipe}>
+          <div>
+            <img src={Nora} className={classes.avatarEquipe} />
+          </div>
+          <Typography className={classes.textEquipe} component="p" align="center">
+            Nora Moulali - FOUNDER & CEO
+        </Typography>
+
+          <div>
+            <img src={Yannick} className={classes.avatarEquipe} />
+          </div>
+          <Typography className={classes.textEquipe} component="p" align="center">
+            Yannick Denot - CEO
+        </Typography>
+        </div>
+
+      </Container>
+
+
       <Container className={classes.carousel}>
         <DemoCarousel />
       </Container>
 
 
       <Footer />
-    </Container>
+    </Container >
   );
 }
 
