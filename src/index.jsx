@@ -1,29 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import { ThemeProvider } from '@material-ui/core/styles';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import globalReducer from './reducers/index';
 import Mobea from './assets/theme';
 
-// Après avoir combiner les petits reducers, on peut enfin créer le store global (intégralité du state)
-const store = createStore(
-  globalReducer,
-  // eslint-disable-next-line no-underscore-dangle, no-undef
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
 ReactDOM.render(
-  // le provider permet à tous les composants inclus dans le composant App, meme les petis petis petis petis enfants d'avoir accès au store global!
-  <Provider store={store}>
-    <ThemeProvider theme={Mobea}>
-      <App />
-    </ThemeProvider>
-  </Provider>,
-
+  <ThemeProvider theme={Mobea}>
+    <App />
+  </ThemeProvider>,
   // eslint-disable-next-line no-undef
   document.getElementById('root')
 );

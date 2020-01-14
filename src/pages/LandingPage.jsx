@@ -27,13 +27,15 @@ const useStyles = makeStyles(() => ({
     backgroundImage: `url("${fond}")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
+    background: 'rgba(229, 170, 75, 1)'
   },
   container: {
     minWidth: '100%',
     minHeight: '100vh',
     margin: '0',
-    padding: '0'
+    padding: '0',
+    backgroundColor: 'rgba(255, 252, 250)'
   },
 
   propos: {
@@ -41,7 +43,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     alignItems: 'center',
     minWidth: '100%',
-    minHeight: '100vh'
+    minHeight: '100vh',
   },
 
   zonecentrale: {
@@ -54,7 +56,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     justifyContent: 'space-around',
     padding: '10%',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     '& div': {
       width: '100%',
       display: 'flex',
@@ -63,7 +65,8 @@ const useStyles = makeStyles(() => ({
   },
 
   submit: {
-    width: '100px'
+    width: '200px',
+    height: '50px'
   },
   boldText: {
     fontWeight: 'bold',
@@ -78,7 +81,10 @@ const useStyles = makeStyles(() => ({
     }
   },
   card: {
-    maxWidth: 345
+    maxWidth: 345,
+    '&:hover': {
+      background: 'rgba(255, 240, 224)'
+    }
   },
   media: {
     height: 0,
@@ -128,6 +134,9 @@ const useStyles = makeStyles(() => ({
     '@media (max-width:961px)': {
       maxWidth: '100%'
     }
+  },
+  avatar: {
+    color: "rgba(229, 170, 75, 1)"
   },
 
   carousel: {
@@ -198,7 +207,7 @@ function LandingPage() {
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<PlaylistAddCheckIcon fontSize="large" />}
+                avatar={<PlaylistAddCheckIcon fontSize="large" className={classes.avatar} />}
                 title={<Typography variant="body1">checklists</Typography>}
                 align="center"
               />
@@ -215,7 +224,7 @@ function LandingPage() {
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<ChatBubbleOutlineIcon fontSize="large" />}
+                avatar={<ChatBubbleOutlineIcon fontSize="large" className={classes.avatar} />}
                 title={<Typography variant="body1">chat en ligne</Typography>}
               />
               <CardContent>
@@ -231,7 +240,7 @@ function LandingPage() {
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<ThumbUpIcon fontSize="large" />}
+                avatar={<ThumbUpIcon fontSize="large" className={classes.avatar} />}
                 title={<Typography variant="body1">retours d'expérience certifiés</Typography>}
                 align="center"
               />
