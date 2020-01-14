@@ -8,6 +8,8 @@ import logo from '../assets/logo.png';
 import Context from '../context/Context';
 import Faq from '../pages/modals/Faq';
 import Politique from '../pages/modals/Politique';
+import Copyright from '../pages/modals/Copyright';
+import Profil from '../pages/modals/Profil';
 
 const useStyles = makeStyles(theme => ({
   logo: {
@@ -122,8 +124,11 @@ export default function Footer() {
           </Link>
         </Box>
       </Grid>
+      {/* Modales ci-dessous  */}
       <Faq />
       <Politique />
+      <Copyright />
+      <Profil />
     </Grid>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -28,6 +28,7 @@ import ListIcon from '@material-ui/icons/List';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import SaveIcon from '@material-ui/icons/Save';
+import Context from '../context/Context';
 
 const useStyles = makeStyles(() => ({
   list: {
@@ -55,6 +56,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Navbar2 = () => {
+  const { setShow_PROFIL } = useContext(Context);
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false
@@ -232,7 +234,7 @@ const Navbar2 = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose1}
         >
-          <MenuItem onClick={handleClickOpen('paper')}>Mon profil</MenuItem>
+          <MenuItem onClick={() => setShow_PROFIL(true)}>Mon profil</MenuItem>
           <Dialog
             open={open}
             onClose={handleClose}
