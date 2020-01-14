@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -10,16 +10,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import { Link as LinkRouter } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 // import DashboardAvatar from './DashboardAvatar';
-import ProfilForm from './ProfilForm';
 import HomeIcon from '@material-ui/icons/Home';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -27,9 +20,7 @@ import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import ListIcon from '@material-ui/icons/List';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-import Conf from '../pages/Politique';
-import Faq from '../pages/Faq';
-import SaveIcon from '@material-ui/icons/Save';
+import Context from '../context/Context';
 
 const useStyles = makeStyles(() => ({
   list: {
@@ -48,49 +39,17 @@ const useStyles = makeStyles(() => ({
   },
   titleProfil: {
     textAlign: 'center'
-  },
-  blocSave: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center'
   }
 }));
 
 const Navbar2 = () => {
+  const { setShow_PROFIL } = useContext(Context);
+  const { setShow_FAQ } = useContext(Context);
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false
   });
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [open, setOpen] = React.useState(false);
-  const [open2, setOpen2] = React.useState(false);
-  const [scroll, setScroll] = React.useState('paper');
-  const [modal, SetModal] = React.useState('test');
-
-  const handleClickOpen = (scrollType, modal) => () => {
-    if (modal === 'faq') {
-      setOpen2(true);
-    } else {
-      setOpen(true);
-    }
-    setScroll(scrollType);
-    SetModal(modal);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    setOpen2(false);
-  };
-
-  const descriptionElementRef = React.useRef(null);
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -160,7 +119,7 @@ const Navbar2 = () => {
           </ListItem>
         </Link>
 
-        <Link underline="none" onClick={handleClickOpen('paper', 'faq')}>
+        <Link underline="none" onClick={() => setShow_FAQ(true)}>
           <ListItem button>
             <ListItemAvatar>
               <Avatar>
@@ -176,35 +135,6 @@ const Navbar2 = () => {
 
   return (
     <AppBar color="default" className={classes.AppBar}>
-      <Dialog
-        open={open2}
-        onClose={handleClose}
-        scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-      >
-        <DialogTitle id="scroll-dialog-title">
-          {modal === 'confidentialité' && 'Politique de confidentialité'}
-          {modal === 'faq' && 'Foire aux questions'}
-          {modal === 'copyright' && 'Détails'}
-        </DialogTitle>
-        <DialogContent dividers={scroll === 'paper'}>
-          <DialogContentText
-            id="scroll-dialog-description"
-            ref={descriptionElementRef}
-            tabIndex={-1}
-          >
-            {modal === 'confidentialité' && <Conf />}
-            {modal === 'faq' && <Faq />}
-            {modal === 'copyright' && 'Copyright 2016 - 2020'}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Ok
-          </Button>
-        </DialogActions>
-      </Dialog>
       <Toolbar>
         <IconButton
           onClick={toggleDrawer('left', true)}
@@ -236,48 +166,8 @@ const Navbar2 = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose1}
         >
-          <MenuItem onClick={handleClickOpen('paper')}>Mon profil</MenuItem>
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            scroll={scroll}
-            aria-labelledby="scroll-dialog-title"
-            aria-describedby="scroll-dialog-description"
-          >
-            <DialogTitle id="scroll-dialog-title" className={classes.titleProfil}>
-              Mon profil
-            </DialogTitle>
-            <DialogContent dividers={scroll === 'paper'}>
-              <DialogContentText
-                id="scroll-dialog-description"
-                ref={descriptionElementRef}
-                tabIndex={-1}
-              >
-                <ProfilForm />
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <div className={classes.blocSave}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="medium"
-                  className={classes.button}
-                  startIcon={<SaveIcon />}
-                >
-                  Sauvegarder et mettre à jour
-                </Button>
-              </div>
-
-              {/* <Button onClick={handleClose} color="primary">
-                Cancel
-              </Button>
-              <Button onClick={handleClose} color="primary">
-                Subscribe
-              </Button> */}
-            </DialogActions>
-          </Dialog>
-          <MenuItem onClick={handleClose}>Se déconnecter</MenuItem>
+          <MenuItem onClick={() => setShow_PROFIL(true)}>Mon profil</MenuItem>
+          <MenuItem onClick={handleClose1}>Se déconnecter</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>

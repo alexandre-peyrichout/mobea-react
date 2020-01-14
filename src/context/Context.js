@@ -1,10 +1,5 @@
-import React from 'react';
+import { createContext } from 'react';
 
-const Context = React.createContext({
-    faq_modal: true,
-    politique_modal: true,
-    profil_modal: true
-  }
-);
+const Context = createContext(null);
 
 export default Context;

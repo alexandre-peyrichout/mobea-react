@@ -13,7 +13,10 @@ const useStyles = makeStyles(() => ({
   },
   login: {
     marginRight: '2%',
-    color: 'white'
+    color: 'white',
+    '&:hover': {
+      background: 'rgba(229, 170, 75, 1)'
+    }
   },
   logo: {
     width: '210px',
