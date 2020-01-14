@@ -188,7 +188,10 @@ const useStyles = makeStyles(() => ({
     fontWeight: 'bold'
   },
   textBloc: {
-    color: 'white'
+    color: 'white',
+    '@media (max-width:961px)': {
+      fontSize: '0.8em'
+    }
   },
   proposEquipe: {
     display: 'flex',
@@ -202,6 +205,10 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    '@media (max-width:961px)': {
+      flexDirection: 'column',
+      marginTop: '4%'
+    }
   },
   textEquipe: {
     fontWeight: 'bold'
@@ -242,7 +249,7 @@ function LandingPage() {
         <LandingBar />
         <Container className={classes.zonecentrale}>
           <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
-          <Typography className={classes.subTitle}>Entre France & Maroc</Typography>
+          <Typography className={classes.subTitle}>ENTRE FRANCE & MAROC</Typography>
           <div className={classes.buttons}>
             <Link underline="none" className={classes.loginLinks} component={LinkRouter} to="/login">
               <Button type="submit" variant="contained" color="secondary" className={classes.login}>
