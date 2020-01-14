@@ -27,8 +27,6 @@ import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import ListIcon from '@material-ui/icons/List';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-import Conf from '../pages/Politique';
-import Faq from '../pages/Faq';
 import SaveIcon from '@material-ui/icons/Save';
 
 const useStyles = makeStyles(() => ({
@@ -194,8 +192,6 @@ const Navbar2 = () => {
             ref={descriptionElementRef}
             tabIndex={-1}
           >
-            {modal === 'confidentialité' && <Conf />}
-            {modal === 'faq' && <Faq />}
             {modal === 'copyright' && 'Copyright 2016 - 2020'}
           </DialogContentText>
         </DialogContent>
