@@ -9,7 +9,7 @@ import fond2 from '../assets/morocco.jpg';
 import LandingBar from '../components/LandingBar';
 import DemoCarousel from '../components/AutoCarousel';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import ForumIcon from '@material-ui/icons/Forum';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -46,6 +46,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     minWidth: '100%',
     minHeight: '100vh',
+    backgroundColor: '#1F2C30'
   },
 
   zonecentrale: {
@@ -98,9 +99,8 @@ const useStyles = makeStyles(() => ({
   },
   card: {
     maxWidth: 345,
-    '&:hover': {
-      background: 'rgba(255, 240, 224)'
-    }
+    backgroundColor: '#1F2C30',
+    marginBottom: '20%',
   },
   media: {
     height: 0,
@@ -127,6 +127,7 @@ const useStyles = makeStyles(() => ({
     marginTop: '3%'
   },
   title: {
+    color: "white",
     fontWeight: 'bold',
     fontSize: '6em',
     marginBottom: '1%',
@@ -141,6 +142,18 @@ const useStyles = makeStyles(() => ({
     fontSize: '3em',
     '@media (max-width:961px)': {
       fontSize: '1em'
+    }
+  },
+  titleBloc: {
+    color: "white",
+    fontWeight: 'bold',
+    fontSize: '3em',
+    borderBottom: '10px solid #e2b439',
+    marginBottom: '10%',
+    marginTop: '2%',
+    '@media (max-width:961px)': {
+      fontSize: '2em',
+      maxWidth: '95%'
     }
   },
   descriptionImg: {
@@ -158,7 +171,22 @@ const useStyles = makeStyles(() => ({
     }
   },
   avatar: {
-    color: "rgba(229, 170, 75, 1)"
+    color: 'white',
+    height: '80px',
+    width: '80px',
+    marginLeft: '10%'
+  },
+  avatar1: {
+    color: "rgba(229, 170, 75, 1)",
+    height: '80px',
+    width: '80px'
+  },
+  subtitle: {
+    color: '#fad65a',
+    fontWeight: 'bold'
+  },
+  textBloc: {
+    color: 'white'
   },
 
   carousel: {
@@ -220,7 +248,7 @@ function LandingPage() {
       </Grid>
 
       <Container className={classes.propos}>
-        <Typography className={classes.title} >
+        <Typography className={classes.titleBloc} >
           FONCTIONNALITES
         </Typography>
 
@@ -235,11 +263,11 @@ function LandingPage() {
               <CardHeader
                 className={classes.header}
                 avatar={<PlaylistAddCheckIcon fontSize="large" className={classes.avatar} />}
-                title={<Typography variant="body1">checklists</Typography>}
+                title={<Typography className={classes.subtitle}>CHECKLISTS</Typography>}
                 align="center"
               />
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p" align="center">
+                <Typography className={classes.textBloc} component="p" align="center">
                   Préparez et organisez cotre mobilité avant, pendant et après votre installation
                   (votre destination, vos démarches, vos transferts...)
                 </Typography>
@@ -251,11 +279,11 @@ function LandingPage() {
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<ChatBubbleOutlineIcon fontSize="large" className={classes.avatar} />}
-                title={<Typography variant="body1">chat en ligne</Typography>}
+                avatar={<ForumIcon fontSize="large" className={classes.avatar} />}
+                title={<Typography className={classes.subtitle}>CHAT EN LIGNE</Typography>}
               />
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p" align="center">
+                <Typography className={classes.textBloc} component="p" align="center">
                   Echangez et partagez avec des personnes en situation de départ ou déjà installées
                   qui ont les mêmes problématiques, intérêts, passions, profession
                 </Typography>
@@ -267,12 +295,12 @@ function LandingPage() {
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<ThumbUpIcon fontSize="large" className={classes.avatar} />}
-                title={<Typography variant="body1">retours d'expérience certifiés</Typography>}
+                avatar={<ThumbUpIcon fontSize="large" className={classes.avatar1} />}
+                title={<Typography className={classes.subtitle}>RETOURS D'EXPERIENCE CERTIFIES</Typography>}
                 align="center"
               />
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p" align="center">
+                <Typography className={classes.textBloc} component="p" align="center">
                   Partagez vos tips : créez votre profil et dites nous ce que la mobilité vous
                   apporte dans vos expériences professionnelles et personnelles
                 </Typography>
@@ -280,10 +308,12 @@ function LandingPage() {
             </Card>
           </Grid>
         </Grid>
-        <Container className={classes.carousel}>
-          <DemoCarousel />
-        </Container>
       </Container>
+
+      <Container className={classes.carousel}>
+        <DemoCarousel />
+      </Container>
+
 
       <Footer />
     </Container>
