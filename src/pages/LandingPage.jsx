@@ -1,13 +1,15 @@
 import React from 'react';
 import { Container, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link as LinkRouter } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import fond from '../assets/marrakech.jpg';
 import fond2 from '../assets/morocco.jpg';
 import LandingBar from '../components/LandingBar';
 import DemoCarousel from '../components/AutoCarousel';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import ForumIcon from '@material-ui/icons/Forum';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -51,17 +53,31 @@ const useStyles = makeStyles(() => ({
     minWidth: '100%',
     minHeight: '80vh',
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left',
     color: 'white',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-around',
     padding: '10%',
-    alignItems: 'center',
+    alignItems: 'left',
     '& div': {
       width: '100%',
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'space-around'
+    }
+  },
+  buttons: {
+    marginTop: '12%',
+    '@media (max-width:961px)': {
+      flexDirection: 'column',
+      marginTop: '4%'
+    }
+  },
+  login: {
+    width: '200px',
+    height: '50px',
+    '@media (max-width:961px)': {
+      marginBottom: '2em'
     }
   },
 
@@ -76,7 +92,7 @@ const useStyles = makeStyles(() => ({
     padding: '0 15%',
     marginBottom: '4%',
     marginTop: '1%',
-    textAlign: 'justify',
+    textAlign: 'left',
     '@media (max-width:961px)': {
       maxWidth: '95%'
     }
@@ -110,7 +126,6 @@ const useStyles = makeStyles(() => ({
     marginBottom: '3%',
     marginTop: '3%'
   },
-
   descriptionImg: {
     backgroundImage: `url("${fond2}")`,
     backgroundSize: 'cover',
@@ -191,8 +206,18 @@ function LandingPage() {
         <LandingBar />
         <Container className={classes.zonecentrale}>
           <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
-          <Typography className={classes.boldText}>Entre France & Maroc</Typography>
-          <div>
+          <Typography className={classes.subTitle}>ENTRE FRANCE & MAROC</Typography>
+          <div className={classes.buttons}>
+            <Link
+              underline="none"
+              className={classes.loginLinks}
+              component={LinkRouter}
+              to="/login"
+            >
+              <Button type="submit" variant="contained" color="secondary" className={classes.login}>
+                Accès à mon espace
+              </Button>
+            </Link>
             <Button type="submit" variant="contained" color="primary" className={classes.submit}>
               S'inscrire
             </Button>
@@ -255,11 +280,11 @@ function LandingPage() {
               <CardHeader
                 className={classes.header}
                 avatar={<PlaylistAddCheckIcon fontSize="large" className={classes.avatar} />}
-                title={<Typography variant="body1">checklists</Typography>}
+                title={<Typography className={classes.subtitle}>CHECKLISTS</Typography>}
                 align="center"
               />
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p" align="center">
+                <Typography className={classes.textBloc} component="p" align="center">
                   Préparez et organisez cotre mobilité avant, pendant et après votre installation
                   (votre destination, vos démarches, vos transferts...)
                 </Typography>
@@ -271,11 +296,11 @@ function LandingPage() {
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<ChatBubbleOutlineIcon fontSize="large" className={classes.avatar} />}
-                title={<Typography variant="body1">chat en ligne</Typography>}
+                avatar={<ForumIcon fontSize="large" className={classes.avatar} />}
+                title={<Typography className={classes.subtitle}>CHAT EN LIGNE</Typography>}
               />
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p" align="center">
+                <Typography className={classes.textBloc} component="p" align="center">
                   Echangez et partagez avec des personnes en situation de départ ou déjà installées
                   qui ont les mêmes problématiques, intérêts, passions, profession
                 </Typography>
@@ -287,12 +312,16 @@ function LandingPage() {
             <Card className={classes.card}>
               <CardHeader
                 className={classes.header}
-                avatar={<ThumbUpIcon fontSize="large" className={classes.avatar} />}
-                title={<Typography variant="body1">retours d'expérience certifiés</Typography>}
+                avatar={<ThumbUpIcon fontSize="large" className={classes.avatar1} />}
+                title={
+                  <Typography className={classes.subtitle}>
+                    RETOURS D'EXPERIENCE CERTIFIES
+                  </Typography>
+                }
                 align="center"
               />
               <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p" align="center">
+                <Typography className={classes.textBloc} component="p" align="center">
                   Partagez vos tips : créez votre profil et dites nous ce que la mobilité vous
                   apporte dans vos expériences professionnelles et personnelles
                 </Typography>
@@ -300,9 +329,30 @@ function LandingPage() {
             </Card>
           </Grid>
         </Grid>
-        <Container className={classes.carousel}>
-          <DemoCarousel />
-        </Container>
+      </Container>
+
+      <Container className={classes.proposEquipe}>
+        <Typography className={classes.titleEquipe}>EQUIPE</Typography>
+
+        <div className={classes.blocEquipe}>
+          <div>
+            <img src={Nora} className={classes.avatarEquipe} />
+          </div>
+          <Typography className={classes.textEquipe} component="p" align="center">
+            Nora Moulali - FOUNDER & CEO
+          </Typography>
+
+          <div>
+            <img src={Yannick} className={classes.avatarEquipe} />
+          </div>
+          <Typography className={classes.textEquipe} component="p" align="center">
+            Yannick Denot - CEO
+          </Typography>
+        </div>
+      </Container>
+
+      <Container className={classes.carousel}>
+        <DemoCarousel />
       </Container>
 
       <Footer />
