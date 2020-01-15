@@ -16,6 +16,8 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Footer from '../components/Footer';
 import logo from '../assets/logo.png';
+import Nora from '../assets/Nora.jpg';
+import Yannick from '../assets/Yannick.jpg';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -46,7 +48,8 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     alignItems: 'center',
     minWidth: '100%',
-    minHeight: '100vh'
+    minHeight: '100vh',
+    backgroundColor: '#1F2C30'
   },
 
   zonecentrale: {
@@ -92,15 +95,14 @@ const useStyles = makeStyles(() => ({
     padding: '0 15%',
     marginBottom: '4%',
     marginTop: '1%',
-    textAlign: 'left',
+    textAlign: 'justify',
     '@media (max-width:961px)': {
       maxWidth: '95%'
     }
   },
   card: {
-    '&:hover': {
-      background: 'rgba(255, 240, 224)'
-    }
+    maxWidth: 345,
+    backgroundColor: '#1F2C30'
   },
   media: {
     height: 0,
@@ -143,6 +145,7 @@ const useStyles = makeStyles(() => ({
     }
   },
   title: {
+    // color: "white",
     fontWeight: 'bold',
     fontSize: '3em',
     marginBottom: '1%',
@@ -152,10 +155,90 @@ const useStyles = makeStyles(() => ({
       maxWidth: '95%'
     }
   },
-  avatar: {
-    color: 'rgba(229, 170, 75, 1)'
+  titleBloc: {
+    color: "white",
+    fontWeight: 'bold',
+    fontSize: '3em',
+    borderBottom: '10px solid #e2b439',
+    marginBottom: '10%',
+    marginTop: '2%',
+    '@media (max-width:961px)': {
+      fontSize: '2em',
+      maxWidth: '95%'
+    }
   },
-
+  avatar: {
+    color: 'white',
+    height: '80px',
+    width: '80px',
+    marginLeft: '10%'
+  },
+  avatar1: {
+    color: 'rgba(229, 170, 75, 1)',
+    height: '80px',
+    width: '80px'
+  },
+  subtitle: {
+    color: '#fad65a',
+    fontWeight: 'bold'
+  },
+  textBloc: {
+    color: 'white',
+    '@media (max-width:961px)': {
+      fontSize: '0.8em'
+    }
+  },
+  proposEquipe: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    minWidth: '100%',
+    minHeight: '100vh',
+    backgroundColor: 'white'
+  },
+  blocEquipe: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    '@media (max-width:961px)': {
+      flexDirection: 'column',
+      marginTop: '4%',
+      alignItems: 'center'
+    }
+  },
+  textEquipe: {
+    fontWeight: 'bold',
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: '20px',
+    paddingRight: '60px',
+    '@media (max-width:961px)': {
+      marginBottom: '30px',
+      paddingRight: 0,
+      paddingLeft: 0
+    }
+  },
+  titleEquipe: {
+    color: "black",
+    fontWeight: 'bold',
+    fontSize: '3em',
+    borderBottom: '10px solid #e2b439',
+    marginBottom: '10%',
+    marginTop: '2%',
+    '@media (max-width:961px)': {
+      fontSize: '2em',
+      maxWidth: '95%'
+    }
+  },
+  avatarEquipe: {
+    height: '200px',
+    width: '200px',
+    borderRadius: '50%',
+    '@media (max-width:961px)': {
+      display: 'flex',
+      justifyContent: 'center'
+    }
+  },
   carousel: {
     maxHeigth: '4%',
     display: 'flex',
@@ -178,7 +261,7 @@ const useStyles = makeStyles(() => ({
   },
   under: {
     width: '70%',
-    height: '2%',
+    height: '10px',
     margin: '0 0 2% 0',
     backgroundColor: '#ffd65b'
   },
@@ -197,6 +280,7 @@ const useStyles = makeStyles(() => ({
     paddingRight: '15%'
   }
 }));
+
 
 function LandingPage() {
   const classes = useStyles();
@@ -231,10 +315,9 @@ function LandingPage() {
         justify="center"
         style={{
           minHeight: '60vh',
-          marginTop: '30px',
+          marginTop: '1.5%',
           marginBottom: '30px',
-          maxWidth: '100%',
-          margin: '0'
+          maxWidth: '100%'
         }}
       >
         <Grid container item xs={0} md={6} justify="center">
@@ -267,7 +350,7 @@ function LandingPage() {
       </Grid>
 
       <Container className={classes.propos}>
-        <Typography className={classes.title}>FONCTIONNALITES</Typography>
+        <Typography className={classes.titleBloc}>FONCTIONNALITES</Typography>
 
         <Grid
           container
