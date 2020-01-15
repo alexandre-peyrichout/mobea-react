@@ -13,6 +13,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Footer from '../components/Footer';
+import logo from '../assets/logo.png';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -43,7 +44,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     alignItems: 'center',
     minWidth: '100%',
-    minHeight: '100vh',
+    minHeight: '100vh'
   },
 
   zonecentrale: {
@@ -81,7 +82,6 @@ const useStyles = makeStyles(() => ({
     }
   },
   card: {
-    maxWidth: 345,
     '&:hover': {
       background: 'rgba(255, 240, 224)'
     }
@@ -110,6 +110,23 @@ const useStyles = makeStyles(() => ({
     marginBottom: '3%',
     marginTop: '3%'
   },
+
+  descriptionImg: {
+    backgroundImage: `url("${fond2}")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  },
+  description: {
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '@media (max-width:961px)': {
+      maxWidth: '100%'
+    }
+  },
   title: {
     fontWeight: 'bold',
     fontSize: '3em',
@@ -120,23 +137,8 @@ const useStyles = makeStyles(() => ({
       maxWidth: '95%'
     }
   },
-
-  descriptionImg: {
-    backgroundImage: `url("${fond2}")`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  },
-  description: {
-    backgroundColor: 'black',
-    color: '#e2b439',
-    textAlign: 'center',
-    '@media (max-width:961px)': {
-      maxWidth: '100%'
-    }
-  },
   avatar: {
-    color: "rgba(229, 170, 75, 1)"
+    color: 'rgba(229, 170, 75, 1)'
   },
 
   carousel: {
@@ -146,6 +148,38 @@ const useStyles = makeStyles(() => ({
     '@media (max-width:961px)': {
       display: 'none'
     }
+  },
+  border: {
+    width: '5%',
+    height: '100%',
+    backgroundColor: '#ffd65b'
+  },
+  containImg: {
+    maxWidth: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    margin: '0',
+    padding: '0'
+  },
+  under: {
+    width: '70%',
+    height: '2%',
+    margin: '0 0 2% 0',
+    backgroundColor: '#ffd65b'
+  },
+  history: {
+    margin: '0',
+    padding: '0 0 0 15%',
+    maxWidth: '100%',
+    textAlign: 'left'
+  },
+  logo: {
+    width: '19%'
+  },
+  logoContain: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    paddingRight: '15%'
   }
 }));
 
@@ -168,13 +202,31 @@ function LandingPage() {
 
       <Grid
         container
-        spacing={1}
+        spacing={0}
         justify="center"
-        style={{ minHeight: '35vh', marginTop: '30px', marginBottom: '30px', maxWidth: '100%' }}
+        style={{
+          minHeight: '60vh',
+          marginTop: '30px',
+          marginBottom: '30px',
+          maxWidth: '100%',
+          margin: '0'
+        }}
       >
+        <Grid container item xs={0} md={6} justify="center">
+          <Container className={classes.containImg}>
+            <Container className={classes.border}></Container>
+            <Container className={classes.descriptionImg}></Container>
+          </Container>
+        </Grid>
         <Grid container item xs={12} md={6} justify="center">
           <Container className={classes.description}>
-            <Typography className={classes.title}>Notre histoire</Typography>
+            <Container className={classes.logoContain}>
+              <img className={classes.logo} src={logo} alt="" />
+            </Container>
+            <Container className={classes.history}>
+              <Typography className={classes.title}>Notre histoire</Typography>
+            </Container>
+            <Container className={classes.under}></Container>
             <Typography className={classes.boldText}>
               Une réelle volonté d'accompagner les diasporas, les bi- nationaux et les expatriés
               souhaitant s'installer entre la France et le Maroc pour une courte ou une longue
@@ -187,15 +239,10 @@ function LandingPage() {
             </Typography>
           </Container>
         </Grid>
-        <Grid container item xs={0} md={6} justify="center">
-          <Container className={classes.descriptionImg}></Container>
-        </Grid>
       </Grid>
 
       <Container className={classes.propos}>
-        <Typography className={classes.title} >
-          FONCTIONNALITES
-        </Typography>
+        <Typography className={classes.title}>FONCTIONNALITES</Typography>
 
         <Grid
           container
