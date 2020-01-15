@@ -6,6 +6,13 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import fond from '../assets/marrakech.jpg';
 import fond2 from '../assets/morocco.jpg';
+import wireframe1 from '../assets/wireframe1.png';
+import wireframe2 from '../assets/wireframe2.png';
+import wireframe3 from '../assets/wireframe3.png';
+import wireframe4 from '../assets/wireframe4.png';
+import marrakech from '../assets/marrakech.jpg';
+import bordeaux from '../assets/bordeaux.jpg';
+import rabat from '../assets/rabat.jpg';
 import LandingBar from '../components/LandingBar';
 import DemoCarousel from '../components/AutoCarousel';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
@@ -21,16 +28,25 @@ const useStyles = makeStyles(() => ({
     margin: '0',
     minWidth: '100%'
   },
+
+  head: {
+    zIndex: '0',
+    // position: 'absolute'
+  },
+
   contain: {
     margin: '0',
     padding: '0',
     minHeight: '100vh',
-    minWidth: '100%',
-    backgroundImage: `url("${fond}")`,
+    maxWidth: '100%',
+    // backgroundImage: `url("${fond}")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    background: 'rgba(229, 170, 75, 1)'
+    // background: 'rgba(229, 170, 75, 1)',
+    zIndex: '1',
+    position: 'absolute',
+    left: '0'
   },
   container: {
     minWidth: '100%',
@@ -129,9 +145,10 @@ const useStyles = makeStyles(() => ({
   title: {
     color: "white",
     fontWeight: 'bold',
-    fontSize: '6em',
+    fontSize: '5em',
     marginBottom: '1%',
     marginTop: '2%',
+    borderBottom: '10px solid #e2b439',
     '@media (max-width:961px)': {
       fontSize: '2em',
       maxWidth: '95%',
@@ -196,29 +213,34 @@ const useStyles = makeStyles(() => ({
     '@media (max-width:961px)': {
       display: 'none'
     }
-  }
+  },
+
 }));
 
 function LandingPage() {
   const classes = useStyles();
   return (
     <Container className={classes.container}>
-      <Container className={classes.contain}>
-        <LandingBar />
-        <Container className={classes.zonecentrale}>
-          <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
-          <Typography className={classes.subTitle}>Entre France & Maroc</Typography>
-          <div className={classes.buttons}>
-            <Link underline="none" className={classes.loginLinks} component={LinkRouter} to="/login">
-              <Button type="submit" variant="contained" color="secondary" className={classes.login}>
-                Accès à mon espace
+      <Container className={classes.head}>
+        <Container className={classes.contain}>
+          <LandingBar />
+          <Container className={classes.zonecentrale}>
+            <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
+            <Typography className={classes.subTitle}>Entre France & Maroc</Typography>
+            <div className={classes.buttons}>
+              <Link underline="none" className={classes.loginLinks} component={LinkRouter} to="/login">
+                <Button type="submit" variant="contained" color="secondary" className={classes.login}>
+                  Accès à mon espace
             </Button>
-            </Link>
-            <Button type="submit" variant="contained" color="primary" className={classes.submit}>
-              S'inscrire
+              </Link>
+              <Button type="submit" variant="contained" color="primary" className={classes.submit}>
+                S'inscrire
             </Button>
-          </div>
+            </div>
+          </Container>
         </Container>
+        <DemoCarousel showArrows={false} showThumbs={false} width='100%' wireframe1={marrakech} wireframe2={bordeaux} wireframe3={rabat} />
+
       </Container>
 
       <Grid
@@ -311,7 +333,7 @@ function LandingPage() {
       </Container>
 
       <Container className={classes.carousel}>
-        <DemoCarousel />
+        <DemoCarousel width='30%' wireframe1={wireframe1} wireframe2={wireframe2} wireframe3={wireframe3} wireframe4={wireframe4} />
       </Container>
 
 
