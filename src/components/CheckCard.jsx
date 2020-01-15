@@ -79,7 +79,8 @@ export default function CheckCard() {
             }}
             color="primary"
           />
-          lorem ipsum dolor
+          lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor
+          lorem ipsum dolorlorem ipsum dolorlorem
         </Card>
         <Card className={classes.container}>
           <Checkbox
