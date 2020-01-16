@@ -31,13 +31,15 @@ const useStyles = makeStyles(() => ({
 
   head: {
     zIndex: '0',
+    maxWidth: '100%',
+    padding: 0
     // position: 'absolute'
   },
 
   contain: {
     margin: '0',
     padding: '0',
-    minHeight: '100vh',
+    // minHeight: '100vh',
     maxWidth: '100%',
     // backgroundImage: `url("${fond}")`,
     backgroundSize: 'cover',
@@ -116,7 +118,7 @@ const useStyles = makeStyles(() => ({
   card: {
     maxWidth: 345,
     backgroundColor: '#1F2C30',
-    marginBottom: '20%',
+    marginBottom: '20%'
   },
   media: {
     height: 0,
@@ -143,7 +145,7 @@ const useStyles = makeStyles(() => ({
     marginTop: '3%'
   },
   title: {
-    color: "white",
+    color: 'white',
     fontWeight: 'bold',
     fontSize: '5em',
     marginBottom: '1%',
@@ -162,7 +164,7 @@ const useStyles = makeStyles(() => ({
     }
   },
   titleBloc: {
-    color: "white",
+    color: 'white',
     fontWeight: 'bold',
     fontSize: '3em',
     borderBottom: '10px solid #e2b439',
@@ -194,7 +196,7 @@ const useStyles = makeStyles(() => ({
     marginLeft: '10%'
   },
   avatar1: {
-    color: "rgba(229, 170, 75, 1)",
+    color: 'rgba(229, 170, 75, 1)',
     height: '80px',
     width: '80px'
   },
@@ -214,7 +216,9 @@ const useStyles = makeStyles(() => ({
       display: 'none'
     }
   },
-
+  root: {
+    padding: '0'
+  }
 }));
 
 function LandingPage() {
@@ -228,19 +232,36 @@ function LandingPage() {
             <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
             <Typography className={classes.subTitle}>Entre France & Maroc</Typography>
             <div className={classes.buttons}>
-              <Link underline="none" className={classes.loginLinks} component={LinkRouter} to="/login">
-                <Button type="submit" variant="contained" color="secondary" className={classes.login}>
+              <Link
+                underline="none"
+                className={classes.loginLinks}
+                component={LinkRouter}
+                to="/login"
+              >
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  className={classes.login}
+                >
                   Accès à mon espace
-            </Button>
+                </Button>
               </Link>
               <Button type="submit" variant="contained" color="primary" className={classes.submit}>
                 S'inscrire
-            </Button>
+              </Button>
             </div>
           </Container>
         </Container>
-        <DemoCarousel showArrows={false} showThumbs={false} width='100%' wireframe1={marrakech} wireframe2={bordeaux} wireframe3={rabat} />
-
+        <DemoCarousel
+          showArrows={false}
+          showThumbs={false}
+          width={'100%'}
+          height={true}
+          wireframe1={marrakech}
+          wireframe2={bordeaux}
+          wireframe3={rabat}
+        />
       </Container>
 
       <Grid
@@ -270,9 +291,7 @@ function LandingPage() {
       </Grid>
 
       <Container className={classes.propos}>
-        <Typography className={classes.titleBloc} >
-          FONCTIONNALITES
-        </Typography>
+        <Typography className={classes.titleBloc}>FONCTIONNALITES</Typography>
 
         <Grid
           container
@@ -318,7 +337,11 @@ function LandingPage() {
               <CardHeader
                 className={classes.header}
                 avatar={<ThumbUpIcon fontSize="large" className={classes.avatar1} />}
-                title={<Typography className={classes.subtitle}>RETOURS D'EXPERIENCE CERTIFIES</Typography>}
+                title={
+                  <Typography className={classes.subtitle}>
+                    RETOURS D'EXPERIENCE CERTIFIES
+                  </Typography>
+                }
                 align="center"
               />
               <CardContent>
@@ -333,9 +356,14 @@ function LandingPage() {
       </Container>
 
       <Container className={classes.carousel}>
-        <DemoCarousel width='30%' wireframe1={wireframe1} wireframe2={wireframe2} wireframe3={wireframe3} wireframe4={wireframe4} />
+        <DemoCarousel
+          width="30%"
+          wireframe1={wireframe1}
+          wireframe2={wireframe2}
+          wireframe3={wireframe3}
+          wireframe4={wireframe4}
+        />
       </Container>
-
 
       <Footer />
     </Container>

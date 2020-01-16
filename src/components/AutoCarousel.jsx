@@ -5,8 +5,15 @@ import { Carousel } from 'react-responsive-carousel';
 
 function DemoCarousel(props) {
   return (
-    <div className="container">
-      <Carousel showStatus={false} infiniteLoop autoPlay transitionTime={1000} width={props.width}>
+    <div className="contain">
+      <Carousel
+        showStatus={false}
+        infiniteLoop
+        autoPlay
+        transitionTime={1000}
+        width={props.width}
+        dynamicHeight={props.height}
+      >
         <div>
           <img src={props.wireframe1} alt="wireframe1" />
         </div>
