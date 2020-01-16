@@ -19,7 +19,7 @@ import {
   Badge,
   withStyles
 } from '@material-ui/core';
-import { SettingsOutlined, Delete, VpnKeyOutlined } from '@material-ui/icons/';
+import { Delete, VpnKeyOutlined } from '@material-ui/icons/';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
 
 import AddCircle from '@material-ui/icons/AddCircle';
@@ -137,6 +137,8 @@ const BorderLinearProgress = withStyles({
 const MyExpat2 = () => {
   const { setShow_ADD_DESTINATION } = React.useContext(Context);
   const { setShow_DELETE_DESTINATION } = React.useContext(Context);
+  const { setFocusList } = React.useContext(Context);
+
   const classes = useStyles();
   const [country, setCountry] = React.useState('');
   const [open, setOpen] = React.useState(false);
@@ -213,7 +215,7 @@ const MyExpat2 = () => {
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
               <Badge badgeContent={4} color="primary" className={classes.badge}>
-                <IconButton className={classes.iconOnTop}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(0)}>
                   <Tooltip title="Logement" placement="bottom">
                     <VpnKeyOutlined fontSize="large" />
                   </Tooltip>
@@ -230,7 +232,7 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
+              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(1)}>
                 <Tooltip title="Assurances" placement="bottom">
                   <VerifiedUserIcon fontSize="large" />
                 </Tooltip>
@@ -246,7 +248,7 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
+              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(2)}>
                 <Tooltip title="Santé" placement="bottom">
                   <FavoriteBorderIcon fontSize="large" />
                 </Tooltip>
@@ -262,7 +264,7 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
+              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(3)}>
                 <Tooltip title="Emploi" placement="bottom">
                   <WorkOutline fontSize="large" />
                 </Tooltip>
@@ -278,7 +280,7 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
+              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(4)}>
                 <Tooltip title="Administratif" placement="bottom">
                   <Assignment fontSize="large" />
                 </Tooltip>
@@ -294,7 +296,7 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
+              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(5)}>
                 <Tooltip title="Banque" placement="bottom">
                   <AccountBalance fontSize="large" />
                 </Tooltip>
