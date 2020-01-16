@@ -6,10 +6,10 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import fond from '../assets/marrakech.jpg';
 import fond2 from '../assets/morocco.jpg';
-import wireframe1 from '../assets/wireframe1.png';
-import wireframe2 from '../assets/wireframe2.png';
-import wireframe3 from '../assets/wireframe3.png';
-import wireframe4 from '../assets/wireframe4.png';
+import mobile1 from '../assets/mobile1.png';
+import mobile2 from '../assets/mobile2.png';
+import mobile3 from '../assets/mobile3.png';
+
 import marrakech from '../assets/marrakech.jpg';
 import bordeaux from '../assets/bordeaux.jpg';
 import rabat from '../assets/rabat.jpg';
@@ -524,13 +524,7 @@ function LandingPage() {
       </Container>
 
       <Container className={classes.carousel}>
-        <DemoCarousel
-          width="30%"
-          wireframe1={wireframe1}
-          wireframe2={wireframe2}
-          wireframe3={wireframe3}
-          wireframe4={wireframe4}
-        />
+        <DemoCarousel width="30%" wireframe1={mobile1} wireframe2={mobile2} wireframe3={mobile3} />
       </Container>
 
       <Footer />
