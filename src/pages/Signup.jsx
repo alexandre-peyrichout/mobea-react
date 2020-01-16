@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -67,6 +67,33 @@ const useStyles = makeStyles(theme => ({
 export default function SignUp() {
   const classes = useStyles();
 
+  const [info, setInfo] = useState({
+    email: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    city_idcity: 31,
+    country_idcountry: 11,
+    situation_idsituation: 31
+  });
+
+  const updateForm = e => {
+    setInfo({ ...info, [e.target.name]: e.target.value });
+  };
+
+  const submitForm = e => {
+    e.preventDefault();
+    console.log(info);
+    fetch("/api/user/new", {
+      method: "POST",
+      headers: new Headers({
+        "Content-Type": "application/json"
+      }),
+      body: JSON.stringify(info)
+    })
+      .then(res => res.json());
+  };
+
   return (
     <div className={classes.font}>
       <Container className={classes.container} component="main" maxWidth="xs">
@@ -78,18 +105,19 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             S'inscrire
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={submitForm}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="firstName"
+                  name="firstname"
                   variant="outlined"
                   required
                   fullWidth
                   id="firstName"
                   label="Prénom"
                   autoFocus
+                  onChange={updateForm}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -99,8 +127,9 @@ export default function SignUp() {
                   fullWidth
                   id="lastName"
                   label="Nom"
-                  name="lastName"
+                  name="lastname"
                   autoComplete="lname"
+                  onChange={updateForm}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -112,6 +141,7 @@ export default function SignUp() {
                   label="Email"
                   name="email"
                   autoComplete="email"
+                  onChange={updateForm}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -124,6 +154,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={updateForm}
                 />
               </Grid>
             </Grid>
