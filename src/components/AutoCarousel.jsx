@@ -13,6 +13,9 @@ function DemoCarousel(props) {
         transitionTime={1000}
         width={props.width}
         dynamicHeight={props.height}
+        showArrows={props.showArrows}
+        showThumbs={props.showThumbs}
+        showIndicators={props.showIndicators}
       >
         <div>
           <img src={props.wireframe1} alt="wireframe1" />

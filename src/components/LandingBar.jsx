@@ -1,9 +1,23 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import React, { useContext } from 'react';
+import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import logo from '../assets/logo.png';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { Link as LinkRouter } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+import HomeIcon from '@material-ui/icons/Home';
+import Avatar from '@material-ui/core/Avatar';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
+import ListIcon from '@material-ui/icons/List';
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import Context from '../context/Context';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -25,8 +39,96 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function LandingBar() {
+function LandingBar() {
   const classes = useStyles();
+  const { setShow_PROFIL } = useContext(Context);
+  const { setShow_FAQ } = useContext(Context);
+  const [state, setState] = React.useState({
+    right: false
+  });
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose1 = () => {
+    setAnchorEl(null);
+  };
+
+  const toggleDrawer = (right, open) => event => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [right]: open });
+  };
+
+  const sideList = side => (
+    <div
+      className={classes.list}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <List>
+        <Link underline="none" component={LinkRouter} to="/#">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <HomeIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Accueil" />
+          </ListItem>
+        </Link>
+
+        <Link underline="none" href="#destination">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <FlightTakeoffIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Ma destination" />
+          </ListItem>
+        </Link>
+
+        <Link underline="none" href="#card">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <ListIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Mes listes" />
+          </ListItem>
+        </Link>
+
+        <Link underline="none" target="_blank" href="mailto:contact@mobea.fr">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <ContactSupportIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Contact" />
+          </ListItem>
+        </Link>
+
+        <Link underline="none" onClick={() => setShow_FAQ(true)}>
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <QuestionAnswerIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="FAQ" />
+          </ListItem>
+        </Link>
+      </List>
+    </div>
+  );
 
   return (
     <div className={classes.root}>
@@ -35,8 +137,21 @@ export default function LandingBar() {
           <div className={classes.contain}>
             <img className={classes.logo} src={logo} alt="" />
           </div>
+          <DehazeIcon
+            onClick={toggleDrawer('right', true)}
+            edge="end"
+            className={classes.menuButton}
+            color="inherit"
+          >
+            <MenuIcon />
+          </DehazeIcon>
+          <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
+            {sideList('right')}
+          </Drawer>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+export default LandingBar;

@@ -41,14 +41,25 @@ const useStyles = makeStyles(() => ({
     padding: '0',
     // minHeight: '100vh',
     maxWidth: '100%',
-    // backgroundImage: `url("${fond}")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     // background: 'rgba(229, 170, 75, 1)',
     zIndex: '1',
     position: 'absolute',
-    left: '0'
+    left: '0',
+    '@media (max-width:961px)': {
+      position: 'relative',
+      backgroundImage: `url("${fond}")`
+    }
+  },
+  caroline: {
+    minWidth: '100%',
+    maxWidth: '100%',
+    padding: '0',
+    '@media (max-width:961px)': {
+      display: 'none'
+    }
   },
   container: {
     minWidth: '100%',
@@ -88,7 +99,9 @@ const useStyles = makeStyles(() => ({
     marginTop: '12%',
     '@media (max-width:961px)': {
       flexDirection: 'column',
-      marginTop: '4%'
+      marginTop: '4%',
+      diplay: 'flex',
+      justifyContent: 'center'
     }
   },
   login: {
@@ -218,6 +231,12 @@ const useStyles = makeStyles(() => ({
   },
   root: {
     padding: '0'
+  },
+  loginLinks: {
+    '@media (max-width:961px)': {
+      display: 'flex',
+      justifyContent: 'center'
+    }
   }
 }));
 
@@ -247,21 +266,37 @@ function LandingPage() {
                   Accès à mon espace
                 </Button>
               </Link>
-              <Button type="submit" variant="contained" color="primary" className={classes.submit}>
-                S'inscrire
-              </Button>
+              <Link
+                underline="none"
+                className={classes.loginLinks}
+                component={LinkRouter}
+                to="/signin"
+              >
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  S'inscrire
+                </Button>
+              </Link>
             </div>
           </Container>
         </Container>
-        <DemoCarousel
-          showArrows={false}
-          showThumbs={false}
-          width={'100%'}
-          height={true}
-          wireframe1={marrakech}
-          wireframe2={bordeaux}
-          wireframe3={rabat}
-        />
+        <Container className={classes.caroline}>
+          <DemoCarousel
+            showArrows={false}
+            showThumbs={false}
+            width={'100%'}
+            height={true}
+            wireframe1={marrakech}
+            wireframe2={bordeaux}
+            wireframe3={rabat}
+            showThumbs={false}
+            showIndicators={false}
+          />
+        </Container>
       </Container>
 
       <Grid
