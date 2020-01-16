@@ -138,11 +138,16 @@ const MyExpat2 = () => {
   const { setShow_ADD_DESTINATION } = React.useContext(Context);
   const { setShow_DELETE_DESTINATION } = React.useContext(Context);
   const { setFocusList } = React.useContext(Context);
-
+  const { list } = React.useContext(Context);
   const classes = useStyles();
   const [country, setCountry] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
+  let arrayOfBadges = list.map(el => el.tasks.filter(task => task.checked === false).length);
+  let arrayOfProgress = list.map(
+    (el, index) => ((el.tasks.length - arrayOfBadges[index]) * 100) / el.tasks.length
+  );
+  console.log(arrayOfProgress);
 
   const handleChange = event => {
     setCountry(event.target.value);
@@ -214,7 +219,7 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <Badge badgeContent={4} color="primary" className={classes.badge}>
+              <Badge badgeContent={arrayOfBadges[0]} color="primary" className={classes.badge}>
                 <IconButton className={classes.iconOnTop} onClick={() => setFocusList(0)}>
                   <Tooltip title="Logement" placement="bottom">
                     <VpnKeyOutlined fontSize="large" />
@@ -224,7 +229,7 @@ const MyExpat2 = () => {
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={50}
+                value={arrayOfProgress[0]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -232,15 +237,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(1)}>
-                <Tooltip title="Assurances" placement="bottom">
-                  <VerifiedUserIcon fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[1]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(1)}>
+                  <Tooltip title="Assurances" placement="bottom">
+                    <VerifiedUserIcon fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={50}
+                value={arrayOfProgress[1]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -248,15 +255,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(2)}>
-                <Tooltip title="Santé" placement="bottom">
-                  <FavoriteBorderIcon fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[2]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(2)}>
+                  <Tooltip title="Santé" placement="bottom">
+                    <FavoriteBorderIcon fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={32}
+                value={arrayOfProgress[2]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -264,15 +273,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(3)}>
-                <Tooltip title="Emploi" placement="bottom">
-                  <WorkOutline fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[3]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(3)}>
+                  <Tooltip title="Emploi" placement="bottom">
+                    <WorkOutline fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 variant="determinate"
                 color="secondary"
-                value={50}
+                value={arrayOfProgress[3]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -280,15 +291,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(4)}>
-                <Tooltip title="Administratif" placement="bottom">
-                  <Assignment fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[4]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(4)}>
+                  <Tooltip title="Administratif" placement="bottom">
+                    <Assignment fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={80}
+                value={arrayOfProgress[4]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -296,15 +309,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop} onClick={() => setFocusList(5)}>
-                <Tooltip title="Banque" placement="bottom">
-                  <AccountBalance fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[5]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(5)}>
+                  <Tooltip title="Banque" placement="bottom">
+                    <AccountBalance fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={11}
+                value={arrayOfProgress[5]}
                 size={70}
                 className={classes.fabProgress}
               />

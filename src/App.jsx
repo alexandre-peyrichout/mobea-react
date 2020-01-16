@@ -20,7 +20,7 @@ const App = () => {
     {
       title: 'Logement',
       tasks: [
-        { checked: true, text: 'lorem ipsum 1' },
+        { checked: false, text: 'lorem ipsum 1' },
         { checked: false, text: 'lorem ipsum 2' },
         { checked: true, text: 'lorem ipsum 3' }
       ]
@@ -30,7 +30,8 @@ const App = () => {
       tasks: [
         { checked: true, text: 'lorem ipsum 1' },
         { checked: false, text: 'lorem ipsum hodvsvdsvsdvsd 2' },
-        { checked: true, text: 'lorem ipsum dsvsvsvsvsv3' }
+        { checked: true, text: 'lorem ipsum dsvsvsvsvsv3' },
+        { checked: false, text: 'lorem ipsum 2' }
       ]
     },
     {
@@ -48,6 +49,8 @@ const App = () => {
       title: 'Emploi',
       tasks: [
         { checked: true, text: 'lorem ipsum 1' },
+        { checked: false, text: 'lorem ipsum 2' },
+        { checked: false, text: 'lorem ipsum 2' },
         { checked: false, text: 'lorem ipsum 2' },
         { checked: true, text: 'lorem ipsum 3' }
       ]
