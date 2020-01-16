@@ -22,6 +22,9 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Footer from '../components/Footer';
+import logo from '../assets/logo.png';
+import Nora from '../assets/Nora.jpg';
+import Yannick from '../assets/Yannick.jpg';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -123,7 +126,7 @@ const useStyles = makeStyles(() => ({
     padding: '0 15%',
     marginBottom: '4%',
     marginTop: '1%',
-    textAlign: 'left',
+    textAlign: 'justify',
     '@media (max-width:961px)': {
       maxWidth: '95%'
     }
@@ -157,22 +160,35 @@ const useStyles = makeStyles(() => ({
     marginBottom: '3%',
     marginTop: '3%'
   },
+  descriptionImg: {
+    backgroundImage: `url("${fond2}")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  },
+  description: {
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '@media (max-width:961px)': {
+      maxWidth: '100%'
+    }
+  },
   title: {
-    color: 'white',
     fontWeight: 'bold',
     fontSize: '5em',
     marginBottom: '1%',
     marginTop: '2%',
-    borderBottom: '10px solid #e2b439',
     '@media (max-width:961px)': {
       fontSize: '2em',
-      maxWidth: '95%',
-      marginBottom: 0
+      maxWidth: '95%'
     }
   },
   subTitle: {
     fontSize: '3em',
-    '@media (max-width:961px)': {
+    '@media (maxWidth:961px)': {
       fontSize: '1em'
     }
   },
@@ -186,20 +202,6 @@ const useStyles = makeStyles(() => ({
     '@media (max-width:961px)': {
       fontSize: '2em',
       maxWidth: '95%'
-    }
-  },
-  descriptionImg: {
-    backgroundImage: `url("${fond2}")`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  },
-  description: {
-    backgroundColor: 'black',
-    color: '#e2b439',
-    textAlign: 'center',
-    '@media (max-width:961px)': {
-      maxWidth: '100%'
     }
   },
   avatar: {
@@ -218,9 +220,62 @@ const useStyles = makeStyles(() => ({
     fontWeight: 'bold'
   },
   textBloc: {
-    color: 'white'
+    color: 'white',
+    '@media (max-width:961px)': {
+      fontSize: '0.8em'
+    }
   },
-
+  proposEquipe: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    minWidth: '100%',
+    minHeight: '100vh',
+    backgroundColor: 'white'
+  },
+  blocEquipe: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    '@media (max-width:961px)': {
+      flexDirection: 'column',
+      marginTop: '4%',
+      alignItems: 'center'
+    }
+  },
+  textEquipe: {
+    fontWeight: 'bold',
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: '20px',
+    paddingRight: '60px',
+    '@media (max-width:961px)': {
+      marginBottom: '30px',
+      paddingRight: 0,
+      paddingLeft: 0
+    }
+  },
+  titleEquipe: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: '3em',
+    borderBottom: '10px solid #e2b439',
+    marginBottom: '10%',
+    marginTop: '2%',
+    '@media (max-width:961px)': {
+      fontSize: '2em',
+      maxWidth: '95%'
+    }
+  },
+  avatarEquipe: {
+    height: '200px',
+    width: '200px',
+    borderRadius: '50%',
+    '@media (max-width:961px)': {
+      display: 'flex',
+      justifyContent: 'center'
+    }
+  },
   carousel: {
     maxHeigth: '4%',
     display: 'flex',
@@ -237,6 +292,50 @@ const useStyles = makeStyles(() => ({
       display: 'flex',
       justifyContent: 'center'
     }
+  },
+  border: {
+    width: '5%',
+    height: '100%',
+    backgroundColor: '#ffd65b'
+  },
+  containImg: {
+    maxWidth: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    margin: '0',
+    padding: '0'
+  },
+  under: {
+    width: '70%',
+    height: '10px',
+    margin: '0 0 2% 0',
+    backgroundColor: '#ffd65b'
+  },
+  history: {
+    margin: '0',
+    padding: '0 0 0 15%',
+    maxWidth: '100%',
+    textAlign: 'left'
+  },
+  logo: {
+    width: '19%'
+  },
+  logoContain: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    paddingRight: '15%'
+  },
+  titler: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: '5em',
+    marginBottom: '1%',
+    marginTop: '2%',
+    borderBottom: '10px solid #e2b439',
+    '@media (max-width:961px)': {
+      fontSize: '2em',
+      maxWidth: '95%'
+    }
   }
 }));
 
@@ -248,7 +347,7 @@ function LandingPage() {
         <Container className={classes.contain}>
           <LandingBar />
           <Container className={classes.zonecentrale}>
-            <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
+            <Typography className={classes.titler}>MOBILITE AUTREMENT</Typography>
             <Typography className={classes.subTitle}>Entre France & Maroc</Typography>
             <div className={classes.buttons}>
               <Link
@@ -301,13 +400,30 @@ function LandingPage() {
 
       <Grid
         container
-        spacing={1}
+        spacing={0}
         justify="center"
-        style={{ minHeight: '35vh', marginTop: '30px', marginBottom: '30px', maxWidth: '100%' }}
+        style={{
+          minHeight: '60vh',
+          marginTop: '1.5%',
+          marginBottom: '30px',
+          maxWidth: '100%'
+        }}
       >
+        <Grid container item xs={0} md={6} justify="center">
+          <Container className={classes.containImg}>
+            <Container className={classes.border}></Container>
+            <Container className={classes.descriptionImg}></Container>
+          </Container>
+        </Grid>
         <Grid container item xs={12} md={6} justify="center">
           <Container className={classes.description}>
-            <Typography className={classes.title}>Notre histoire</Typography>
+            <Container className={classes.logoContain}>
+              <img className={classes.logo} src={logo} alt="" />
+            </Container>
+            <Container className={classes.history}>
+              <Typography className={classes.title}>Notre histoire</Typography>
+            </Container>
+            <Container className={classes.under}></Container>
             <Typography className={classes.boldText}>
               Une réelle volonté d'accompagner les diasporas, les bi- nationaux et les expatriés
               souhaitant s'installer entre la France et le Maroc pour une courte ou une longue
@@ -319,9 +435,6 @@ function LandingPage() {
               complètent, partagent vos intérêts et que vous n'auriez probablement jamais croisés.
             </Typography>
           </Container>
-        </Grid>
-        <Grid container item xs={0} md={6} justify="center">
-          <Container className={classes.descriptionImg}></Container>
         </Grid>
       </Grid>
 
@@ -388,6 +501,26 @@ function LandingPage() {
             </Card>
           </Grid>
         </Grid>
+      </Container>
+
+      <Container className={classes.proposEquipe}>
+        <Typography className={classes.titleEquipe}>EQUIPE</Typography>
+
+        <div className={classes.blocEquipe}>
+          <div>
+            <img src={Nora} className={classes.avatarEquipe} />
+          </div>
+          <Typography className={classes.textEquipe} component="p" align="center">
+            Nora Moulali - FOUNDER & CEO
+          </Typography>
+
+          <div>
+            <img src={Yannick} className={classes.avatarEquipe} />
+          </div>
+          <Typography className={classes.textEquipe} component="p" align="center">
+            Yannick Denot - CEO
+          </Typography>
+        </div>
       </Container>
 
       <Container className={classes.carousel}>

@@ -14,7 +14,7 @@ import Container from '@material-ui/core/Container';
 import Background from '../assets/bg.jpg';
 import Logo from '../assets/logo.png';
 
-function Copyright() {
+function Copyright(props) {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       © Copyright -
