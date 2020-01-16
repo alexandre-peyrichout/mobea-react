@@ -188,8 +188,8 @@ const useStyles = makeStyles(() => ({
   },
   subTitle: {
     fontSize: '3em',
-    '@media (maxWidth:961px)': {
-      fontSize: '1em'
+    '@media (max-width:961px)': {
+      fontSize: '2em'
     }
   },
   titleBloc: {
@@ -217,7 +217,7 @@ const useStyles = makeStyles(() => ({
   },
   subtitle: {
     color: '#fad65a',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   textBloc: {
     color: 'white',
