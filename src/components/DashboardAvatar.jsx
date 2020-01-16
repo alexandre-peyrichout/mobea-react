@@ -38,16 +38,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     marginTop: '1rem',
+    marginBottom: '2rem',
     color: 'white',
     fontWeight: 'bold'
-  },
-  titleDiv: {
-    color: 'white',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '1rem',
-    paddingBottom: '1rem'
   }
 }));
 
@@ -66,7 +59,6 @@ export default function ImageAvatars() {
         <Avatar alt="placeholder" src={AvatarImg} className={classes.bigAvatar} />
       </div>
       <div className={classes.nameDiv}>Camille Dupont</div>
-      <div className={classes.titleDiv}>Titre</div>
     </Card>
   );
 }

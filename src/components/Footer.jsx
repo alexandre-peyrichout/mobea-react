@@ -10,7 +10,8 @@ import Faq from '../pages/modals/Faq';
 import Politique from '../pages/modals/Politique';
 import Copyright from '../pages/modals/Copyright';
 import Profil from '../pages/modals/Profil';
-
+import AddDestination from '../pages/modals/Add_destination';
+import DeleteDestination from '../pages/modals/Delete_destination';
 const useStyles = makeStyles(theme => ({
   logo: {
     height: '60px',
@@ -129,6 +130,8 @@ export default function Footer() {
       <Politique />
       <Copyright />
       <Profil />
+      <AddDestination />
+      <DeleteDestination />
     </Grid>
   );
 }

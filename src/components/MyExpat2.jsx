@@ -27,6 +27,7 @@ import WorkOutline from '@material-ui/icons/WorkOutlineOutlined';
 import Assignment from '@material-ui/icons/AssignmentOutlined';
 import AccountBalance from '@material-ui/icons/AccountBalanceOutlined';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import Context from '../context/Context';
 
 const useStyles = makeStyles(() => ({
   add: {
@@ -134,6 +135,8 @@ const BorderLinearProgress = withStyles({
 })(LinearProgress);
 
 const MyExpat2 = () => {
+  const { setShow_ADD_DESTINATION } = React.useContext(Context);
+  const { setShow_DELETE_DESTINATION } = React.useContext(Context);
   const classes = useStyles();
   const [country, setCountry] = React.useState('');
   const [open, setOpen] = React.useState(false);
@@ -160,10 +163,10 @@ const MyExpat2 = () => {
       <Card className={classes.childTop} id="destination">
         <div className={classes.config}>
           <Typography variant="p" className={classes.configTitle}>
-            Configurer mon expatriation
+            Ajouter une destination
           </Typography>
-          <IconButton>
-            <SettingsOutlined fontSize="medium" />
+          <IconButton color="primary" onClick={() => setShow_ADD_DESTINATION(true)}>
+            <AddCircle fontSize="medium" />
           </IconButton>
         </div>
         <FormControl className={classes.formControl}>
@@ -187,11 +190,8 @@ const MyExpat2 = () => {
               <MenuItem value={30}>Tunisia</MenuItem>
             </Select>
 
-            <IconButton>
+            <IconButton onClick={() => setShow_DELETE_DESTINATION(true)}>
               <Delete fontSize="medium" />
-            </IconButton>
-            <IconButton color="primary">
-              <AddCircle fontSize="medium" />
             </IconButton>
           </div>
         </FormControl>

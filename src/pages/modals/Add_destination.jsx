@@ -7,7 +7,7 @@ import { DialogContentText } from '@material-ui/core';
 import { DialogActions } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import Context from '../../context/Context';
-import AddIcon from '@material-ui/icons';
+import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -123,6 +123,8 @@ const Add_destination = () => {
   const handleChange = event => {
     setSituation(event.target.value);
     setCity(event.target.value);
+    setReason(event.target.value);
+    setCountry(event.target.value);
   };
 
   return (
@@ -228,7 +230,7 @@ const Add_destination = () => {
           startIcon={<AddIcon />}
           onClick={() => setShow_ADD_DESTINATION(false)}
         >
-          Valider
+          Ajouter
         </Button>
       </DialogActions>
     </Dialog>
