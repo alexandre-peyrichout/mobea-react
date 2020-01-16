@@ -72,60 +72,25 @@ function LandingBar() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <Link underline="none" component={LinkRouter} to="/#">
+
+        <Link underline="none" href="#notreHistoire">
           <ListItem button>
-            <ListItemAvatar>
-              <Avatar>
-                <HomeIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Accueil" />
+            <ListItemText primary="Notre Histoire" />
           </ListItem>
         </Link>
 
-        <Link underline="none" href="#destination">
+        <Link underline="none" href="#fonctionnalités">
           <ListItem button>
-            <ListItemAvatar>
-              <Avatar>
-                <FlightTakeoffIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Ma destination" />
+            <ListItemText primary="Fonctionnalités" />
           </ListItem>
         </Link>
 
-        <Link underline="none" href="#card">
+        <Link underline="none" href="#équipe">
           <ListItem button>
-            <ListItemAvatar>
-              <Avatar>
-                <ListIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Mes listes" />
+            <ListItemText primary="L'équipe" />
           </ListItem>
         </Link>
 
-        <Link underline="none" target="_blank" href="mailto:contact@mobea.fr">
-          <ListItem button>
-            <ListItemAvatar>
-              <Avatar>
-                <ContactSupportIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Contact" />
-          </ListItem>
-        </Link>
-
-        <Link underline="none" onClick={() => setShow_FAQ(true)}>
-          <ListItem button>
-            <ListItemAvatar>
-              <Avatar>
-                <QuestionAnswerIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="FAQ" />
-          </ListItem>
-        </Link>
       </List>
     </div>
   );
