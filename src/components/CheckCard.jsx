@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Checkbox from '@material-ui/core/Checkbox';
+import Fade from '@material-ui/core/Fade';
 // import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -49,45 +50,51 @@ export default function CheckCard() {
   const { list, setList } = React.useContext(Context);
   const { focusList, setFocusList } = React.useContext(Context);
 
-  const handleChange = event => {
+  const handleChangeFocus = event => {
     setFocusList(list.findIndex(list => list.title === event.target.value));
   };
 
-  const handleList = (task, focusList, index) => {
-    setList(list, (list[focusList].tasks[index].checked = !task.checked));
+  const handleChangeListCheck = (task, focusList, index) => {
+    setList([...list], (list[focusList].tasks[index].checked = !task.checked));
   };
 
   return (
-    <Card className={classes.card} id="card">
-      <div className={classes.flex}>
-        {/* <VerifiedUserIcon className={classes.icon} fontSize="medium" /> */}
-        <TextField
-          id="standard-select"
-          select
-          value={list[focusList].title}
-          onChange={handleChange}
-          className={classes.listSelect}
-        >
-          {list.map(option => (
-            <MenuItem key={option.title} value={option.title}>
-              {option.title}
-            </MenuItem>
-          ))}
-        </TextField>
-      </div>
-      <CardContent>
-        {list[focusList].tasks.map((task, index) => (
-          <Card className={classes.container} key={index}>
-            <Checkbox
-              checked={task.checked}
-              key={index}
-              color="primary"
-              onChange={() => handleList(task, focusList, index)}
-            />
-            {task.text}
-          </Card>
-        ))}
-      </CardContent>
-    </Card>
+    <Fade in={focusList !== 'standby' ? true : false}>
+      <Card className={classes.card} id="card">
+        {list && focusList !== 'standby' && (
+          <div>
+            <div className={classes.flex}>
+              {/* <VerifiedUserIcon className={classes.icon} fontSize="medium" /> */}
+              <TextField
+                id="standard-select"
+                select
+                value={list[focusList].title}
+                onChange={handleChangeFocus}
+                className={classes.listSelect}
+              >
+                {list.map(option => (
+                  <MenuItem key={option.title} value={option.title}>
+                    {option.title}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </div>
+            <CardContent>
+              {list[focusList].tasks.map((task, index) => (
+                <Card className={classes.container} key={index}>
+                  <Checkbox
+                    checked={task.checked}
+                    key={index}
+                    color="primary"
+                    onChange={() => handleChangeListCheck(task, focusList, index)}
+                  />
+                  {task.text}
+                </Card>
+              ))}
+            </CardContent>
+          </div>
+        )}
+      </Card>
+    </Fade>
   );
 }
