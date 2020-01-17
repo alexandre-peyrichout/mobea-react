@@ -17,6 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import AdminCountries from '../components/AdminCountries';
 
 const drawerWidth = 240;
 
@@ -85,6 +86,7 @@ export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [containerAdmin, setContainerAdmin] = React.useState('nom');
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -92,6 +94,12 @@ export default function MiniDrawer() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleClickContainer = text => {
+    if (text === 'Villes') {
+      setContainerAdmin(<AdminCountries />);
+    }
   };
 
   return (
@@ -142,7 +150,13 @@ export default function MiniDrawer() {
         <List>
           {['Villes', 'Pays', 'Utilisateurs', 'Checklists', 'Prestataires'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>
+                {index % 2 === 0 ? (
+                  <InboxIcon onClick={() => handleClickContainer(text)} />
+                ) : (
+                  <MailIcon onClick={() => handleClickContainer(text)} />
+                )}
+              </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -159,7 +173,7 @@ export default function MiniDrawer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph>
+        {/* <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
           facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
@@ -173,15 +187,16 @@ export default function MiniDrawer() {
         </Typography>
         <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-          facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-          consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-          vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-          tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+                  facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
+                  tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
+                  consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
+                  vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
+                  hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
+                  tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
+                  nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
+                  accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+        </Typography> */}
+        {containerAdmin}
       </main>
     </div>
   );
