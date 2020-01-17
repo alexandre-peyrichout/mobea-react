@@ -217,7 +217,7 @@ const useStyles = makeStyles(() => ({
   },
   subtitle: {
     color: '#fad65a',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   textBloc: {
     color: 'white',
@@ -369,7 +369,7 @@ function LandingPage() {
                 underline="none"
                 className={classes.loginLinks}
                 component={LinkRouter}
-                to="/signin"
+                to="/signup"
               >
                 <Button
                   type="submit"
@@ -421,7 +421,9 @@ function LandingPage() {
               <img className={classes.logo} src={logo} alt="" />
             </Container>
             <Container className={classes.history}>
-              <Typography id="notreHistoire" className={classes.title}>Notre histoire</Typography>
+              <Typography id="notreHistoire" className={classes.title}>
+                Notre histoire
+              </Typography>
             </Container>
             <Container className={classes.under}></Container>
             <Typography className={classes.boldText}>
@@ -439,7 +441,9 @@ function LandingPage() {
       </Grid>
 
       <Container className={classes.propos}>
-        <Typography id="fonctionnalités" className={classes.titleBloc}>FONCTIONNALITES</Typography>
+        <Typography id="fonctionnalités" className={classes.titleBloc}>
+          FONCTIONNALITES
+        </Typography>
 
         <Grid
           container
@@ -504,7 +508,9 @@ function LandingPage() {
       </Container>
 
       <Container className={classes.proposEquipe}>
-        <Typography id="équipe" className={classes.titleEquipe}>EQUIPE</Typography>
+        <Typography id="équipe" className={classes.titleEquipe}>
+          EQUIPE
+        </Typography>
 
         <div className={classes.blocEquipe}>
           <div>
