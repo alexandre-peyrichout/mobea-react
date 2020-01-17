@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import NotFound from './pages/404';
 import LandingPage from './pages/LandingPage';
 import Context from './context/Context';
+import Admin from './pages/Admin';
 
 const App = () => {
   const [show_FAQ, setShow_FAQ] = useState(false);
@@ -103,6 +104,7 @@ const App = () => {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/admin" component={Admin} />
             <Route path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>
