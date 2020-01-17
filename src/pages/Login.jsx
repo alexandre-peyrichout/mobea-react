@@ -18,7 +18,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       © Copyright -
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="/">
         Mobea
       </Link>
     </Typography>
@@ -107,13 +107,15 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Se souvenir de moi"
             />
+
             <Button
               type="submit"
+              component={LinkRouter}
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
-              href="https://eager-roentgen-a69bd8.netlify.com/login"
+              to="/dashboard"
             >
               Se connecter
             </Button>
