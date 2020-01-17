@@ -6,6 +6,13 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import fond from '../assets/marrakech.jpg';
 import fond2 from '../assets/morocco.jpg';
+import mobile1 from '../assets/mobile1.png';
+import mobile2 from '../assets/mobile2.png';
+import mobile3 from '../assets/mobile3.png';
+
+import marrakech from '../assets/marrakech.jpg';
+import bordeaux from '../assets/bordeaux.jpg';
+import rabat from '../assets/rabat.jpg';
 import LandingBar from '../components/LandingBar';
 import DemoCarousel from '../components/AutoCarousel';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
@@ -24,16 +31,38 @@ const useStyles = makeStyles(() => ({
     margin: '0',
     minWidth: '100%'
   },
+
+  head: {
+    zIndex: '0',
+    maxWidth: '100%',
+    padding: 0
+    // position: 'absolute'
+  },
+
   contain: {
     margin: '0',
     padding: '0',
-    minHeight: '100vh',
-    minWidth: '100%',
-    backgroundImage: `url("${fond}")`,
+    // minHeight: '100vh',
+    maxWidth: '100%',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    background: 'rgba(229, 170, 75, 1)'
+    // background: 'rgba(229, 170, 75, 1)',
+    zIndex: '1',
+    position: 'absolute',
+    left: '0',
+    '@media (max-width:961px)': {
+      position: 'relative',
+      backgroundImage: `url("${fond}")`
+    }
+  },
+  caroline: {
+    minWidth: '100%',
+    maxWidth: '100%',
+    padding: '0',
+    '@media (max-width:961px)': {
+      display: 'none'
+    }
   },
   container: {
     minWidth: '100%',
@@ -73,7 +102,9 @@ const useStyles = makeStyles(() => ({
     marginTop: '12%',
     '@media (max-width:961px)': {
       flexDirection: 'column',
-      marginTop: '4%'
+      marginTop: '4%',
+      diplay: 'flex',
+      justifyContent: 'center'
     }
   },
   login: {
@@ -102,7 +133,8 @@ const useStyles = makeStyles(() => ({
   },
   card: {
     maxWidth: 345,
-    backgroundColor: '#1F2C30'
+    backgroundColor: '#1F2C30',
+    marginBottom: '20%'
   },
   media: {
     height: 0,
@@ -145,9 +177,8 @@ const useStyles = makeStyles(() => ({
     }
   },
   title: {
-    // color: "white",
     fontWeight: 'bold',
-    fontSize: '3em',
+    fontSize: '5em',
     marginBottom: '1%',
     marginTop: '2%',
     '@media (max-width:961px)': {
@@ -155,8 +186,14 @@ const useStyles = makeStyles(() => ({
       maxWidth: '95%'
     }
   },
+  subTitle: {
+    fontSize: '3em',
+    '@media (max-width:961px)': {
+      fontSize: '2em'
+    }
+  },
   titleBloc: {
-    color: "white",
+    color: 'white',
     fontWeight: 'bold',
     fontSize: '3em',
     borderBottom: '10px solid #e2b439',
@@ -180,7 +217,7 @@ const useStyles = makeStyles(() => ({
   },
   subtitle: {
     color: '#fad65a',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   textBloc: {
     color: 'white',
@@ -219,7 +256,7 @@ const useStyles = makeStyles(() => ({
     }
   },
   titleEquipe: {
-    color: "black",
+    color: 'black',
     fontWeight: 'bold',
     fontSize: '3em',
     borderBottom: '10px solid #e2b439',
@@ -245,6 +282,15 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     '@media (max-width:961px)': {
       display: 'none'
+    }
+  },
+  root: {
+    padding: '0'
+  },
+  loginLinks: {
+    '@media (max-width:961px)': {
+      display: 'flex',
+      justifyContent: 'center'
     }
   },
   border: {
@@ -278,34 +324,77 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'flex-end',
     paddingRight: '15%'
+  },
+  titler: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: '5em',
+    marginBottom: '1%',
+    marginTop: '2%',
+    borderBottom: '10px solid #e2b439',
+    '@media (max-width:961px)': {
+      fontSize: '2em',
+      maxWidth: '95%'
+    }
   }
 }));
-
 
 function LandingPage() {
   const classes = useStyles();
   return (
     <Container className={classes.container}>
-      <Container className={classes.contain}>
-        <LandingBar />
-        <Container className={classes.zonecentrale}>
-          <Typography className={classes.title}>MOBILITE AUTREMENT</Typography>
-          <Typography className={classes.subTitle}>ENTRE FRANCE & MAROC</Typography>
-          <div className={classes.buttons}>
-            <Link
-              underline="none"
-              className={classes.loginLinks}
-              component={LinkRouter}
-              to="/login"
-            >
-              <Button type="submit" variant="contained" color="secondary" className={classes.login}>
-                Accès à mon espace
-              </Button>
-            </Link>
-            <Button type="submit" variant="contained" color="primary" className={classes.submit}>
-              S'inscrire
-            </Button>
-          </div>
+      <Container className={classes.head}>
+        <Container className={classes.contain}>
+          <LandingBar />
+          <Container className={classes.zonecentrale}>
+            <Typography className={classes.titler}>MOBILITE AUTREMENT</Typography>
+            <Typography className={classes.subTitle}>Entre France & Maroc</Typography>
+            <div className={classes.buttons}>
+              <Link
+                underline="none"
+                className={classes.loginLinks}
+                component={LinkRouter}
+                to="/login"
+              >
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  className={classes.login}
+                >
+                  Accès à mon espace
+                </Button>
+              </Link>
+              <Link
+                underline="none"
+                className={classes.loginLinks}
+                component={LinkRouter}
+                to="/signin"
+              >
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  S'inscrire
+                </Button>
+              </Link>
+            </div>
+          </Container>
+        </Container>
+        <Container className={classes.caroline}>
+          <DemoCarousel
+            showArrows={false}
+            showThumbs={false}
+            width={'100%'}
+            height={true}
+            wireframe1={marrakech}
+            wireframe2={bordeaux}
+            wireframe3={rabat}
+            showThumbs={false}
+            showIndicators={false}
+          />
         </Container>
       </Container>
 
@@ -332,7 +421,7 @@ function LandingPage() {
               <img className={classes.logo} src={logo} alt="" />
             </Container>
             <Container className={classes.history}>
-              <Typography className={classes.title}>Notre histoire</Typography>
+              <Typography id="notreHistoire" className={classes.title}>Notre histoire</Typography>
             </Container>
             <Container className={classes.under}></Container>
             <Typography className={classes.boldText}>
@@ -350,7 +439,7 @@ function LandingPage() {
       </Grid>
 
       <Container className={classes.propos}>
-        <Typography className={classes.titleBloc}>FONCTIONNALITES</Typography>
+        <Typography id="fonctionnalités" className={classes.titleBloc}>FONCTIONNALITES</Typography>
 
         <Grid
           container
@@ -415,7 +504,7 @@ function LandingPage() {
       </Container>
 
       <Container className={classes.proposEquipe}>
-        <Typography className={classes.titleEquipe}>EQUIPE</Typography>
+        <Typography id="équipe" className={classes.titleEquipe}>EQUIPE</Typography>
 
         <div className={classes.blocEquipe}>
           <div>
@@ -435,7 +524,7 @@ function LandingPage() {
       </Container>
 
       <Container className={classes.carousel}>
-        <DemoCarousel />
+        <DemoCarousel width="30%" wireframe1={mobile1} wireframe2={mobile2} wireframe3={mobile3} />
       </Container>
 
       <Footer />
