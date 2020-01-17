@@ -15,6 +15,64 @@ const App = () => {
   const [show_ADD_DESTINATION, setShow_ADD_DESTINATION] = useState(false);
   const [show_DELETE_DESTINATION, setShow_DELETE_DESTINATION] = useState(false);
   const [show_EDIT_DESTINATION, setShow_EDIT_DESTINATION] = useState(false);
+  const [focusList, setFocusList] = React.useState(0); // liste visible sur le dashboard par défaut (index 0 = Logement)
+  const [list, setList] = useState([
+    {
+      title: 'Logement',
+      tasks: [
+        { checked: false, text: 'lorem ipsum 1' },
+        { checked: false, text: 'lorem ipsum 2' },
+        { checked: true, text: 'lorem ipsum 3' }
+      ]
+    },
+    {
+      title: 'Assurances',
+      tasks: [
+        { checked: true, text: 'lorem ipsum 1' },
+        { checked: false, text: 'lorem ipsum hodvsvdsvsdvsd 2' },
+        { checked: true, text: 'lorem ipsum dsvsvsvsvsv3' },
+        { checked: false, text: 'lorem ipsum 2' }
+      ]
+    },
+    {
+      title: 'Santé',
+      tasks: [
+        { checked: false, text: 'lorem ipsum 1' },
+        { checked: false, text: 'lorem ipsum 2' },
+        { checked: false, text: 'lorem ipsum 3' },
+        { checked: false, text: 'lorem ipsum 3' },
+        { checked: false, text: 'lorem ipsum 3' },
+        { checked: false, text: 'lorem ipsum 3' }
+      ]
+    },
+    {
+      title: 'Emploi',
+      tasks: [
+        { checked: true, text: 'lorem ipsum 1' },
+        { checked: false, text: 'lorem ipsum 2' },
+        { checked: false, text: 'lorem ipsum 2' },
+        { checked: false, text: 'lorem ipsum 2' },
+        { checked: true, text: 'lorem ipsum 3' }
+      ]
+    },
+    {
+      title: 'Administratif',
+      tasks: [
+        { checked: true, text: 'lorem ipsum 1' },
+        { checked: false, text: 'lorem ipsum 2' },
+        { checked: true, text: 'lorem ipsum 3' }
+      ]
+    },
+    {
+      title: 'Banque',
+      tasks: [
+        { checked: true, text: 'lorem ipsum 1' },
+        { checked: false, text: 'lorem ipsum 2' },
+        { checked: true, text: 'lorem ipsum 3' }
+      ]
+    }
+  ]);
+
   return (
     <div>
       <Context.Provider
@@ -32,7 +90,11 @@ const App = () => {
           show_DELETE_DESTINATION,
           setShow_DELETE_DESTINATION,
           show_EDIT_DESTINATION,
-          setShow_EDIT_DESTINATION
+          setShow_EDIT_DESTINATION,
+          list,
+          setList,
+          focusList,
+          setFocusList
         }}
       >
         <BrowserRouter>

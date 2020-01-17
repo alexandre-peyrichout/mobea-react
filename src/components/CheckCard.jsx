@@ -2,12 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import Checkbox from '@material-ui/core/Checkbox';
-
-import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
-import { Typography } from '@material-ui/core';
+// import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Context from '../context/Context';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -19,7 +18,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '16px 16px 0px 24px'
+    padding: '16px 16px 0px 16px'
   },
   container: {
     display: 'flex',
@@ -29,10 +28,17 @@ const useStyles = makeStyles(() => ({
     backgroundColor: 'rgba(255, 255, 255,0.85)',
     margin: '4px 0px'
   },
-  listTitle: {
-    fontSize: '1.5rem',
-    color: 'white'
+  listSelect: {
+    flexGrow: 1,
+    margin: '0px 10px 0px 10px',
+
+    '& *': {
+      color: 'white',
+      fontSize: '1.5rem',
+      textAlign: 'center'
+    }
   },
+
   icon: {
     color: 'white'
   }
@@ -40,65 +46,47 @@ const useStyles = makeStyles(() => ({
 
 export default function CheckCard() {
   const classes = useStyles();
+  const { list, setList } = React.useContext(Context);
+  const { focusList, setFocusList } = React.useContext(Context);
+
+  const handleChangeFocus = event => {
+    setFocusList(list.findIndex(list => list.title === event.target.value));
+  };
+
+  const handleChangeListCheck = (task, focusList, index) => {
+    setList([...list], (list[focusList].tasks[index].checked = !task.checked));
+  };
 
   return (
     <Card className={classes.card} id="card">
       <div className={classes.flex}>
-        <VerifiedUserIcon className={classes.icon} fontSize="medium" />
-        <Typography variant="h3" className={classes.listTitle}>
-          Assurances
-        </Typography>
-        <IconButton>
-          <ArrowDropDownCircleIcon className={classes.listTitle} />
-        </IconButton>
+        {/* <VerifiedUserIcon className={classes.icon} fontSize="medium" /> */}
+        <TextField
+          id="standard-select"
+          select
+          value={list[focusList].title}
+          onChange={handleChangeFocus}
+          className={classes.listSelect}
+        >
+          {list.map(option => (
+            <MenuItem key={option.title} value={option.title}>
+              {option.title}
+            </MenuItem>
+          ))}
+        </TextField>
       </div>
       <CardContent>
-        <Card className={classes.container}>
-          <Checkbox
-            checked
-            inputProps={{
-              'aria-label': 'primary checkbox'
-            }}
-            color="primary"
-          />
-          lorem ipsum dolor
-        </Card>
-        <Card className={classes.container}>
-          <Checkbox
-            inputProps={{
-              'aria-label': 'primary checkbox'
-            }}
-            color="primary"
-          />
-          lorem ipsum dolor
-        </Card>
-        <Card className={classes.container}>
-          <Checkbox
-            inputProps={{
-              'aria-label': 'primary checkbox'
-            }}
-            color="primary"
-          />
-          lorem ipsum dolor
-        </Card>
-        <Card className={classes.container}>
-          <Checkbox
-            inputProps={{
-              'aria-label': 'primary checkbox'
-            }}
-            color="primary"
-          />
-          lorem ipsum dolor
-        </Card>
-        <Card className={classes.container}>
-          <Checkbox
-            inputProps={{
-              'aria-label': 'primary checkbox'
-            }}
-            color="primary"
-          />
-          lorem ipsum dolor
-        </Card>
+        {list[focusList].tasks.map((task, index) => (
+          <Card className={classes.container} key={index}>
+            <Checkbox
+              checked={task.checked}
+              key={index}
+              color="primary"
+              onChange={() => handleChangeListCheck(task, focusList, index)}
+            />
+            {task.text}
+          </Card>
+        ))}
       </CardContent>
     </Card>
   );

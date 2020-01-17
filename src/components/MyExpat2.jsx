@@ -19,7 +19,7 @@ import {
   Badge,
   withStyles
 } from '@material-ui/core';
-import { SettingsOutlined, Delete, VpnKeyOutlined } from '@material-ui/icons/';
+import { Delete, VpnKeyOutlined } from '@material-ui/icons/';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
 
 import AddCircle from '@material-ui/icons/AddCircle';
@@ -27,6 +27,7 @@ import WorkOutline from '@material-ui/icons/WorkOutlineOutlined';
 import Assignment from '@material-ui/icons/AssignmentOutlined';
 import AccountBalance from '@material-ui/icons/AccountBalanceOutlined';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import Context from '../context/Context';
 
 const useStyles = makeStyles(() => ({
   add: {
@@ -134,10 +135,19 @@ const BorderLinearProgress = withStyles({
 })(LinearProgress);
 
 const MyExpat2 = () => {
+  const { setShow_ADD_DESTINATION } = React.useContext(Context);
+  const { setShow_DELETE_DESTINATION } = React.useContext(Context);
+  const { setFocusList } = React.useContext(Context);
+  const { list } = React.useContext(Context);
   const classes = useStyles();
   const [country, setCountry] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
+  let arrayOfBadges = list.map(el => el.tasks.filter(task => task.checked === false).length);
+  let arrayOfProgress = list.map(
+    (el, index) => ((el.tasks.length - arrayOfBadges[index]) * 100) / el.tasks.length
+  );
+  let globalProgress = Math.round(arrayOfProgress.reduce((a, b) => a + b) / arrayOfProgress.length);
 
   const handleChange = event => {
     setCountry(event.target.value);
@@ -160,10 +170,10 @@ const MyExpat2 = () => {
       <Card className={classes.childTop} id="destination">
         <div className={classes.config}>
           <Typography variant="p" className={classes.configTitle}>
-            Configurer mon expatriation
+            Ajouter une destination
           </Typography>
-          <IconButton>
-            <SettingsOutlined fontSize="medium" />
+          <IconButton color="primary" onClick={() => setShow_ADD_DESTINATION(true)}>
+            <AddCircle fontSize="medium" />
           </IconButton>
         </div>
         <FormControl className={classes.formControl}>
@@ -187,19 +197,16 @@ const MyExpat2 = () => {
               <MenuItem value={30}>Tunisia</MenuItem>
             </Select>
 
-            <IconButton>
+            <IconButton onClick={() => setShow_DELETE_DESTINATION(true)}>
               <Delete fontSize="medium" />
-            </IconButton>
-            <IconButton color="primary">
-              <AddCircle fontSize="medium" />
             </IconButton>
           </div>
         </FormControl>
         <div className={classes.progress}>
           <Typography color="primary" variant="h5" className={classes.progressTitle}>
-            75% des tâches effectuées
+            {globalProgress}% des tâches effectuées
           </Typography>
-          <BorderLinearProgress variant="determinate" color="secondary" value={75} />
+          <BorderLinearProgress variant="determinate" color="secondary" value={globalProgress} />
         </div>
       </Card>
       {/* deuxieme card */}
@@ -212,8 +219,8 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <Badge badgeContent={4} color="primary" className={classes.badge}>
-                <IconButton className={classes.iconOnTop}>
+              <Badge badgeContent={arrayOfBadges[0]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(0)}>
                   <Tooltip title="Logement" placement="bottom">
                     <VpnKeyOutlined fontSize="large" />
                   </Tooltip>
@@ -222,7 +229,7 @@ const MyExpat2 = () => {
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={50}
+                value={arrayOfProgress[0]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -230,15 +237,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Assurances" placement="bottom">
-                  <VerifiedUserIcon fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[1]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(1)}>
+                  <Tooltip title="Assurances" placement="bottom">
+                    <VerifiedUserIcon fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={50}
+                value={arrayOfProgress[1]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -246,15 +255,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Santé" placement="bottom">
-                  <FavoriteBorderIcon fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[2]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(2)}>
+                  <Tooltip title="Santé" placement="bottom">
+                    <FavoriteBorderIcon fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={32}
+                value={arrayOfProgress[2]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -262,15 +273,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Emploi" placement="bottom">
-                  <WorkOutline fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[3]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(3)}>
+                  <Tooltip title="Emploi" placement="bottom">
+                    <WorkOutline fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 variant="determinate"
                 color="secondary"
-                value={50}
+                value={arrayOfProgress[3]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -278,15 +291,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Administratif" placement="bottom">
-                  <Assignment fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[4]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(4)}>
+                  <Tooltip title="Administratif" placement="bottom">
+                    <Assignment fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={80}
+                value={arrayOfProgress[4]}
                 size={70}
                 className={classes.fabProgress}
               />
@@ -294,15 +309,17 @@ const MyExpat2 = () => {
           </Grid>
           <Grid item xs={4}>
             <Card className={classes.wrapper}>
-              <IconButton className={classes.iconOnTop}>
-                <Tooltip title="Banque" placement="bottom">
-                  <AccountBalance fontSize="large" />
-                </Tooltip>
-              </IconButton>
+              <Badge badgeContent={arrayOfBadges[5]} color="primary" className={classes.badge}>
+                <IconButton className={classes.iconOnTop} onClick={() => setFocusList(5)}>
+                  <Tooltip title="Banque" placement="bottom">
+                    <AccountBalance fontSize="large" />
+                  </Tooltip>
+                </IconButton>
+              </Badge>
               <CircularProgress
                 color="secondary"
                 variant="determinate"
-                value={11}
+                value={arrayOfProgress[5]}
                 size={70}
                 className={classes.fabProgress}
               />

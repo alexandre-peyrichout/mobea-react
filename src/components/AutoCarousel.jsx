@@ -6,9 +6,6 @@ import wireframe1 from '../assets/wireframe1.png';
 import wireframe2 from '../assets/wireframe2.png';
 import wireframe3 from '../assets/wireframe3.png';
 import wireframe4 from '../assets/wireframe4.png';
-import login from '../assets/login.png';
-import dashboard from '../assets/dashboard.png';
-import test from '../assets/test.png';
 
 function DemoCarousel() {
   return (

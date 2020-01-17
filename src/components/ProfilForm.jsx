@@ -49,13 +49,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     marginBottom: 15
   },
-  // blocSave: {
-  //   display: 'flex',
-  //   flexDirection: 'row',
-  //   justifyContent: 'center',
-  //   marginBottom: 15,
-  //   marginTop: 20
-  // },
+
   titlePartie: {
     borderBottom: '1px solid black',
     marginBottom: '20px',
@@ -125,7 +119,7 @@ export default function IconLabelButtons() {
             className={classes.button}
             startIcon={<CloudUploadIcon />}
           >
-            Télécharger un fichier
+            Télécharger un avatar
           </Button>
         </div>
       </div>
@@ -201,17 +195,6 @@ export default function IconLabelButtons() {
             />
           </div>
         </form>
-        {/* <div className={classes.blocSave}>
-          <Button
-            variant="contained"
-            color="primary"
-            size="medium"
-            className={classes.button}
-            startIcon={<SaveIcon />}
-          >
-            Sauvegarder et mettre à jour
-          </Button>
-        </div> */}
       </div>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
