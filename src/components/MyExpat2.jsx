@@ -147,7 +147,7 @@ const MyExpat2 = () => {
   let arrayOfProgress = list.map(
     (el, index) => ((el.tasks.length - arrayOfBadges[index]) * 100) / el.tasks.length
   );
-  console.log(arrayOfProgress);
+  let globalProgress = Math.round(arrayOfProgress.reduce((a, b) => a + b) / arrayOfProgress.length);
 
   const handleChange = event => {
     setCountry(event.target.value);
@@ -204,9 +204,9 @@ const MyExpat2 = () => {
         </FormControl>
         <div className={classes.progress}>
           <Typography color="primary" variant="h5" className={classes.progressTitle}>
-            75% des tâches effectuées
+            {globalProgress}% des tâches effectuées
           </Typography>
-          <BorderLinearProgress variant="determinate" color="secondary" value={75} />
+          <BorderLinearProgress variant="determinate" color="secondary" value={globalProgress} />
         </div>
       </Card>
       {/* deuxieme card */}
