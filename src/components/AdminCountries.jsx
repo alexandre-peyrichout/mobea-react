@@ -4,29 +4,20 @@ import MaterialTable from 'material-table';
 export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
     columns: [
-      { title: 'Name', field: 'name' },
-      { title: 'Surname', field: 'surname' },
-      { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-      {
-        title: 'Birth Place',
-        field: 'birthCity',
-        lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' }
-      }
+      { title: 'Nom', field: 'name' },
+      { title: 'Drapeaux', field: 'flag' }
     ],
     data: [
-      { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-      {
-        name: 'Zerya Betül',
-        surname: 'Baran',
-        birthYear: 2017,
-        birthCity: 34
-      }
+      { name: 'Maroc', flag: 'flag1' },
+      { name: 'Allemagne', flag: 'flag2' },
+      { name: 'Tunisie', flag: 'flag3' },
+      { name: 'Sénégal', flag: 'flag4' }
     ]
   });
 
   return (
     <MaterialTable
-      title="Editable Example"
+      title="Liste des Pays"
       columns={state.columns}
       data={state.data}
       editable={{
