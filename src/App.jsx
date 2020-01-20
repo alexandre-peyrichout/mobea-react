@@ -6,7 +6,7 @@ import Dashboard from './pages/Dashboard';
 import NotFound from './pages/404';
 import LandingPage from './pages/LandingPage';
 import Context from './context/Context';
-import Admin from './pages/Admin';
+import Admin from './pages/admin/Admin';
 
 const App = () => {
   const [show_FAQ, setShow_FAQ] = useState(false);

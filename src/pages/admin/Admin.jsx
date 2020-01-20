@@ -16,9 +16,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
-import AdminCountries from '../../components/AdminCountries';
-import AdminUsers from '../../components/AdminUsers';
-import AdminTasks from '../../components/AdminTasks';
+import AdminCountries from './AdminCountries';
+import AdminUsers from './AdminUsers';
+import AdminTasks from './AdminTasks';
+import Cities from './AdminCities';
+import AdminProvider from './AdminProvider';
 
 const drawerWidth = 240;
 
@@ -106,6 +108,8 @@ export default function MiniDrawer() {
       setContainerAdmin(<AdminUsers />);
     } else if (text === 'Checklists') {
       setContainerAdmin(<AdminTasks />);
+    } else if (text === 'Prestataires') {
+      setContainerAdmin(<AdminProvider />);
     }
   };
 
@@ -161,8 +165,8 @@ export default function MiniDrawer() {
                 {index % 5 === 0 ? (
                   <MailIcon onClick={() => handleClickContainer(text)} />
                 ) : (
-                    <MailIcon onClick={() => handleClickContainer(text)} />
-                  )}
+                  <MailIcon onClick={() => handleClickContainer(text)} />
+                )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>

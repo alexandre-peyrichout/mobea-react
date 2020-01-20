@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MaterialTable from 'material-table';
+import axios from 'axios';
+import { ArrowBackIos } from '@material-ui/icons';
 
 export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
@@ -8,12 +10,22 @@ export default function MaterialTableDemo() {
       { title: 'Drapeaux', field: 'flag' }
     ],
     data: [
-      { name: 'Maroc', flag: 'flag1' },
-      { name: 'Allemagne', flag: 'flag2' },
+      { name: 'test', flag: 'flag' },
+      { name: 'test', flag: 'flag2' },
       { name: 'Tunisie', flag: 'flag3' },
       { name: 'Sénégal', flag: 'flag4' }
     ]
   });
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3000/api/country')
+      .then(response => response.data)
+      .then(data => setState({ ...state, data: data }))
+      .catch(error => console.log(error));
+  }, []);
+
+  console.log(state);
 
   return (
     <MaterialTable

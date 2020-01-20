@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MaterialTable from 'material-table';
+import axios from 'axios';
 
 export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
@@ -77,6 +78,14 @@ export default function MaterialTableDemo() {
       }
     ]
   });
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3000/api/task')
+      .then(response => response.data)
+      .then(data => setState({ ...state, data: data }))
+      .catch(error => console.log(error));
+  }, []);
 
   return (
     <MaterialTable
