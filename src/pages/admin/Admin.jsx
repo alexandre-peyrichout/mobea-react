@@ -98,7 +98,9 @@ export default function MiniDrawer() {
   };
 
   const handleClickContainer = text => {
-    if (text === 'Pays') {
+    if (text === 'Villes') {
+      setContainerAdmin(<Cities />);
+    } else if (text === 'Pays') {
       setContainerAdmin(<AdminCountries />);
     } else if (text === 'Utilisateurs') {
       setContainerAdmin(<AdminUsers />);
