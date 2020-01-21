@@ -10,7 +10,11 @@ export default function MaterialTableDemo() {
       { title: 'Prénom', field: 'firstname' },
       { title: 'Nom', field: 'lastname' },
       { title: 'Date de naissance', field: 'birthday', type: 'date' },
-      { title: 'Situation', field: 'situation' }
+      { title: 'Mot de passe', field: 'password' },
+      { title: 'Adresse', field: 'address' },
+      { title: 'City', field: 'city_idcity' },
+      { title: 'Country', field: 'country_idcountry' },
+      { title: 'Situation', field: 'situation_idsituation' }
     ],
     data: [
       {
@@ -89,6 +93,24 @@ export default function MaterialTableDemo() {
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
+            axios({
+              method: 'put',
+              url: `http://localhost:3000/api/user/${newData.iduser}`,
+              data: {
+                avatar: newData.avatar,
+                email: newData.email,
+                firstname: newData.firstname,
+                lastname: newData.lastname,
+                birthday: newData.birthday,
+                password: newData.password,
+                address: newData.address,
+                city_idcity: newData.city_idcity,
+                country_idcountry: newData.country_idcountry,
+                situation_idsituation: newData.situation_idsituation
+              }
+            }).then(function(response) {
+              console.log(response.data);
+            });
             setTimeout(() => {
               resolve();
               if (oldData) {
