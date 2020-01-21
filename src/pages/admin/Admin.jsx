@@ -89,7 +89,7 @@ export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [containerAdmin, setContainerAdmin] = React.useState('nom');
+  const [containerAdmin, setContainerAdmin] = React.useState('Bienvenue Admin !');
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -165,8 +165,8 @@ export default function MiniDrawer() {
                 {index % 5 === 0 ? (
                   <MailIcon onClick={() => handleClickContainer(text)} />
                 ) : (
-                  <MailIcon onClick={() => handleClickContainer(text)} />
-                )}
+                    <MailIcon onClick={() => handleClickContainer(text)} />
+                  )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
