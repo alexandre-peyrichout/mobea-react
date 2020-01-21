@@ -9,7 +9,7 @@ export default function MaterialTableDemo() {
       { title: 'Description', field: 'description' },
       { title: 'Pays', field: 'country_idcountry' },
       { title: 'Type', field: 'type' },
-      { title: 'Catégorie', field: 'category', type: 'date' },
+      { title: 'Catégorie', field: 'category' },
       { title: 'Contact', field: 'contact' },
       { title: 'Echanges', field: 'exchanges' }
     ],
