@@ -46,7 +46,6 @@ export default function MaterialTableDemo() {
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
-            console.log(newData, 'okhjcdk');
             axios({
               method: 'put',
               url: `http://localhost:3000/api/city/${newData.idcity}`,
