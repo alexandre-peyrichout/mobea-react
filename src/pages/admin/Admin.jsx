@@ -85,11 +85,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function MiniDrawer() {
+export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [containerAdmin, setContainerAdmin] = React.useState('Bienvenue Admin !');
+  const [containerAdmin, setContainerAdmin] = React.useState('Bienvenu Admin');
+  console.log('minidrawer', props);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -101,7 +102,7 @@ export default function MiniDrawer() {
 
   const handleClickContainer = text => {
     if (text === 'Villes') {
-      setContainerAdmin(<Cities />);
+      setContainerAdmin(<Cities {...props} />);
     } else if (text === 'Pays') {
       setContainerAdmin(<AdminCountries />);
     } else if (text === 'Utilisateurs') {
