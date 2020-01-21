@@ -4,7 +4,10 @@ import axios from 'axios';
 
 export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
-    columns: [{ title: 'Nom', field: 'name' }],
+    columns: [
+      { title: 'Nom', field: 'name' },
+      { title: 'Country', field: 'country_idcountry' }
+    ],
     data: [{ name: 'test' }, { name: 'Rabat' }, { name: 'Tanger' }, { name: 'Agadir' }]
   });
 
@@ -24,6 +27,14 @@ export default function MaterialTableDemo() {
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {
+            axios
+              .post('http://localhost:3000/api/city/new', {
+                name: newData.name,
+                country_idcountry: newData.country_idcountry
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
             setTimeout(() => {
               resolve();
               setState(prevState => {
@@ -35,10 +46,22 @@ export default function MaterialTableDemo() {
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
+            console.log(newData, 'okhjcdk');
+            axios({
+              method: 'put',
+              url: `http://localhost:3000/api/city/${newData.idcity}`,
+              data: {
+                name: newData.name,
+                country_idcountry: newData.country_idcountry
+              }
+            }).then(function(response) {
+              console.log(response.data);
+            });
             setTimeout(() => {
               resolve();
               if (oldData) {
                 setState(prevState => {
+                  console.log(newData);
                   const data = [...prevState.data];
                   data[data.indexOf(oldData)] = newData;
                   return { ...prevState, data };
