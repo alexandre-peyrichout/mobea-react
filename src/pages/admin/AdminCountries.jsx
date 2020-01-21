@@ -35,6 +35,14 @@ export default function MaterialTableDemo() {
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {
+            axios
+              .post('http://localhost:3000/api/country/new', {
+                name: newData.name,
+                flag: newData.flag
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
             setTimeout(() => {
               resolve();
               setState(prevState => {
@@ -46,6 +54,14 @@ export default function MaterialTableDemo() {
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
+            axios
+              .put(`http://localhost:3000/api/country/${newData.idcountry}`, {
+                name: newData.name,
+                flag: newData.flag
+              })
+              .then(function(response) {
+                console.log(response.data);
+              });
             setTimeout(() => {
               resolve();
               if (oldData) {
