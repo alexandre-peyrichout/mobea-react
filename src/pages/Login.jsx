@@ -87,7 +87,7 @@ export default function SignIn(props) {
         console.log(error);
       })
       .finally(function() {
-        props.history.push("/dashbord");
+        props.history.push("/dashboard");
       });
   };
 

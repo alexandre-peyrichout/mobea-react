@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import Layout from '../components/Layout';
@@ -17,11 +17,41 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function FullWidthGrid() {
+  // const 
+  // useeffect header bearer token
+  // axios post
+
+  useeffect(() => {
+    if (this.props.token){
+      fetch('/dashboard', {
+          headers: {
+              'Authorization': 'Bearer ' + this.props.token,
+          }
+      })
+          .then(res => {
+              if (res.ok) {
+                  return res.json()
+              }
+              else {
+                  throw new Error(res.statusText)
+              }
+          })
+          .then(res => { this.setState({ profile: {
+              email: res.email,
+              name: res.name,
+              lastname: res.lastname
+          } }) })
+          .catch()
+      }
+  });
+
+
   const classes = useStyles();
   return (
     <Layout>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} md={4} className={classes.minHeight}>
+          {name, lastname}
           <ContainerAvatarNews />
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={classes.minHeight}>
