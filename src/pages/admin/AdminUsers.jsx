@@ -5,6 +5,7 @@ import axios from 'axios';
 export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
     columns: [
+      { title: 'id', field: 'iduser' },
       { title: 'Avatar', field: 'avatar' },
       { title: 'Email', field: 'email' },
       { title: 'Prénom', field: 'firstname' },
@@ -93,24 +94,29 @@ export default function MaterialTableDemo() {
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
-            axios({
-              method: 'put',
-              url: `http://localhost:3000/api/user/${newData.iduser}`,
-              data: {
+            let formatted_date =
+              newData.birthday.getFullYear() +
+              '-' +
+              (newData.birthday.getMonth() + 1) +
+              '-' +
+              newData.birthday.getDate();
+            axios
+              .put(`http://localhost:3000/api/user/${newData.iduser}`, {
+                iduser: newData.iduser,
                 avatar: newData.avatar,
                 email: newData.email,
                 firstname: newData.firstname,
                 lastname: newData.lastname,
-                birthday: newData.birthday,
+                birthday: formatted_date,
                 password: newData.password,
                 address: newData.address,
                 city_idcity: newData.city_idcity,
                 country_idcountry: newData.country_idcountry,
                 situation_idsituation: newData.situation_idsituation
-              }
-            }).then(function(response) {
-              console.log(response.data);
-            });
+              })
+              .then(function(response) {
+                console.log(response.data);
+              });
             setTimeout(() => {
               resolve();
               if (oldData) {
