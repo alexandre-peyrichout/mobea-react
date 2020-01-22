@@ -83,6 +83,29 @@ export default function MaterialTableDemo() {
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {
+            let formatted_date =
+              newData.birthday.getFullYear() +
+              '-' +
+              (newData.birthday.getMonth() + 1) +
+              '-' +
+              newData.birthday.getDate();
+            axios
+              .post(`http://localhost:3000/api/user/new`, {
+                iduser: newData.iduser,
+                avatar: newData.avatar,
+                email: newData.email,
+                firstname: newData.firstname,
+                lastname: newData.lastname,
+                birthday: formatted_date,
+                password: newData.password,
+                address: newData.address,
+                city_idcity: newData.city_idcity,
+                country_idcountry: newData.country_idcountry,
+                situation_idsituation: newData.situation_idsituation
+              })
+              .then(function(response) {
+                console.log(response.data);
+              });
             setTimeout(() => {
               resolve();
               setState(prevState => {
