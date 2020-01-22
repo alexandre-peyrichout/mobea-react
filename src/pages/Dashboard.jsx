@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import ContainerAvatarNews from '../components/ContainerAvatarNews';
 import CheckCard from '../components/CheckCard';
 import MyExpat from '../components/MyExpat2';
+import axios from 'axios';
 
 const useStyles = makeStyles(() => ({
   img: {
@@ -21,28 +22,13 @@ export default function FullWidthGrid() {
   // useeffect header bearer token
   // axios post
 
-  useeffect(() => {
-    if (this.props.token){
-      fetch('/dashboard', {
-          headers: {
-              'Authorization': 'Bearer ' + this.props.token,
-          }
+  useEffect(() => {
+    axios
+      .post('/api/dashboard', {
+        token: localStorage.getItem('token')
       })
-          .then(res => {
-              if (res.ok) {
-                  return res.json()
-              }
-              else {
-                  throw new Error(res.statusText)
-              }
-          })
-          .then(res => { this.setState({ profile: {
-              email: res.email,
-              name: res.name,
-              lastname: res.lastname
-          } }) })
-          .catch()
-      }
+    .then((res) => res.data)
+
   });
 
 
@@ -51,7 +37,6 @@ export default function FullWidthGrid() {
     <Layout>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} md={4} className={classes.minHeight}>
-          {name, lastname}
           <ContainerAvatarNews />
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={classes.minHeight}>
