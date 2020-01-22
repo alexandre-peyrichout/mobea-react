@@ -228,7 +228,7 @@ const MyExpat2 = () => {
               </Badge>
               <CircularProgress
                 color="secondary"
-                variant="determinate"
+                variant="static"
                 value={arrayOfProgress[0]}
                 size={70}
                 className={classes.fabProgress}
@@ -246,7 +246,7 @@ const MyExpat2 = () => {
               </Badge>
               <CircularProgress
                 color="secondary"
-                variant="determinate"
+                variant="static"
                 value={arrayOfProgress[1]}
                 size={70}
                 className={classes.fabProgress}
@@ -264,7 +264,7 @@ const MyExpat2 = () => {
               </Badge>
               <CircularProgress
                 color="secondary"
-                variant="determinate"
+                variant="static"
                 value={arrayOfProgress[2]}
                 size={70}
                 className={classes.fabProgress}
@@ -281,7 +281,7 @@ const MyExpat2 = () => {
                 </IconButton>
               </Badge>
               <CircularProgress
-                variant="determinate"
+                variant="static"
                 color="secondary"
                 value={arrayOfProgress[3]}
                 size={70}
@@ -300,7 +300,7 @@ const MyExpat2 = () => {
               </Badge>
               <CircularProgress
                 color="secondary"
-                variant="determinate"
+                variant="static"
                 value={arrayOfProgress[4]}
                 size={70}
                 className={classes.fabProgress}
@@ -318,7 +318,7 @@ const MyExpat2 = () => {
               </Badge>
               <CircularProgress
                 color="secondary"
-                variant="determinate"
+                variant="static"
                 value={arrayOfProgress[5]}
                 size={70}
                 className={classes.fabProgress}
