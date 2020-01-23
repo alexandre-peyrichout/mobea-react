@@ -193,7 +193,7 @@ const MyExpat2 = () => {
           </FormControl>
           <div className={classes.progress}>
             <Typography color="primary" variant="h5" className={classes.progressTitle}>
-              {arrayOfBadges[0].global}% des tâches effectuées
+              {Math.round(arrayOfBadges[0].global)}% des tâches effectuées
             </Typography>
             <BorderLinearProgress
               variant="determinate"
