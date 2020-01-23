@@ -22,12 +22,12 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Layout = ({ children }) => {
+const Layout = ({ children, history }) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
       <div>
-        <Navbar />
+        <Navbar history={history} />
       </div>
       <div className={classes.content}>{children}</div>
       <div>
