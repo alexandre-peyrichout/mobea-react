@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function FullWidthGrid() {
-  // const 
+  // const
   // useeffect header bearer token
   // axios post
 
@@ -27,16 +27,15 @@ export default function FullWidthGrid() {
       .post('/api/dashboard', {
         token: localStorage.getItem('token')
       })
-    .then((res) => res.data)
-
+      .then(res => res.data);
   });
-
 
   const classes = useStyles();
   return (
     <Layout>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} md={4} className={classes.minHeight}>
+          {localStorage.getItem('token')}
           <ContainerAvatarNews />
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={classes.minHeight}>

@@ -57,6 +57,7 @@ const Navbar2 = () => {
 
   const handleClose1 = () => {
     setAnchorEl(null);
+    localStorage.removeItem('token');
   };
 
   const toggleDrawer = (side, open) => event => {
