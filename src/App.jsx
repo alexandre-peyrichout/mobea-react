@@ -14,6 +14,7 @@ const App = () => {
   const [checklists, setChecklists] = useState();
   const [destinationSelected, setDestinationSelected] = useState('test');
   const [arrayOfBadges, setArrayOfBadges] = React.useState();
+  const [connectedUser, setConnectedUser] = React.useState();
 
   const [show_FAQ, setShow_FAQ] = useState(false);
   const [show_POLITIQUE, setShow_POLITIQUE] = useState(false);
@@ -130,7 +131,9 @@ const App = () => {
           destinationSelected,
           setDestinationSelected,
           arrayOfBadges,
-          setArrayOfBadges
+          setArrayOfBadges,
+          connectedUser,
+          setConnectedUser
         }}
       >
         <BrowserRouter>
