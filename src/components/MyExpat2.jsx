@@ -1,16 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import Typography from '@material-ui/core/Typography';
-import axios from 'axios';
 
 import {
   Card,
   Fab,
   IconButton,
   MenuItem,
-  Select,
-  InputLabel,
+  TextField,
   FormControl,
   LinearProgress,
   CircularProgress,
@@ -175,13 +173,18 @@ const MyExpat2 = () => {
           </div>
           <FormControl className={classes.formControl}>
             <div className={classes.selectflex}>
-              <Select value="eeee" onChange={handleChange} className={classes.select}>
+              <TextField
+                select
+                value={destinationSelected}
+                onChange={handleChange}
+                className={classes.select}
+              >
                 {destinations.map((dest, index) => (
                   <MenuItem value={dest.id} key={index}>
                     {dest.city}
                   </MenuItem>
                 ))}
-              </Select>
+              </TextField>
 
               <IconButton onClick={() => setShow_DELETE_DESTINATION(true)}>
                 <Delete fontSize="medium" />

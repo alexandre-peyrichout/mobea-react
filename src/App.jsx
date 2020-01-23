@@ -12,7 +12,7 @@ const App = () => {
   const [userData, setUserData] = useState();
   const [destinations, setDestinations] = useState();
   const [checklists, setChecklists] = useState();
-  const [destinationSelected, setDestinationSelected] = useState('test');
+  const [destinationSelected, setDestinationSelected] = useState(1);
   const [arrayOfBadges, setArrayOfBadges] = React.useState();
   const [connectedUser, setConnectedUser] = React.useState();
 
@@ -85,10 +85,10 @@ const App = () => {
   useEffect(() => {
     axios
       .all([
-        axios.get(`/api/datas/userData?user=21`),
-        axios.get(`/api/datas/userDestinations?user=21`),
-        axios.get(`/api/datas/userChecklists?user=21`),
-        axios.get(`/api/datas/stats?destination=1`)
+        axios.get(`/api/datas/userData?user=${connectedUser}`),
+        axios.get(`/api/datas/userDestinations?user=${connectedUser}`),
+        axios.get(`/api/datas/userChecklists?user=${connectedUser}`),
+        axios.get(`/api/datas/stats?destination=${destinationSelected}`)
       ])
       .then(
         axios.spread((userData, destinations, checklists, stats) => {
@@ -98,7 +98,7 @@ const App = () => {
           setArrayOfBadges(stats.data);
         })
       );
-  }, []);
+  }, [connectedUser, destinationSelected]);
 
   return (
     <div>

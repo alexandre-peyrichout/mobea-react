@@ -14,6 +14,7 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     backgroundColor: 'rgba(255, 255, 255,0.3)'
   },
+  scroll: { maxHeight: '70vh', overflow: 'auto' },
   flex: {
     display: 'flex',
     alignItems: 'center',
@@ -24,9 +25,12 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    padding: '1rem 0',
+    padding: '10px 10px 10px 0',
     backgroundColor: 'rgba(255, 255, 255,0.85)',
-    margin: '4px 0px'
+    margin: '4px 0px',
+    color: '#333',
+    fontSize: '0.8rem',
+    textAlign: 'justify'
   },
   listSelect: {
     flexGrow: 1,
@@ -48,46 +52,56 @@ export default function CheckCard() {
   const classes = useStyles();
   const { list, setList } = React.useContext(Context);
   const { focusList, setFocusList } = React.useContext(Context);
+  const { arrayOfBadges } = React.useContext(Context);
+  const { checklists } = React.useContext(Context);
+  const { destinationSelected } = React.useContext(Context);
 
   const handleChangeFocus = event => {
-    setFocusList(list.findIndex(list => list.title === event.target.value));
+    setFocusList(arrayOfBadges.findIndex(list => list.type === event.target.value));
   };
 
   const handleChangeListCheck = (task, focusList, index) => {
     setList([...list], (list[focusList].tasks[index].checked = !task.checked));
   };
 
-  return (
-    <Card className={classes.card} id="card">
-      <div className={classes.flex}>
-        {/* <VerifiedUserIcon className={classes.icon} fontSize="medium" /> */}
-        <TextField
-          id="standard-select"
-          select
-          value={list[focusList].title}
-          onChange={handleChangeFocus}
-          className={classes.listSelect}
-        >
-          {list.map(option => (
-            <MenuItem key={option.title} value={option.title}>
-              {option.title}
-            </MenuItem>
-          ))}
-        </TextField>
-      </div>
-      <CardContent>
-        {list[focusList].tasks.map((task, index) => (
-          <Card className={classes.container} key={index}>
-            <Checkbox
-              checked={task.checked}
-              key={index}
-              color="primary"
-              onChange={() => handleChangeListCheck(task, focusList, index)}
-            />
-            {task.text}
-          </Card>
-        ))}
-      </CardContent>
-    </Card>
-  );
+  if (arrayOfBadges) {
+    return (
+      <Card className={classes.card} id="card">
+        <div className={classes.flex}>
+          <TextField
+            id="standard-select"
+            select
+            value={arrayOfBadges[focusList].type}
+            onChange={handleChangeFocus}
+            className={classes.listSelect}
+          >
+            {arrayOfBadges &&
+              arrayOfBadges.map(option => (
+                <MenuItem key={option.type} value={option.type}>
+                  {option.type}
+                </MenuItem>
+              ))}
+          </TextField>
+        </div>
+        <CardContent className={classes.scroll}>
+          {checklists
+            .filter(el => el.destination_iddestination === destinationSelected)
+            .filter(el => el.type === arrayOfBadges[focusList].type)
+            .map((task, index) => (
+              <Card className={classes.container} key={index}>
+                <Checkbox
+                  checked={task.isdone}
+                  key={index}
+                  color="primary"
+                  onChange={() => handleChangeListCheck(task, focusList, index)}
+                />
+                {task.content}
+              </Card>
+            ))}
+        </CardContent>
+      </Card>
+    );
+  } else {
+    return <div></div>;
+  }
 }
