@@ -18,3 +18,14 @@ JOIN destination ON destination.iddestination = task_has_destination.destination
 JOIN task ON task.idtask = task_has_destination.task_idtask 
 JOIN task_type ON task_type.idtask_type = task.task_type_idtask_type 
 WHERE destination.user_iduser = 21 AND destination_iddestination = 1;
+
+
+// Requete pour savoir le nombre de falsy checkboxes:
+SELECT count(task_has_destination.isdone)
+FROM task_has_destination
+JOIN task ON task_has_destination.task_idtask = task.idtask
+JOIN destination ON task_has_destination.destination_iddestination = destination.iddestination
+WHERE destination.user_iduser = 21
+AND destination_iddestination = 1
+AND task.task_type_idtask_type = 1
+AND task_has_destination.isdone = 0;

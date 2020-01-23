@@ -12,6 +12,8 @@ const App = () => {
   const [userData, setUserData] = useState();
   const [destinations, setDestinations] = useState();
   const [checklists, setChecklists] = useState();
+  const [destinationSelected, setDestinationSelected] = useState('test');
+  const [arrayOfBadges, setArrayOfBadges] = React.useState();
 
   const [show_FAQ, setShow_FAQ] = useState(false);
   const [show_POLITIQUE, setShow_POLITIQUE] = useState(false);
@@ -78,18 +80,21 @@ const App = () => {
     }
   ]);
 
+  //FETCH ALL DATAS
   useEffect(() => {
     axios
       .all([
         axios.get(`/api/datas/userData?user=21`),
         axios.get(`/api/datas/userDestinations?user=21`),
-        axios.get(`/api/datas/userChecklists?user=21`)
+        axios.get(`/api/datas/userChecklists?user=21`),
+        axios.get(`/api/datas/stats?destination=1`)
       ])
       .then(
-        axios.spread((userData, destinations, checklists) => {
+        axios.spread((userData, destinations, checklists, stats) => {
           setUserData(userData.data);
           setDestinations(destinations.data);
           setChecklists(checklists.data);
+          setArrayOfBadges(stats.data);
         })
       );
   }, []);
@@ -121,7 +126,11 @@ const App = () => {
           checklists,
           setChecklists,
           destinations,
-          setDestinations
+          setDestinations,
+          destinationSelected,
+          setDestinationSelected,
+          arrayOfBadges,
+          setArrayOfBadges
         }}
       >
         <BrowserRouter>

@@ -5,8 +5,8 @@ import { Card, IconButton } from '@material-ui/core';
 import grey from '@material-ui/core/colors/grey';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Background from '../assets/bgold.jpg';
-import AvatarImg from '../assets/avatar.png';
 import Context from '../context/Context';
+import PersonIcon from '@material-ui/icons/Person';
 
 const useStyles = makeStyles(theme => ({
   avatarDiv: {
@@ -47,18 +47,27 @@ const useStyles = makeStyles(theme => ({
 export default function ImageAvatars() {
   const classes = useStyles();
   const { setShow_PROFIL } = useContext(Context);
+  const { userData } = useContext(Context);
 
-  return (
-    <Card className={classes.container}>
-      <div className={classes.settingsDiv}>
-        <IconButton onClick={() => setShow_PROFIL(true)}>
-          <SettingsIcon style={{ color: grey[50] }} />
-        </IconButton>
-      </div>
-      <div className={classes.avatarDiv}>
-        <Avatar alt="placeholder" src={AvatarImg} className={classes.bigAvatar} />
-      </div>
-      <div className={classes.nameDiv}>Camille Dupont</div>
-    </Card>
-  );
+  if (userData) {
+    return (
+      <Card className={classes.container}>
+        <div className={classes.settingsDiv}>
+          <IconButton onClick={() => setShow_PROFIL(true)}>
+            <SettingsIcon style={{ color: grey[50] }} />
+          </IconButton>
+        </div>
+        <div className={classes.avatarDiv}>
+          <Avatar alt="placeholder" className={classes.bigAvatar}>
+            <PersonIcon fontSize="large" />
+          </Avatar>
+        </div>
+        <div className={classes.nameDiv}>
+          {userData.firstname} {userData.lastname}
+        </div>
+      </Card>
+    );
+  } else {
+    return <div></div>;
+  }
 }
