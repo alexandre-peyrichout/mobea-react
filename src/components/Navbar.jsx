@@ -42,7 +42,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Navbar2 = () => {
+const Navbar2 = ({ history }) => {
   const { setShow_PROFIL } = useContext(Context);
   const { setShow_FAQ } = useContext(Context);
   const classes = useStyles();
@@ -58,6 +58,8 @@ const Navbar2 = () => {
   const handleClose1 = () => {
     setAnchorEl(null);
     localStorage.removeItem('token');
+    // window.location.replace('http://localhost:3001/login');
+    history.push('/login');
   };
 
   const toggleDrawer = (side, open) => event => {
