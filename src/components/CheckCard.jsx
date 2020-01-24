@@ -7,6 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Context from '../context/Context';
+import axios from 'axios';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -50,18 +51,32 @@ const useStyles = makeStyles(() => ({
 
 export default function CheckCard() {
   const classes = useStyles();
-  const { list, setList } = React.useContext(Context);
+
   const { focusList, setFocusList } = React.useContext(Context);
   const { arrayOfBadges } = React.useContext(Context);
   const { checklists } = React.useContext(Context);
   const { destinationSelected } = React.useContext(Context);
+  const { reload, setReload } = React.useContext(Context);
 
   const handleChangeFocus = event => {
     setFocusList(arrayOfBadges.findIndex(list => list.type === event.target.value));
   };
 
-  const handleChangeListCheck = (task, focusList, index) => {
-    setList([...list], (list[focusList].tasks[index].checked = !task.checked));
+  const updateIsDone = event => {
+    const task = event.target.id;
+    const value = event.target.checked ? 1 : 0;
+
+    axios
+      .put(`/api/taskHasDestination/${task}/${destinationSelected}/`, {
+        isdone: value
+      })
+      .then(res => res.data)
+      .catch(function(error) {
+        console.log(error);
+      })
+      .finally(function() {
+        setReload(reload + 1);
+      });
   };
 
   if (arrayOfBadges) {
@@ -91,9 +106,10 @@ export default function CheckCard() {
               <Card className={classes.container} key={index}>
                 <Checkbox
                   checked={task.isdone}
-                  key={index}
+                  id={task.task_idtask}
+                  key={task.task_idtask}
                   color="primary"
-                  onChange={() => handleChangeListCheck(task, focusList, index)}
+                  onChange={event => updateIsDone(event)}
                 />
                 {task.content}
               </Card>

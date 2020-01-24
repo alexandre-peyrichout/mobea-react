@@ -15,6 +15,8 @@ const App = () => {
   const [destinationSelected, setDestinationSelected] = useState(1);
   const [arrayOfBadges, setArrayOfBadges] = React.useState();
   const [connectedUser, setConnectedUser] = React.useState();
+  const [focusList, setFocusList] = React.useState(0); // liste visible sur le dashboard par défaut (index 0 = Santé)
+  const [reload, setReload] = React.useState(0);
 
   const [show_FAQ, setShow_FAQ] = useState(false);
   const [show_POLITIQUE, setShow_POLITIQUE] = useState(false);
@@ -23,63 +25,6 @@ const App = () => {
   const [show_ADD_DESTINATION, setShow_ADD_DESTINATION] = useState(false);
   const [show_DELETE_DESTINATION, setShow_DELETE_DESTINATION] = useState(false);
   const [show_EDIT_DESTINATION, setShow_EDIT_DESTINATION] = useState(false);
-  const [focusList, setFocusList] = React.useState(0); // liste visible sur le dashboard par défaut (index 0 = Logement)
-  const [list, setList] = useState([
-    {
-      title: 'Logement',
-      tasks: [
-        { checked: false, text: 'lorem ipsum 1' },
-        { checked: false, text: 'lorem ipsum 2' },
-        { checked: true, text: 'lorem ipsum 3' }
-      ]
-    },
-    {
-      title: 'Assurances',
-      tasks: [
-        { checked: true, text: 'lorem ipsum 1' },
-        { checked: false, text: 'lorem ipsum hodvsvdsvsdvsd 2' },
-        { checked: true, text: 'lorem ipsum dsvsvsvsvsv3' },
-        { checked: false, text: 'lorem ipsum 2' }
-      ]
-    },
-    {
-      title: 'Santé',
-      tasks: [
-        { checked: false, text: 'lorem ipsum 1' },
-        { checked: false, text: 'lorem ipsum 2' },
-        { checked: false, text: 'lorem ipsum 3' },
-        { checked: false, text: 'lorem ipsum 3' },
-        { checked: false, text: 'lorem ipsum 3' },
-        { checked: false, text: 'lorem ipsum 3' }
-      ]
-    },
-    {
-      title: 'Emploi',
-      tasks: [
-        { checked: true, text: 'lorem ipsum 1' },
-        { checked: false, text: 'lorem ipsum 2' },
-        { checked: false, text: 'lorem ipsum 2' },
-        { checked: false, text: 'lorem ipsum 2' },
-        { checked: true, text: 'lorem ipsum 3' }
-      ]
-    },
-    {
-      title: 'Administratif',
-      tasks: [
-        { checked: true, text: 'lorem ipsum 1' },
-        { checked: false, text: 'lorem ipsum 2' },
-        { checked: true, text: 'lorem ipsum 3' }
-      ]
-    },
-    {
-      title: 'Banque',
-      tasks: [
-        { checked: true, text: 'lorem ipsum 1' },
-        { checked: false, text: 'lorem ipsum 2' },
-        { checked: true, text: 'lorem ipsum 3' }
-      ]
-    }
-  ]);
 
   //FETCH ALL DATAS
   useEffect(() => {
@@ -98,7 +43,7 @@ const App = () => {
           setArrayOfBadges(stats.data);
         })
       );
-  }, [connectedUser, destinationSelected]);
+  }, [connectedUser, destinationSelected, reload]);
 
   return (
     <div>
@@ -118,8 +63,6 @@ const App = () => {
           setShow_DELETE_DESTINATION,
           show_EDIT_DESTINATION,
           setShow_EDIT_DESTINATION,
-          list,
-          setList,
           focusList,
           setFocusList,
           userData,
@@ -133,7 +76,9 @@ const App = () => {
           arrayOfBadges,
           setArrayOfBadges,
           connectedUser,
-          setConnectedUser
+          setConnectedUser,
+          reload,
+          setReload
         }}
       >
         <BrowserRouter>
