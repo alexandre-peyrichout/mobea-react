@@ -219,7 +219,7 @@ const MyExpat2 = () => {
                     color="primary"
                     className={classes.badge}
                   >
-                    <IconButton className={classes.iconOnTop} onClick={() => setFocusList(2)}>
+                    <IconButton className={classes.iconOnTop} onClick={() => setFocusList(index)}>
                       <Tooltip title={arrayOfBadges[index].type} placement="bottom">
                         {arrayOfBadges[index].type.includes('Santé') ? (
                           <FavoriteBorderIcon fontSize="large" />
