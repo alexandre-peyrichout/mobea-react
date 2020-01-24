@@ -84,10 +84,18 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255,0.85)',
+    backgroundColor: 'rgba(255, 255, 255,0.7)',
     '&:hover': {
       backgroundColor: 'white'
     }
+  },
+  wrapperSelect: {
+    padding: '40px 0',
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF'
   },
 
   wrapper2: {
@@ -213,7 +221,7 @@ const MyExpat2 = () => {
 
             {arrayOfBadges.map((badge, index) => (
               <Grid item xs={4} key={index}>
-                <Card className={classes.wrapper}>
+                <Card className={focusList === index ? classes.wrapperSelect : classes.wrapper}>
                   <Badge
                     badgeContent={arrayOfBadges[index].result}
                     color="primary"

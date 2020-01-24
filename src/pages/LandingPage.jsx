@@ -29,7 +29,8 @@ import Yannick from '../assets/Yannick.jpg';
 const useStyles = makeStyles(() => ({
   root: {
     margin: '0',
-    minWidth: '100%'
+    minWidth: '100%',
+    padding: 0
   },
 
   head: {
@@ -284,9 +285,7 @@ const useStyles = makeStyles(() => ({
       display: 'none'
     }
   },
-  root: {
-    padding: '0'
-  },
+
   loginLinks: {
     '@media (max-width:961px)': {
       display: 'flex',
@@ -392,7 +391,6 @@ function LandingPage() {
             wireframe1={marrakech}
             wireframe2={bordeaux}
             wireframe3={rabat}
-            showThumbs={false}
             showIndicators={false}
           />
         </Container>
@@ -514,14 +512,14 @@ function LandingPage() {
 
         <div className={classes.blocEquipe}>
           <div>
-            <img src={Nora} className={classes.avatarEquipe} />
+            <img src={Nora} className={classes.avatarEquipe} alt="" />
           </div>
           <Typography className={classes.textEquipe} component="p" align="center">
             Nora Moulali - FOUNDER & CEO
           </Typography>
 
           <div>
-            <img src={Yannick} className={classes.avatarEquipe} />
+            <img src={Yannick} className={classes.avatarEquipe} alt="" />
           </div>
           <Typography className={classes.textEquipe} component="p" align="center">
             Yannick Denot - CEO
