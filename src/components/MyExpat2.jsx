@@ -143,7 +143,7 @@ const MyExpat2 = () => {
   //CONTEXT
   const { setShow_ADD_DESTINATION } = React.useContext(Context);
   const { setShow_DELETE_DESTINATION } = React.useContext(Context);
-  const { setFocusList } = React.useContext(Context);
+  const { focusList, setFocusList } = React.useContext(Context);
   const { destinations } = React.useContext(Context);
   const { destinationSelected, setDestinationSelected } = React.useContext(Context);
   const { arrayOfBadges } = React.useContext(Context);
@@ -219,7 +219,11 @@ const MyExpat2 = () => {
                     color="primary"
                     className={classes.badge}
                   >
-                    <IconButton className={classes.iconOnTop} onClick={() => setFocusList(index)}>
+                    <IconButton
+                      className={classes.iconOnTop}
+                      onClick={() => setFocusList(index)}
+                      color={focusList === index ? 'primary' : ''}
+                    >
                       <Tooltip title={arrayOfBadges[index].type} placement="bottom">
                         {arrayOfBadges[index].type.includes('Santé') ? (
                           <FavoriteBorderIcon fontSize="large" />
