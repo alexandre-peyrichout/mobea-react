@@ -27,42 +27,6 @@ export default function MaterialTableDemo() {
         password: '123456',
         address: '33200',
         situation: 'Concubinage ou pacsé'
-      },
-      {
-        avatar: '',
-        email: 'zfgyuz@gmail.com',
-        firstname: 'efzuyfevg',
-        lastname: 'riuhiuzhgr',
-        birthday: '',
-        address: '',
-        situation: 'Concubinage ou pacsé'
-      },
-      {
-        avatar: '',
-        email: 'post@man',
-        firstname: 'post',
-        lastname: 'man',
-        birthday: '',
-        address: '',
-        situation: 'Concubinage ou pacsé'
-      },
-      {
-        avatar: '',
-        email: '',
-        firstname: '',
-        lastname: '',
-        birthday: '',
-        address: '',
-        situation: 'Concubinage ou pacsé'
-      },
-      {
-        avatar: '',
-        email: 'nazi@cat.ach',
-        firstname: 'nazi',
-        lastname: 'cat',
-        birthday: '',
-        address: '',
-        situation: 'Concubinage ou pacsé'
       }
     ]
   });
@@ -103,7 +67,7 @@ export default function MaterialTableDemo() {
                 country_idcountry: newData.country_idcountry,
                 situation_idsituation: newData.situation_idsituation
               })
-              .then(function(response) {
+              .then(function (response) {
                 console.log(response.data);
               });
             setTimeout(() => {
@@ -137,7 +101,7 @@ export default function MaterialTableDemo() {
                 country_idcountry: newData.country_idcountry,
                 situation_idsituation: newData.situation_idsituation
               })
-              .then(function(response) {
+              .then(function (response) {
                 console.log(response.data);
               });
             setTimeout(() => {
