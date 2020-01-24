@@ -1,0 +1,31 @@
+// objet: userData: {}
+SELECT user.*, situation.name AS situation FROM user
+JOIN situation ON user.situation_idsituation = situation.idsituation
+WHERE iduser = 21;
+
+
+// array: destinations: []
+SELECT d.iddestination AS id, country.name AS country, country.flag, city.name AS city, d.arrival_date, r.name AS reason  FROM destination AS d
+JOIN reason AS r ON d.reason_idreason = r.idreason
+JOIN country ON d.country_idcountry = country.idcountry
+JOIN city ON d.city_idcity = city.idcity
+WHERE d.user_iduser = 21;
+
+// array: checklists []
+SELECT task_has_destination.task_idtask, task_has_destination.destination_iddestination, task_has_destination.isdone, task.content, task_type.name AS type
+FROM task_has_destination
+JOIN destination ON destination.iddestination = task_has_destination.destination_iddestination 
+JOIN task ON task.idtask = task_has_destination.task_idtask 
+JOIN task_type ON task_type.idtask_type = task.task_type_idtask_type 
+WHERE destination.user_iduser = 21 AND destination_iddestination = 1;
+
+
+// Requete pour savoir le nombre de falsy checkboxes:
+SELECT count(task_has_destination.isdone)
+FROM task_has_destination
+JOIN task ON task_has_destination.task_idtask = task.idtask
+JOIN destination ON task_has_destination.destination_iddestination = destination.iddestination
+WHERE destination.user_iduser = 21
+AND destination_iddestination = 1
+AND task.task_type_idtask_type = 1
+AND task_has_destination.isdone = 0;

@@ -1,21 +1,13 @@
-import React, { useContext } from 'react';
-import { AppBar, Toolbar, IconButton } from '@material-ui/core';
+import React from 'react';
+import { AppBar, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import logo from '../assets/logo.png';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Link as LinkRouter } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
-import HomeIcon from '@material-ui/icons/Home';
-import Avatar from '@material-ui/core/Avatar';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
-import ListIcon from '@material-ui/icons/List';
-import ContactSupportIcon from '@material-ui/icons/ContactSupport';
-import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-import Context from '../context/Context';
+
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -41,20 +33,9 @@ const useStyles = makeStyles(() => ({
 
 function LandingBar() {
   const classes = useStyles();
-  const { setShow_PROFIL } = useContext(Context);
-  const { setShow_FAQ } = useContext(Context);
   const [state, setState] = React.useState({
     right: false
   });
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose1 = () => {
-    setAnchorEl(null);
-  };
 
   const toggleDrawer = (right, open) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -72,7 +53,6 @@ function LandingBar() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-
         <Link underline="none" href="#notreHistoire">
           <ListItem button>
             <ListItemText primary="Notre Histoire" />
@@ -90,7 +70,6 @@ function LandingBar() {
             <ListItemText primary="L'équipe" />
           </ListItem>
         </Link>
-
       </List>
     </div>
   );
