@@ -312,7 +312,7 @@ const MyExpat2 = () => {
     );
   } else {
     return (
-      <div>
+      <div className={classes.parent}>
         <Card className={classes.childTopAnimated} id="destination">
           <div className={classes.config}>
             <Typography>Ajouter une destination</Typography>

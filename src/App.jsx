@@ -18,6 +18,7 @@ const App = () => {
   const [focusList, setFocusList] = React.useState(0); // liste visible sur le dashboard par défaut (index 0 = Santé)
   const [reload, setReload] = React.useState(0);
   const [backdrop, setBackdrop] = React.useState(true);
+  const [fadeState, setFadeState] = React.useState(false);
 
   const [show_FAQ, setShow_FAQ] = useState(false);
   const [show_POLITIQUE, setShow_POLITIQUE] = useState(false);
@@ -54,7 +55,10 @@ const App = () => {
         .finally(
           setTimeout(() => {
             setBackdrop(false);
-          }, 500)
+          }, 500),
+          setTimeout(() => {
+            setFadeState(true);
+          }, 2000)
         );
   }, [connectedUser, destinationSelected, reload]);
 
@@ -93,7 +97,9 @@ const App = () => {
           reload,
           setReload,
           backdrop,
-          setBackdrop
+          setBackdrop,
+          fadeState,
+          setFadeState
         }}
       >
         <BrowserRouter>
