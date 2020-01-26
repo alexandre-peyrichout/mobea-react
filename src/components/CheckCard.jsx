@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Checkbox from '@material-ui/core/Checkbox';
-// import VerifiedUserIcon from '@material-ui/icons/VerifiedUserOutlined';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Context from '../context/Context';
@@ -30,7 +29,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: 'rgba(255, 255, 255,0.85)',
     margin: '4px 0px',
     color: '#333',
-    fontSize: '0.8rem',
+    fontSize: '0.9rem',
     textAlign: 'justify'
   },
   listSelect: {
@@ -79,7 +78,7 @@ export default function CheckCard() {
       });
   };
 
-  if (arrayOfBadges) {
+  if (destinationSelected && arrayOfBadges) {
     return (
       <Card className={classes.card} id="card">
         <div className={classes.flex}>
@@ -111,6 +110,7 @@ export default function CheckCard() {
                   color="primary"
                   onChange={event => updateIsDone(event)}
                 />
+
                 {task.content}
               </Card>
             ))}
@@ -118,6 +118,6 @@ export default function CheckCard() {
       </Card>
     );
   } else {
-    return <div></div>;
+    return <Card className={classes.card} id="card"></Card>;
   }
 }

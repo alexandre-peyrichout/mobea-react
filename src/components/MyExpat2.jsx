@@ -47,6 +47,21 @@ const useStyles = makeStyles(() => ({
     padding: '8px 8px 8px 16px',
     backgroundColor: 'rgba(255, 255, 255,0.85)'
   },
+
+  '@keyframes blinker': {
+    to: { transform: 'scale(1.7)' }
+  },
+  childTopAnimated: {
+    backgroundColor: 'rgba(255, 255, 255,0.85)',
+    padding: '8px 8px 8px 16px'
+  },
+  blinkText: {
+    animationName: '$blinker',
+    animationDuration: '1s',
+    animationTimingFunction: 'linear',
+    animationIterationCount: 'infinite',
+    animationDirection: 'alternate-reverse'
+  },
   childBottom: {
     padding: '8px',
     marginTop: '8px',
@@ -110,6 +125,20 @@ const useStyles = makeStyles(() => ({
       backgroundColor: 'rgba(255, 255, 255,0.6)'
     }
   },
+  wrapperNo: {
+    padding: '41.5px 0',
+    width: '300px',
+    height: '300px',
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255,0.3)',
+
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255,0.6)'
+    }
+  },
 
   fabProgress: {
     position: 'absolute',
@@ -128,6 +157,13 @@ const useStyles = makeStyles(() => ({
   },
   badge: {
     zIndex: '3'
+  },
+  displaycenter: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    flexGrow: '1'
   }
 }));
 
@@ -162,12 +198,7 @@ const MyExpat2 = () => {
     setDestinationSelected(event.target.value);
   };
 
-  // useEffect(() => {
-  //   destinations && setDestinationSelected(destinations[0].city);
-  // }, [destinations, setDestinationSelected]);
-  //------------------------------
-
-  if (destinations && arrayOfBadges) {
+  if (arrayOfBadges && destinationSelected) {
     return (
       <div className={classes.parent}>
         <Card className={classes.childTop} id="destination">
@@ -280,7 +311,20 @@ const MyExpat2 = () => {
       </div>
     );
   } else {
-    return <div></div>;
+    return (
+      <div>
+        <Card className={classes.childTopAnimated} id="destination">
+          <div className={classes.config}>
+            <Typography>Ajouter une destination</Typography>
+            <IconButton color="primary" onClick={() => setShow_ADD_DESTINATION(true)}>
+              <AddCircle fontSize="medium" className={classes.blinkText} />
+            </IconButton>
+          </div>
+        </Card>
+        {/* deuxieme card */}
+        <Card className={classes.childBottom}></Card>
+      </div>
+    );
   }
 };
 

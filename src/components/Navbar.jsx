@@ -44,6 +44,8 @@ const useStyles = makeStyles(() => ({
 
 const Navbar2 = ({ history }) => {
   const { setShow_PROFIL } = useContext(Context);
+  const { setDestinationSelected, setArrayOfBadges, setConnectedUser } = useContext(Context);
+
   const { setShow_FAQ } = useContext(Context);
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -57,8 +59,12 @@ const Navbar2 = ({ history }) => {
 
   const handleClose1 = () => {
     setAnchorEl(null);
+    setDestinationSelected(null);
+    setArrayOfBadges(null);
+    setConnectedUser(null);
     localStorage.removeItem('token');
     // window.location.replace('http://localhost:3001/login');
+
     history.push('/login');
   };
 

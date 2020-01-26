@@ -6,11 +6,17 @@ import ContainerAvatarNews from '../components/ContainerAvatarNews';
 import CheckCard from '../components/CheckCard';
 import MyExpat from '../components/MyExpat2';
 import Context from '../context/Context';
+import { Backdrop } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   img: {
     width: '100%',
     height: '600px'
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff'
   },
   minHeight: {
     minHeight: 'calc(100vh - 156px)'
@@ -20,6 +26,7 @@ const useStyles = makeStyles(() => ({
 export default function FullWidthGrid(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { setConnectedUser } = React.useContext(Context);
+  const { backdrop } = React.useContext(Context);
 
   useEffect(() => {
     fetch('api/dashboard', {
@@ -47,14 +54,15 @@ export default function FullWidthGrid(props) {
           <ContainerAvatarNews />
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={classes.minHeight}>
-          {/* composant temporaire qui sera remplaçé par celui de Steph */}
-          {/* <CompTempImg /> */}
           <MyExpat />
         </Grid>
         <Grid item xs={12} sm={12} md={4} className={classes.minHeight}>
           <CheckCard />
         </Grid>
       </Grid>
+      <Backdrop className={classes.backdrop} open={backdrop}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Layout>
   );
 }
