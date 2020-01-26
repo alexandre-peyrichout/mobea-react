@@ -7,7 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Context from '../context/Context';
 import axios from 'axios';
-import { PlayCircleFilledWhite } from '@material-ui/icons';
 
 const useStyles = makeStyles(() => ({
   card: {

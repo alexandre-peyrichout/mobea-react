@@ -19,6 +19,10 @@ const App = () => {
   const [reload, setReload] = React.useState(0);
   const [backdrop, setBackdrop] = React.useState(true);
   const [fadeState, setFadeState] = React.useState(false);
+  const [countries, setCountries] = React.useState();
+  const [cities, setCities] = React.useState();
+  const [situations, setSituations] = React.useState();
+  const [reasons, setReasons] = React.useState();
 
   const [show_FAQ, setShow_FAQ] = useState(false);
   const [show_POLITIQUE, setShow_POLITIQUE] = useState(false);
@@ -37,20 +41,31 @@ const App = () => {
           axios.get(`/api/datas/userData?user=${connectedUser}`),
           axios.get(`/api/datas/userDestinations?user=${connectedUser}`),
           axios.get(`/api/datas/userChecklists?user=${connectedUser}`),
-          axios.get(`/api/datas/stats?destination=${destinationSelected}`)
+          axios.get(`/api/datas/stats?destination=${destinationSelected}`),
+          axios.get(`/api/country`),
+          axios.get(`/api/city`),
+          axios.get(`/api/reason`),
+          axios.get(`/api/situation`)
         ])
         .then(
-          axios.spread((userData, destinations, checklists, stats) => {
-            setUserData(userData.data);
-            setDestinations(destinations.data);
-            setChecklists(checklists.data);
-            if (destinationSelected) {
-              setArrayOfBadges(stats.data);
+          axios.spread(
+            (userData, destinations, checklists, stats, countries, cities, reasons, situations) => {
+              setCountries(countries.data);
+              setCities(cities.data);
+              setSituations(situations.data);
+              setReasons(reasons.data);
+              setUserData(userData.data);
+              setDestinations(destinations.data);
+              setChecklists(checklists.data);
+              if (destinationSelected) {
+                setArrayOfBadges(stats.data);
+              }
+              if (destinations.data.length && !destinationSelected) {
+                const lastDest = destinations.data.length - 1;
+                setDestinationSelected(destinations.data[lastDest].id);
+              }
             }
-            if (destinations.data.length && !destinationSelected) {
-              setDestinationSelected(destinations.data[0].id);
-            }
-          })
+          )
         )
         .finally(
           setTimeout(() => {
@@ -99,7 +114,11 @@ const App = () => {
           backdrop,
           setBackdrop,
           fadeState,
-          setFadeState
+          setFadeState,
+          countries,
+          cities,
+          situations,
+          reasons
         }}
       >
         <BrowserRouter>

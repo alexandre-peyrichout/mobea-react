@@ -12,54 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-// import SaveIcon from '@material-ui/icons/Save';
-const situations = [
-  {
-    value: 'célibataire',
-    label: 'célibataire'
-  },
-  {
-    value: 'marié',
-    label: 'marié'
-  },
-  {
-    value: 'concubinage ou pacsé',
-    label: 'concubinage ou pacsé'
-  },
-  {
-    value: 'séparé',
-    label: 'séparé'
-  },
-  {
-    value: 'divorcé',
-    label: 'divorcé'
-  },
-  {
-    value: 'veuf',
-    label: 'veuf'
-  }
-];
-
-const countries = [
-  {
-    value: 'Maroc',
-    label: 'Maroc'
-  }
-];
-
-const cities = [
-  { value: 'Casablanca', label: 'Casablanca' },
-  { value: 'Agadir', label: 'Agadir' },
-  { value: 'Fez', label: 'Fez' }
-];
-
-const reasons = [
-  { value: 'Expatriation', label: 'Expatriation' },
-  { value: 'Travail', label: 'Travail' },
-  { value: 'Loisirs', label: 'Loisirs' },
-  { value: 'Etudes', label: 'Etudes' }
-];
-
 const useStyles = makeStyles(theme => ({
   root: {
     '& .MuiTextField-root': {
@@ -114,127 +66,150 @@ const useStyles = makeStyles(theme => ({
 
 const Add_destination = () => {
   const { show_ADD_DESTINATION, setShow_ADD_DESTINATION } = useContext(Context);
+  const { countries, cities, reasons, situations } = useContext(Context);
+
   const classes = useStyles();
   const [situation, setSituation] = React.useState();
   const [city, setCity] = React.useState();
   const [reason, setReason] = React.useState();
   const [country, setCountry] = React.useState();
 
-  const handleChange = event => {
-    setSituation(event.target.value);
-    setCity(event.target.value);
-    setReason(event.target.value);
+  const handleChangeCountry = event => {
     setCountry(event.target.value);
   };
 
-  return (
-    <Dialog
-      open={show_ADD_DESTINATION}
-      onClose={() => setShow_ADD_DESTINATION(false)}
-      scroll="paper"
-    >
-      <DialogTitle>Ajouter une destination</DialogTitle>
-      <DialogContent dividers>
-        <DialogContentText tabIndex={-1}>
-          <wrapper>
-            <div>
-              <form className={classes.root} noValidate autoComplete="off">
-                <div>
-                  <TextField
-                    id="standard-select"
-                    select
-                    label="Pays"
-                    value={country}
-                    onChange={handleChange}
-                    helperText="Sélectionner le Pays de déstination"
-                  >
-                    {countries.map(option => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </div>
-                <div>
-                  <TextField
-                    id="standard-select"
-                    select
-                    label="Ville"
-                    value={city}
-                    onChange={handleChange}
-                    helperText="Sélectionner la ville de déstination"
-                  >
-                    {cities.map(option => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </div>
-                <div>
-                  <TextField
-                    id="date"
-                    label="Date d'arrivée"
-                    type="date"
-                    defaultValue="2020-01-01"
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                  />
-                </div>
-                <div>
-                  <TextField
-                    id="standard-select"
-                    select
-                    label="Raison"
-                    value={reason}
-                    onChange={handleChange}
-                    helperText="Sélectionner la raison du voyage"
-                  >
-                    {reasons.map(option => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </div>
-                <div>
-                  <TextField
-                    id="standard-select"
-                    select
-                    label="Situation"
-                    value={situation}
-                    onChange={handleChange}
-                    helperText="Sélectionner votre situation durant ce voyage"
-                  >
-                    {situations.map(option => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </div>
-              </form>
-            </div>
-          </wrapper>
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={() => setShow_ADD_DESTINATION(false)} color="primary">
-          Annuler
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          size="medium"
-          startIcon={<AddIcon />}
-          onClick={() => setShow_ADD_DESTINATION(false)}
-        >
-          Ajouter
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
+  const handleChangeCity = event => {
+    setCity(event.target.value);
+  };
+
+  const handleChangeReason = event => {
+    setReason(event.target.value);
+  };
+
+  const handleChangeSituation = event => {
+    setSituation(event.target.value);
+  };
+
+  if (countries && cities && reasons) {
+    return (
+      <Dialog
+        open={show_ADD_DESTINATION}
+        onClose={() => setShow_ADD_DESTINATION(false)}
+        scroll="paper"
+      >
+        <DialogTitle>Ajouter une destination</DialogTitle>
+        <DialogContent dividers>
+          <DialogContentText tabIndex={-1}>
+            <wrapper>
+              <div>
+                <form className={classes.root} noValidate autoComplete="off">
+                  <div>
+                    <TextField
+                      id="standard-select"
+                      select
+                      label="Pays"
+                      value={country}
+                      onChange={handleChangeCountry}
+                      helperText="Sélectionnez le Pays de déstination"
+                    >
+                      {countries.map(option => (
+                        <MenuItem key={option.idcountry} value={option.idcountry}>
+                          {option.name}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </div>
+                  <div>
+                    <TextField
+                      id="standard-select"
+                      select
+                      label="Ville"
+                      value={city}
+                      onChange={handleChangeCity}
+                      helperText="Sélectionnez la ville de déstination"
+                    >
+                      {cities
+                        .filter(el => el.country_idcountry === country)
+                        .map(option => (
+                          <MenuItem key={option.idcity} value={option.idcity}>
+                            {option.name}
+                          </MenuItem>
+                        ))}
+                    </TextField>
+                  </div>
+                  <div>
+                    <TextField
+                      id="date"
+                      label="Date d'arrivée"
+                      type="date"
+                      defaultValue="2020-01-01"
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                      id="standard-select"
+                      select
+                      label="Raison"
+                      value={reason}
+                      onChange={handleChangeReason}
+                      helperText="Sélectionnez la raison du voyage"
+                    >
+                      {reasons.map(option => (
+                        <MenuItem key={option.idreason} value={option.idreason}>
+                          {option.name}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </div>
+                  <div>
+                    <TextField
+                      id="standard-select"
+                      select
+                      label="Situation"
+                      value={situation}
+                      onChange={handleChangeSituation}
+                      helperText="Sélectionnez votre situation durant ce voyage"
+                    >
+                      {situations.map(option => (
+                        <MenuItem key={option.idsituation} value={option.idsituation}>
+                          {option.name}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </div>
+                </form>
+              </div>
+            </wrapper>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShow_ADD_DESTINATION(false)} color="primary">
+            Annuler
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            size="medium"
+            startIcon={<AddIcon />}
+            onClick={() => setShow_ADD_DESTINATION(false)}
+          >
+            Ajouter
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  } else {
+    return (
+      <Dialog
+        open={show_ADD_DESTINATION}
+        onClose={() => setShow_ADD_DESTINATION(false)}
+        scroll="paper"
+      ></Dialog>
+    );
+  }
 };
 
 export default Add_destination;
