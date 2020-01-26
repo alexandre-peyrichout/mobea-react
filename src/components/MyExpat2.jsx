@@ -153,7 +153,9 @@ const useStyles = makeStyles(() => ({
   },
   listTitle: {
     fontSize: '1.5rem',
-    color: 'white'
+    color: 'white',
+    textShadow:
+      'grey 1px 0px 0px, grey 0.540302px 0.841471px 0px, grey -0.416147px 0.909297px 0px, grey -0.989993px 0.14112px 0px, grey -0.653644px -0.756803px 0px, grey 0.283662px -0.958924px 0px, grey 0.96017px -0.279416px 0px'
   },
   badge: {
     zIndex: '3'

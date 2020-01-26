@@ -44,7 +44,9 @@ const useStyles = makeStyles(() => ({
 
 const Navbar2 = ({ history }) => {
   const { setShow_PROFIL } = useContext(Context);
-  const { setDestinationSelected, setArrayOfBadges, setConnectedUser } = useContext(Context);
+  const { setDestinationSelected, setArrayOfBadges, setConnectedUser, setFadeState } = useContext(
+    Context
+  );
 
   const { setShow_FAQ } = useContext(Context);
   const classes = useStyles();
@@ -62,6 +64,7 @@ const Navbar2 = ({ history }) => {
     setDestinationSelected(null);
     setArrayOfBadges(null);
     setConnectedUser(null);
+    setFadeState(false);
     localStorage.removeItem('token');
     // window.location.replace('http://localhost:3001/login');
 
