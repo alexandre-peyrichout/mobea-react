@@ -172,9 +172,7 @@ const MyExpat2 = () => {
       <div className={classes.parent}>
         <Card className={classes.childTop} id="destination">
           <div className={classes.config}>
-            <Typography variant="p" className={classes.configTitle}>
-              Ajouter une destination
-            </Typography>
+            <Typography className={classes.configTitle}>Ajouter une destination</Typography>
             <IconButton color="primary" onClick={() => setShow_ADD_DESTINATION(true)}>
               <AddCircle fontSize="medium" />
             </IconButton>
@@ -195,7 +193,7 @@ const MyExpat2 = () => {
               </TextField>
 
               <IconButton onClick={() => setShow_DELETE_DESTINATION(true)}>
-                <Delete fontSize="medium" />
+                <Delete />
               </IconButton>
             </div>
           </FormControl>
