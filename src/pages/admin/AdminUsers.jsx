@@ -37,6 +37,7 @@ export default function MaterialTableDemo() {
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -67,7 +68,7 @@ export default function MaterialTableDemo() {
                 country_idcountry: newData.country_idcountry,
                 situation_idsituation: newData.situation_idsituation
               })
-              .then(function (response) {
+              .then(function(response) {
                 console.log(response.data);
               });
             setTimeout(() => {
@@ -101,7 +102,7 @@ export default function MaterialTableDemo() {
                 country_idcountry: newData.country_idcountry,
                 situation_idsituation: newData.situation_idsituation
               })
-              .then(function (response) {
+              .then(function(response) {
                 console.log(response.data);
               });
             setTimeout(() => {

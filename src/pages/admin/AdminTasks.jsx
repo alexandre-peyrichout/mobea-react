@@ -24,6 +24,7 @@ export default function MaterialTableDemo() {
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -34,13 +35,12 @@ export default function MaterialTableDemo() {
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {
-
             axios
               .post('http://localhost:3000/api/task/new', {
                 content: newData.content,
                 task_type_idtask_type: newData.task_type_idtask_type
               })
-              .catch(function (error) {
+              .catch(function(error) {
                 console.log(error);
               });
 
@@ -55,11 +55,12 @@ export default function MaterialTableDemo() {
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
-            axios.put(`http://localhost:3000/api/task/${newData.idtask}`, {
-              content: newData.content,
-              task_type_idtask_type: newData.task_type_idtask_type
-            })
-              .then(function (response) {
+            axios
+              .put(`http://localhost:3000/api/task/${newData.idtask}`, {
+                content: newData.content,
+                task_type_idtask_type: newData.task_type_idtask_type
+              })
+              .then(function(response) {
                 console.log(response.data);
               });
             setTimeout(() => {
