@@ -60,6 +60,9 @@ const Navbar2 = ({ history }) => {
 
   const handleClose1 = () => {
     setAnchorEl(null);
+  };
+
+  const disconnect = () => {
     setDestinationSelected(null);
     setArrayOfBadges(null);
     setConnectedUser(null);
@@ -176,7 +179,7 @@ const Navbar2 = ({ history }) => {
           onClose={handleClose1}
         >
           <MenuItem onClick={() => setShow_PROFIL(true)}>Mon profil</MenuItem>
-          <MenuItem onClick={handleClose1}>Se déconnecter</MenuItem>
+          <MenuItem onClick={disconnect}>Se déconnecter</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>
