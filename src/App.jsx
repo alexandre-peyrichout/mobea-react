@@ -13,11 +13,17 @@ const App = () => {
   const [userData, setUserData] = useState();
   const [destinations, setDestinations] = useState();
   const [checklists, setChecklists] = useState();
-  const [destinationSelected, setDestinationSelected] = useState(1);
+  const [destinationSelected, setDestinationSelected] = useState();
   const [arrayOfBadges, setArrayOfBadges] = React.useState();
   const [connectedUser, setConnectedUser] = React.useState();
   const [focusList, setFocusList] = React.useState(0); // liste visible sur le dashboard par défaut (index 0 = Santé)
   const [reload, setReload] = React.useState(0);
+  const [backdrop, setBackdrop] = React.useState(true);
+  const [fadeState, setFadeState] = React.useState(false);
+  const [countries, setCountries] = React.useState();
+  const [cities, setCities] = React.useState();
+  const [situations, setSituations] = React.useState();
+  const [reasons, setReasons] = React.useState();
 
   const [show_FAQ, setShow_FAQ] = useState(false);
   const [show_POLITIQUE, setShow_POLITIQUE] = useState(false);
@@ -29,21 +35,47 @@ const App = () => {
 
   //FETCH ALL DATAS
   useEffect(() => {
-    axios
-      .all([
-        axios.get(`/api/datas/userData?user=${connectedUser}`),
-        axios.get(`/api/datas/userDestinations?user=${connectedUser}`),
-        axios.get(`/api/datas/userChecklists?user=${connectedUser}`),
-        axios.get(`/api/datas/stats?destination=${destinationSelected}`)
-      ])
-      .then(
-        axios.spread((userData, destinations, checklists, stats) => {
-          setUserData(userData.data);
-          setDestinations(destinations.data);
-          setChecklists(checklists.data);
-          setArrayOfBadges(stats.data);
-        })
-      );
+    setBackdrop(true);
+    connectedUser &&
+      axios
+        .all([
+          axios.get(`/api/datas/userData?user=${connectedUser}`),
+          axios.get(`/api/datas/userDestinations?user=${connectedUser}`),
+          axios.get(`/api/datas/userChecklists?user=${connectedUser}`),
+          axios.get(`/api/datas/stats?destination=${destinationSelected}`),
+          axios.get(`/api/country`),
+          axios.get(`/api/city`),
+          axios.get(`/api/reason`),
+          axios.get(`/api/situation`)
+        ])
+        .then(
+          axios.spread(
+            (userData, destinations, checklists, stats, countries, cities, reasons, situations) => {
+              setCountries(countries.data);
+              setCities(cities.data);
+              setSituations(situations.data);
+              setReasons(reasons.data);
+              setUserData(userData.data);
+              setDestinations(destinations.data);
+              setChecklists(checklists.data);
+              if (destinationSelected) {
+                setArrayOfBadges(stats.data);
+              }
+              if (destinations.data.length && !destinationSelected) {
+                const lastDest = destinations.data.length - 1;
+                setDestinationSelected(destinations.data[lastDest].id);
+              }
+            }
+          )
+        )
+        .finally(
+          setTimeout(() => {
+            setBackdrop(false);
+          }, 500),
+          setTimeout(() => {
+            setFadeState(true);
+          }, 2000)
+        );
   }, [connectedUser, destinationSelected, reload]);
 
   return (
@@ -79,7 +111,15 @@ const App = () => {
           connectedUser,
           setConnectedUser,
           reload,
-          setReload
+          setReload,
+          backdrop,
+          setBackdrop,
+          fadeState,
+          setFadeState,
+          countries,
+          cities,
+          situations,
+          reasons
         }}
       >
         <BrowserRouter>

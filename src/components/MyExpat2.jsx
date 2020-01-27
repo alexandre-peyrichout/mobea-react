@@ -47,6 +47,21 @@ const useStyles = makeStyles(() => ({
     padding: '8px 8px 8px 16px',
     backgroundColor: 'rgba(255, 255, 255,0.85)'
   },
+
+  '@keyframes blinker': {
+    to: { transform: 'scale(1.7)' }
+  },
+  childTopAnimated: {
+    backgroundColor: 'rgba(255, 255, 255,0.85)',
+    padding: '8px 8px 8px 16px'
+  },
+  blinkText: {
+    animationName: '$blinker',
+    animationDuration: '1s',
+    animationTimingFunction: 'linear',
+    animationIterationCount: 'infinite',
+    animationDirection: 'alternate-reverse'
+  },
   childBottom: {
     padding: '8px',
     marginTop: '8px',
@@ -71,7 +86,7 @@ const useStyles = makeStyles(() => ({
   },
   select: {
     flexGrow: '1',
-    marginBottom: '20px',
+    marginBottom: '10px',
     marginRight: '10px'
   },
   selectflex: {
@@ -110,6 +125,20 @@ const useStyles = makeStyles(() => ({
       backgroundColor: 'rgba(255, 255, 255,0.6)'
     }
   },
+  wrapperNo: {
+    padding: '41.5px 0',
+    width: '300px',
+    height: '300px',
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255,0.3)',
+
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255,0.6)'
+    }
+  },
 
   fabProgress: {
     position: 'absolute',
@@ -124,17 +153,30 @@ const useStyles = makeStyles(() => ({
   },
   listTitle: {
     fontSize: '1.5rem',
-    color: 'white'
+    color: 'white',
+    textShadow:
+      'grey 1px 0px 0px, grey 0.540302px 0.841471px 0px, grey -0.416147px 0.909297px 0px, grey -0.989993px 0.14112px 0px, grey -0.653644px -0.756803px 0px, grey 0.283662px -0.958924px 0px, grey 0.96017px -0.279416px 0px'
   },
   badge: {
     zIndex: '3'
+  },
+  displaycenter: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    flexGrow: '1'
+  },
+  reason: {
+    fontSize: '0.9rem',
+    fontStyle: 'italic'
   }
 }));
 
 const BorderLinearProgress = withStyles({
   root: {
     height: 15,
-    width: '75%',
+    width: '97%',
     borderRadius: 20,
     backgroundColor: 'rgba(255, 219, 122, 1)',
     margin: '10px 0'
@@ -162,19 +204,12 @@ const MyExpat2 = () => {
     setDestinationSelected(event.target.value);
   };
 
-  // useEffect(() => {
-  //   destinations && setDestinationSelected(destinations[0].city);
-  // }, [destinations, setDestinationSelected]);
-  //------------------------------
-
-  if (destinations && arrayOfBadges) {
+  if (arrayOfBadges && destinationSelected) {
     return (
       <div className={classes.parent}>
         <Card className={classes.childTop} id="destination">
           <div className={classes.config}>
-            <Typography variant="p" className={classes.configTitle}>
-              Ajouter une destination
-            </Typography>
+            <Typography className={classes.configTitle}>Ajouter une destination</Typography>
             <IconButton color="primary" onClick={() => setShow_ADD_DESTINATION(true)}>
               <AddCircle fontSize="medium" />
             </IconButton>
@@ -189,17 +224,22 @@ const MyExpat2 = () => {
               >
                 {destinations.map((dest, index) => (
                   <MenuItem value={dest.id} key={index}>
-                    {dest.city}
+                    {dest.country}, {dest.city} le {dest.arrival_date.substring(8, 10)}/
+                    {dest.arrival_date.substring(5, 7)}/{dest.arrival_date.substring(0, 4)}
                   </MenuItem>
                 ))}
               </TextField>
 
               <IconButton onClick={() => setShow_DELETE_DESTINATION(true)}>
-                <Delete fontSize="medium" />
+                <Delete />
               </IconButton>
             </div>
           </FormControl>
           <div className={classes.progress}>
+            <Typography color="primary" variant="p" className={classes.reason}>
+              Raison du voyage: {destinations.filter(el => el.id === destinationSelected)[0].reason}
+              <br /> <br />
+            </Typography>
             <Typography color="primary" variant="h5" className={classes.progressTitle}>
               {Math.round(arrayOfBadges[0].global)}% des tâches effectuées
             </Typography>
@@ -282,7 +322,20 @@ const MyExpat2 = () => {
       </div>
     );
   } else {
-    return <div></div>;
+    return (
+      <div className={classes.parent}>
+        <Card className={classes.childTopAnimated} id="destination">
+          <div className={classes.config}>
+            <Typography>Ajouter une destination</Typography>
+            <IconButton color="primary" onClick={() => setShow_ADD_DESTINATION(true)}>
+              <AddCircle fontSize="medium" className={classes.blinkText} />
+            </IconButton>
+          </div>
+        </Card>
+        {/* deuxieme card */}
+        <Card className={classes.childBottom}></Card>
+      </div>
+    );
   }
 };
 
