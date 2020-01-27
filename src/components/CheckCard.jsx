@@ -7,7 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Context from '../context/Context';
 import axios from 'axios';
-
 const useStyles = makeStyles(() => ({
   card: {
     width: '100%',
@@ -99,6 +98,7 @@ export default function CheckCard() {
               ))}
           </TextField>
         </div>
+
         <CardContent className={classes.scroll}>
           {checklists
             .filter(el => el.destination_iddestination === destinationSelected)

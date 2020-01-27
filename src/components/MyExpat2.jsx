@@ -86,7 +86,7 @@ const useStyles = makeStyles(() => ({
   },
   select: {
     flexGrow: '1',
-    marginBottom: '20px',
+    marginBottom: '10px',
     marginRight: '10px'
   },
   selectflex: {
@@ -166,13 +166,17 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     flexDirection: 'column',
     flexGrow: '1'
+  },
+  reason: {
+    fontSize: '0.9rem',
+    fontStyle: 'italic'
   }
 }));
 
 const BorderLinearProgress = withStyles({
   root: {
     height: 15,
-    width: '75%',
+    width: '97%',
     borderRadius: 20,
     backgroundColor: 'rgba(255, 219, 122, 1)',
     margin: '10px 0'
@@ -220,7 +224,8 @@ const MyExpat2 = () => {
               >
                 {destinations.map((dest, index) => (
                   <MenuItem value={dest.id} key={index}>
-                    {dest.city}
+                    {dest.country}, {dest.city} le {dest.arrival_date.substring(8, 10)}/
+                    {dest.arrival_date.substring(5, 7)}/{dest.arrival_date.substring(0, 4)}
                   </MenuItem>
                 ))}
               </TextField>
@@ -231,6 +236,10 @@ const MyExpat2 = () => {
             </div>
           </FormControl>
           <div className={classes.progress}>
+            <Typography color="primary" variant="p" className={classes.reason}>
+              Raison du voyage: {destinations.filter(el => el.id === destinationSelected)[0].reason}
+              <br /> <br />
+            </Typography>
             <Typography color="primary" variant="h5" className={classes.progressTitle}>
               {Math.round(arrayOfBadges[0].global)}% des tâches effectuées
             </Typography>

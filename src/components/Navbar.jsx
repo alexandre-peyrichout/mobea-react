@@ -12,7 +12,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link as LinkRouter } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
-// import DashboardAvatar from './DashboardAvatar';
 import HomeIcon from '@material-ui/icons/Home';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -66,8 +65,6 @@ const Navbar2 = ({ history }) => {
     setConnectedUser(null);
     setFadeState(false);
     localStorage.removeItem('token');
-    // window.location.replace('http://localhost:3001/login');
-
     history.push('/login');
   };
 
