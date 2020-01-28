@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import axios from 'axios';
+import Chargement from '../../assets/chargement-lists.gif';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -62,6 +63,19 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: 10,
     fontSize: '0.8rem',
     marginBottom: '1rem'
+  },
+  showMini: {
+    maxWidth: '300px',
+    display: 'block',
+    transitionDuration: '2s'
+  },
+  hideMini: {
+    maxWidth: '300px',
+    display: 'none',
+    transitionDuration: '2s'
+  },
+  center: {
+    textAlign: 'center'
   }
 }));
 
@@ -80,7 +94,7 @@ const Add_destination = () => {
   const [reason, setReason] = React.useState();
   const [country, setCountry] = React.useState();
   const [date, setDate] = React.useState();
-  const [miniLoading, setminiLoading] = React.useState();
+  const [miniLoading, setminiLoading] = React.useState(false);
 
   const handleChangeCountry = event => {
     setCountry(event.target.value);
@@ -171,88 +185,95 @@ const Add_destination = () => {
           <DialogTitle>Ajouter une destination</DialogTitle>
           <DialogContent dividers>
             <DialogContentText tabIndex={-1}>
-              <wrapper>
+              <div className={miniLoading ? classes.hideMini : classes.showMini}>
                 <div>
-                  <div>
-                    <TextField
-                      id="standard-select"
-                      select
-                      label="Pays"
-                      value={country}
-                      onChange={handleChangeCountry}
-                      helperText="Sélectionnez le Pays de déstination"
-                    >
-                      {countries.map(option => (
-                        <MenuItem key={option.idcountry} value={option.idcountry}>
-                          {option.name}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
-                  <div>
-                    <TextField
-                      id="standard-select"
-                      select
-                      label="Ville"
-                      value={city}
-                      onChange={handleChangeCity}
-                      helperText="Sélectionnez la ville de déstination"
-                    >
-                      {cities
-                        .filter(el => el.country_idcountry === country)
-                        .map(option => (
-                          <MenuItem key={option.idcity} value={option.idcity}>
-                            {option.name}
-                          </MenuItem>
-                        ))}
-                    </TextField>
-                  </div>
-                  <div>
-                    <TextField
-                      id="date"
-                      label="Date d'arrivée"
-                      type="date"
-                      onChange={handleChangeDate}
-                      defaultValue={date}
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <TextField
-                      id="standard-select"
-                      select
-                      label="Raison"
-                      value={reason}
-                      onChange={handleChangeReason}
-                      helperText="Sélectionnez la raison du voyage"
-                    >
-                      {reasons.map(option => (
-                        <MenuItem key={option.idreason} value={option.idreason}>
-                          {option.name}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
-                  <div>
-                    <TextField
-                      id="standard-select"
-                      select
-                      label="Situation"
-                      value={situation}
-                      onChange={handleChangeSituation}
-                      helperText="Sélectionnez votre situation durant ce voyage"
-                    >
-                      {situations.map(option => (
-                        <MenuItem key={option.idsituation} value={option.idsituation}>
-                          {option.name}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
+                  <TextField
+                    id="standard-select"
+                    select
+                    label="Pays"
+                    value={country}
+                    onChange={handleChangeCountry}
+                    helperText="Sélectionnez le Pays de déstination"
+                  >
+                    {countries.map(option => (
+                      <MenuItem key={option.idcountry} value={option.idcountry}>
+                        {option.name}
+                      </MenuItem>
+                    ))}
+                  </TextField>
                 </div>
-              </wrapper>
+                <div>
+                  <TextField
+                    id="standard-select"
+                    select
+                    label="Ville"
+                    value={city}
+                    onChange={handleChangeCity}
+                    helperText="Sélectionnez la ville de déstination"
+                  >
+                    {cities
+                      .filter(el => el.country_idcountry === country)
+                      .map(option => (
+                        <MenuItem key={option.idcity} value={option.idcity}>
+                          {option.name}
+                        </MenuItem>
+                      ))}
+                  </TextField>
+                </div>
+                <div>
+                  <TextField
+                    id="date"
+                    label="Date d'arrivée"
+                    type="date"
+                    onChange={handleChangeDate}
+                    defaultValue={date}
+                    InputLabelProps={{
+                      shrink: true
+                    }}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    id="standard-select"
+                    select
+                    label="Raison"
+                    value={reason}
+                    onChange={handleChangeReason}
+                    helperText="Sélectionnez la raison du voyage"
+                  >
+                    {reasons.map(option => (
+                      <MenuItem key={option.idreason} value={option.idreason}>
+                        {option.name}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </div>
+                <div>
+                  <TextField
+                    id="standard-select"
+                    select
+                    label="Situation"
+                    value={situation}
+                    onChange={handleChangeSituation}
+                    helperText="Sélectionnez votre situation durant ce voyage"
+                  >
+                    {situations.map(option => (
+                      <MenuItem key={option.idsituation} value={option.idsituation}>
+                        {option.name}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </div>
+              </div>
+
+              <div className={miniLoading ? classes.showMini : classes.hideMini}>
+                <div className={classes.center}>
+                  <img src={Chargement} alt="avion" />
+                  <br />
+                  <br />
+                  Création de votre voyage en cours...
+                </div>
+              </div>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
