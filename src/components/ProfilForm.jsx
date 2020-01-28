@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,35 +6,36 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarImg from '../assets/avatar.png';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
+// import MenuItem from '@material-ui/core/MenuItem';
+import Context from '../context/Context';
 
 // import SaveIcon from '@material-ui/icons/Save';
-const situations = [
-  {
-    value: 'célibataire',
-    label: 'célibataire'
-  },
-  {
-    value: 'marié',
-    label: 'marié'
-  },
-  {
-    value: 'concubinage ou pacsé',
-    label: 'concubinage ou pacsé'
-  },
-  {
-    value: 'séparé',
-    label: 'séparé'
-  },
-  {
-    value: 'divorcé',
-    label: 'divorcé'
-  },
-  {
-    value: 'veuf',
-    label: 'veuf'
-  }
-];
+// const situations = [
+//   {
+//     value: 'célibataire',
+//     label: 'célibataire'
+//   },
+//   {
+//     value: 'marié',
+//     label: 'marié'
+//   },
+//   {
+//     value: 'concubinage ou pacsé',
+//     label: 'concubinage ou pacsé'
+//   },
+//   {
+//     value: 'séparé',
+//     label: 'séparé'
+//   },
+//   {
+//     value: 'divorcé',
+//     label: 'divorcé'
+//   },
+//   {
+//     value: 'veuf',
+//     label: 'veuf'
+//   }
+// ];
 const useStyles = makeStyles(theme => ({
   root: {
     '& .MuiTextField-root': {
@@ -90,11 +91,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function IconLabelButtons() {
   const classes = useStyles();
-  const [situation, setSituation] = React.useState();
+  // const [setSituation] = React.useState();
+  const { userData } = useContext(Context);
+  console.log(userData.birthday);
 
-  const handleChange = event => {
-    setSituation(event.target.value);
-  };
+  // const handleChange = event => {
+  //   setSituation(event.target.value);
+  // };
 
   return (
     <wrapper>
@@ -105,7 +108,9 @@ export default function IconLabelButtons() {
         <div className={classes.avatarDiv}>
           <Avatar alt="placeholder" src={AvatarImg} className={classes.bigAvatar} />
         </div>
-        <div className={classes.nameDiv}>Camille Dupont</div>
+        <div className={classes.nameDiv}>
+          {userData.firstname} {userData.lastname}
+        </div>
         <div className={classes.blocTextImage}>
           <Typography className={classes.textImage} variant="inherit">
             Une image carrée au format 400x400 est recommandée pour un avatar de bonne qualité.
@@ -133,7 +138,7 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Adresse E-mail"
-              defaultValue="test@test"
+              defaultValue={userData.email}
               color="primary"
             />
           </div>
@@ -142,7 +147,7 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Nom"
-              defaultValue="Dupont"
+              defaultValue={userData.lastname}
               color="primary"
             />
           </div>
@@ -151,28 +156,7 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Prénom"
-              defaultValue="Camille"
-              color="primary"
-            />
-          </div>
-          <form className={classes.container} noValidate>
-            <TextField
-              id="date"
-              label="Date de naissance"
-              type="date"
-              defaultValue="2017-05-24"
-              className={classes.textField}
-              InputLabelProps={{
-                shrink: true
-              }}
-            />
-          </form>
-          <div>
-            <TextField
-              required
-              id="standard-required"
-              label="Adresse actuelle"
-              defaultValue="10 rue des Chenilles"
+              defaultValue={userData.firstname}
               color="primary"
             />
           </div>
@@ -181,7 +165,7 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Pays actuel"
-              defaultValue="France"
+              defaultValue={userData.user_country}
               color="primary"
             />
           </div>
@@ -190,13 +174,13 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Ville actuelle"
-              defaultValue="Bordeaux"
+              defaultValue={userData.user_city}
               color="primary"
             />
           </div>
         </form>
       </div>
-      <form className={classes.root} noValidate autoComplete="off">
+      {/* <form className={classes.root} noValidate autoComplete="off">
         <div>
           <TextField
             id="standard-select"
@@ -213,7 +197,7 @@ export default function IconLabelButtons() {
             ))}
           </TextField>
         </div>
-      </form>
+      </form> */}
     </wrapper>
   );
 }
