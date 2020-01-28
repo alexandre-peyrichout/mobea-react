@@ -8,9 +8,24 @@ import { DialogActions } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import Context from '../../context/Context';
 import DeleteIcon from '@material-ui/icons/Delete';
+import axios from 'axios';
 
 const Add_destination = () => {
-  const { show_DELETE_DESTINATION, setShow_DELETE_DESTINATION } = useContext(Context);
+  const {
+    show_DELETE_DESTINATION,
+    setShow_DELETE_DESTINATION,
+    destinationSelected,
+    setDestinationSelected,
+    setArrayOfBadges
+  } = useContext(Context);
+
+  const deleteDestination = () => {
+    axios
+      .delete(`/api/destination/${destinationSelected}`)
+      .then(() => setShow_DELETE_DESTINATION(false))
+      .then(() => setArrayOfBadges(null))
+      .then(() => setDestinationSelected(null));
+  };
 
   return (
     <Dialog
@@ -36,7 +51,7 @@ const Add_destination = () => {
           variant="outlined"
           size="medium"
           startIcon={<DeleteIcon />}
-          onClick={() => setShow_DELETE_DESTINATION(false)}
+          onClick={() => deleteDestination()}
         >
           Oui, je supprime
         </Button>

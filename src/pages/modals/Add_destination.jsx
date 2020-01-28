@@ -17,7 +17,7 @@ import Chargement from '../../assets/chargement-lists.gif';
 const useStyles = makeStyles(theme => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
+      margin: '8px 0px',
       width: '100%'
     }
   },
@@ -285,10 +285,10 @@ const Add_destination = () => {
               variant="contained"
               color="primary"
               size="medium"
-              startIcon={<AddIcon />}
+              startIcon={!miniLoading && <AddIcon />}
               type="submit"
             >
-              Ajouter
+              {miniLoading ? 'Chargement...' : 'Ajouter'}
             </Button>
           </DialogActions>
         </form>
