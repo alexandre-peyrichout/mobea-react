@@ -6,10 +6,10 @@ export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
     columns: [
       { title: 'Contenu', field: 'content' },
-      { title: 'Catégorie', field: 'task_type_idtask_type' }
+      { title: 'Catégorie', field: 'categorie' }
     ],
     data: [
-      { content: 'liste des vaccins obligatoires', task_type: 'Santé' },
+      { content: 'liste des vaccins obligatoires', categorie: 'Santé' },
       {
         content:
           'Résiliez tous les contrats en cours (eau, gaz, électricité, internet, téléphone, assurances, télésurveillance, etc...)',
@@ -38,7 +38,7 @@ export default function MaterialTableDemo() {
             axios
               .post('http://localhost:3000/api/task/new', {
                 content: newData.content,
-                task_type_idtask_type: newData.task_type_idtask_type
+                task_type_idtask_type: newData.categorie
               })
               .catch(function(error) {
                 console.log(error);
@@ -58,7 +58,7 @@ export default function MaterialTableDemo() {
             axios
               .put(`http://localhost:3000/api/task/${newData.idtask}`, {
                 content: newData.content,
-                task_type_idtask_type: newData.task_type_idtask_type
+                task_type_idtask_type: newData.categorie
               })
               .then(function(response) {
                 console.log(response.data);

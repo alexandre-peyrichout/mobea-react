@@ -11,11 +11,10 @@ export default function MaterialTableDemo() {
       { title: 'Prénom', field: 'firstname' },
       { title: 'Nom', field: 'lastname' },
       { title: 'Date de naissance', field: 'birthday', type: 'date' },
-      { title: 'Mot de passe', field: 'password' },
       { title: 'Adresse', field: 'address' },
-      { title: 'City', field: 'city_idcity' },
-      { title: 'Country', field: 'country_idcountry' },
-      { title: 'Situation', field: 'situation_idsituation' }
+      { title: 'City', field: 'city' },
+      { title: 'Country', field: 'country' },
+      { title: 'Situation', field: 'situation' }
     ],
     data: [
       {
@@ -24,7 +23,6 @@ export default function MaterialTableDemo() {
         firstname: 'kevin',
         lastname: 'parage',
         birthday: '1988-09-01',
-        password: '123456',
         address: '33200',
         situation: 'Concubinage ou pacsé'
       }
@@ -33,7 +31,7 @@ export default function MaterialTableDemo() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/api/user')
+      .get('http://localhost:3000/api/user/test3')
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
@@ -62,7 +60,6 @@ export default function MaterialTableDemo() {
                 firstname: newData.firstname,
                 lastname: newData.lastname,
                 birthday: formatted_date,
-                password: newData.password,
                 address: newData.address,
                 city_idcity: newData.city_idcity,
                 country_idcountry: newData.country_idcountry,
@@ -96,7 +93,6 @@ export default function MaterialTableDemo() {
                 firstname: newData.firstname,
                 lastname: newData.lastname,
                 birthday: formatted_date,
-                password: newData.password,
                 address: newData.address,
                 city_idcity: newData.city_idcity,
                 country_idcountry: newData.country_idcountry,

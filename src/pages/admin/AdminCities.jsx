@@ -6,7 +6,7 @@ export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
     columns: [
       { title: 'Nom', field: 'name' },
-      { title: 'Country', field: 'country_idcountry' }
+      { title: 'Country', field: 'country' }
     ],
     data: [{ name: 'test' }, { name: 'Rabat' }, { name: 'Tanger' }, { name: 'Agadir' }]
   });
@@ -31,7 +31,7 @@ export default function MaterialTableDemo() {
             axios
               .post('http://localhost:3000/api/city/new', {
                 name: newData.name,
-                country_idcountry: newData.country_idcountry
+                country: newData.country
               })
               .catch(function(error) {
                 console.log(error);
@@ -52,10 +52,10 @@ export default function MaterialTableDemo() {
               url: `http://localhost:3000/api/city/${newData.idcity}`,
               data: {
                 name: newData.name,
-                country_idcountry: newData.country_idcountry
+                country_idcountry: newData.country
               }
             }).then(function(response) {
-              console.log(response.data);
+              console.log('wesh', response.newData);
             });
             setTimeout(() => {
               resolve();
