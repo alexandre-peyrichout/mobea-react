@@ -66,7 +66,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Add_destination = () => {
-  const { show_ADD_DESTINATION, setShow_ADD_DESTINATION } = useContext(Context);
+  const {
+    show_ADD_DESTINATION,
+    setShow_ADD_DESTINATION,
+    destinationSelected,
+    setDestinationSelected
+  } = useContext(Context);
   const { countries, cities, reasons, situations, userData } = useContext(Context);
 
   const classes = useStyles();
@@ -75,6 +80,7 @@ const Add_destination = () => {
   const [reason, setReason] = React.useState();
   const [country, setCountry] = React.useState();
   const [date, setDate] = React.useState();
+  const [miniLoading, setminiLoading] = React.useState();
 
   const handleChangeCountry = event => {
     setCountry(event.target.value);
@@ -112,21 +118,25 @@ const Add_destination = () => {
   const InsertAllLists = destination => {
     axios
       .all([axios.get(`/api/taskHasDestination/generate/${destination}`)])
-      .then(axios.spread(res => console.log(res)))
+      .then(
+        axios.spread(res =>
+          setTimeout(() => {
+            if (destinationSelected) {
+              setDestinationSelected(null);
+            } else {
+              setDestinationSelected(destination);
+            }
+            setShow_ADD_DESTINATION(false);
+            setminiLoading(false);
+          }, 1000)
+        )
+      )
       .finally();
-    // fetch(`/api/taskHasDestination/generate?destination=${JSON.stringify(destination)}`, {
-    //   method: 'POST',
-    //   headers: new Headers({
-    //     'Content-Type': 'application/json'
-    //   }),
-    //   body: JSON.stringify(destination)
-    // })
-    //   .then(res => console.log('finished creating lists'))
-    //   .catch(err => console.log(err));
   };
 
   const submitForm = e => {
     e.preventDefault();
+    setminiLoading(true);
     const newDestination = {
       country_idcountry: country,
       situation_idsituation: situation,
@@ -250,12 +260,12 @@ const Add_destination = () => {
               Annuler
             </Button>
             <Button
+              disabled={miniLoading}
               variant="contained"
               color="primary"
               size="medium"
               startIcon={<AddIcon />}
               type="submit"
-              // onClick={() => setShow_ADD_DESTINATION(false)}
             >
               Ajouter
             </Button>
