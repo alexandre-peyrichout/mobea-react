@@ -46,14 +46,26 @@ const App = () => {
           axios.get(`/api/country`),
           axios.get(`/api/city`),
           axios.get(`/api/reason`),
-          axios.get(`/api/situation`)
+          axios.get(`/api/situation`),
+          axios.get(`/api/destination/last?id=211`)
         ])
         .then(
           axios.spread(
-            (userData, destinations, checklists, stats, countries, cities, reasons, situations) => {
+            (
+              userData,
+              destinations,
+              checklists,
+              stats,
+              countries,
+              cities,
+              reasons,
+              situations,
+              test
+            ) => {
               setCountries(countries.data);
               setCities(cities.data);
               setSituations(situations.data);
+              console.log(test.data[0].iddestination);
               setReasons(reasons.data);
               setUserData(userData.data);
               setDestinations(destinations.data);
