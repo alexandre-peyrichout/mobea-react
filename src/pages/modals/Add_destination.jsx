@@ -178,7 +178,7 @@ const Add_destination = () => {
     return (
       <Dialog
         open={show_ADD_DESTINATION}
-        onClose={() => setShow_ADD_DESTINATION(false)}
+        onClose={miniLoading ? '' : () => setShow_ADD_DESTINATION(false)}
         scroll="paper"
       >
         <form className={classes.root} noValidate autoComplete="off" onSubmit={submitForm}>
