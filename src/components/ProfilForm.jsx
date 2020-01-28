@@ -89,15 +89,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function IconLabelButtons() {
+export default function IconLabelButtons(props) {
   const classes = useStyles();
   // const [setSituation] = React.useState();
-  const { userData } = useContext(Context);
-  console.log(userData.birthday);
 
   // const handleChange = event => {
   //   setSituation(event.target.value);
   // };
+
+  const { userData } = useContext(Context);
+
+  const { info, setInfo } = props;
 
   return (
     <wrapper>
@@ -109,7 +111,7 @@ export default function IconLabelButtons() {
           <Avatar alt="placeholder" src={AvatarImg} className={classes.bigAvatar} />
         </div>
         <div className={classes.nameDiv}>
-          {userData.firstname} {userData.lastname}
+          {userData.firstname || info.firstname} {userData.lastname || info.lastname}
         </div>
         <div className={classes.blocTextImage}>
           <Typography className={classes.textImage} variant="inherit">
@@ -138,8 +140,9 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Adresse E-mail"
-              defaultValue={userData.email}
+              defaultValue={userData.email || info.email}
               color="primary"
+              onChange={e => setInfo({ email: e.target.value })}
             />
           </div>
           <div>
@@ -147,8 +150,9 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Nom"
-              defaultValue={userData.lastname}
+              defaultValue={userData.lastname || info.lastname}
               color="primary"
+              onChange={e => setInfo({ lastname: e.target.value })}
             />
           </div>
           <div>
@@ -156,8 +160,9 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Prénom"
-              defaultValue={userData.firstname}
+              defaultValue={userData.firstname || info.firstname}
               color="primary"
+              onChange={e => setInfo({ firstname: e.target.value })}
             />
           </div>
           <div>
@@ -165,8 +170,9 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Pays actuel"
-              defaultValue={userData.user_country}
+              defaultValue={userData.user_country || info.user_country}
               color="primary"
+              onChange={e => setInfo({ user_country: e.target.value })}
             />
           </div>
           <div>
@@ -174,8 +180,9 @@ export default function IconLabelButtons() {
               required
               id="standard-required"
               label="Ville actuelle"
-              defaultValue={userData.user_city}
+              defaultValue={userData.user_city || info.user_city}
               color="primary"
+              onChange={e => setInfo({ user_city: e.target.value })}
             />
           </div>
         </form>
