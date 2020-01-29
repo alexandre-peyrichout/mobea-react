@@ -142,7 +142,7 @@ export default function IconLabelButtons(props) {
               label="Adresse E-mail"
               defaultValue={userData.email || info.email}
               color="primary"
-              onChange={e => setInfo({ email: e.target.value })}
+              onChange={e => setInfo(Object.assign(info, { email: e.target.value }))}
             />
           </div>
           <div>
@@ -152,7 +152,7 @@ export default function IconLabelButtons(props) {
               label="Nom"
               defaultValue={userData.lastname || info.lastname}
               color="primary"
-              onChange={e => setInfo({ lastname: e.target.value })}
+              onChange={e => setInfo(Object.assign(info, { lastname: e.target.value }))}
             />
           </div>
           <div>
@@ -162,7 +162,7 @@ export default function IconLabelButtons(props) {
               label="Prénom"
               defaultValue={userData.firstname || info.firstname}
               color="primary"
-              onChange={e => setInfo({ firstname: e.target.value })}
+              onChange={e => setInfo(Object.assign(info, { firstname: e.target.value }))}
             />
           </div>
           <div>
@@ -172,7 +172,7 @@ export default function IconLabelButtons(props) {
               label="Pays actuel"
               defaultValue={userData.user_country || info.user_country}
               color="primary"
-              onChange={e => setInfo({ user_country: e.target.value })}
+              onChange={e => setInfo(Object.assign(info, { user_country: e.target.value }))}
             />
           </div>
           <div>
@@ -182,7 +182,7 @@ export default function IconLabelButtons(props) {
               label="Ville actuelle"
               defaultValue={userData.user_city || info.user_city}
               color="primary"
-              onChange={e => setInfo({ user_city: e.target.value })}
+              onChange={e => setInfo(Object.assign(info, { user_city: e.target.value }))}
             />
           </div>
         </form>
