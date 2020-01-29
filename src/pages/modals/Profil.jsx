@@ -21,8 +21,6 @@ const Profil = () => {
     user_country: userData && userData.user_country
   });
 
-  console.log('info', info);
-
   const handleClickSubmit = () => {
     console.log(userData);
     Axios.put(`http://localhost:3000/api/user/${userData.iduser}`, { info })
