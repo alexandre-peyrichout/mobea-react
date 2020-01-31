@@ -3,8 +3,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import Avatar from '@material-ui/core/Avatar';
-import AvatarImg from '../assets/avatar.png';
+import PersonIcon from '@material-ui/icons/Person';
 import TextField from '@material-ui/core/TextField';
 // import MenuItem from '@material-ui/core/MenuItem';
 import Context from '../context/Context';
@@ -108,7 +107,7 @@ export default function IconLabelButtons(props) {
           Photo de profil
         </Typography>
         <div className={classes.avatarDiv}>
-          <Avatar alt="placeholder" src={AvatarImg} className={classes.bigAvatar} />
+          <PersonIcon fontSize="large" />
         </div>
         <div className={classes.nameDiv}>
           {userData.firstname || info.firstname} {userData.lastname || info.lastname}

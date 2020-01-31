@@ -11,7 +11,9 @@ import SaveIcon from '@material-ui/icons/Save';
 import Axios from 'axios';
 
 const Profil = () => {
-  const { show_PROFIL, setShow_PROFIL, userData, setReload, reload } = useContext(Context);
+  const { show_PROFIL, setShow_PROFIL, userData, setReload, reload, setBackdrop } = useContext(
+    Context
+  );
 
   const [info, setInfo] = useState({
     email: userData && userData.email,
@@ -22,6 +24,7 @@ const Profil = () => {
   });
 
   const handleClickSubmit = () => {
+    setBackdrop(true);
     console.log(userData);
     Axios.put(`http://localhost:3000/api/user/${userData.iduser}`, { info })
       .then(function(response) {
@@ -30,8 +33,12 @@ const Profil = () => {
         setShow_PROFIL(true);
         setReload(reload + 1);
       })
-      .then(function() {
+      .finally(function() {
         // always executed
+        setTimeout(() => {
+          setShow_PROFIL(false);
+          setBackdrop(false);
+        }, 1000);
       });
   };
 

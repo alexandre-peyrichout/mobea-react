@@ -204,7 +204,7 @@ const MyExpat2 = () => {
     setDestinationSelected(event.target.value);
   };
 
-  if (arrayOfBadges && destinationSelected) {
+  if (arrayOfBadges && destinationSelected && destinations) {
     return (
       <div className={classes.parent}>
         <Card className={classes.childTop} id="destination">
