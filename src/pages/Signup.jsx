@@ -68,10 +68,10 @@ export default function SignUp() {
   const classes = useStyles();
 
   const [info, setInfo] = useState({
-    email: "",
-    password: "",
-    firstname: "",
-    lastname: "",
+    email: '',
+    password: '',
+    firstname: '',
+    lastname: '',
     city_idcity: 31,
     country_idcountry: 11,
     situation_idsituation: 31
@@ -84,14 +84,13 @@ export default function SignUp() {
   const submitForm = e => {
     e.preventDefault();
     console.log(info);
-    fetch("/api/user/new", {
-      method: "POST",
+    fetch('/api/user/new', {
+      method: 'POST',
       headers: new Headers({
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }),
       body: JSON.stringify(info)
-    })
-      .then(res => res.json());
+    }).then(res => res.json());
   };
 
   return (
