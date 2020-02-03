@@ -5,16 +5,12 @@ import axios from 'axios';
 export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
     columns: [
-      { title: 'id', field: 'iduser' },
       { title: 'Avatar', field: 'avatar' },
       { title: 'Email', field: 'email' },
       { title: 'Prénom', field: 'firstname' },
       { title: 'Nom', field: 'lastname' },
-      { title: 'Date de naissance', field: 'birthday', type: 'date' },
-      { title: 'Adresse', field: 'address' },
-      { title: 'City', field: 'city' },
-      { title: 'Country', field: 'country' },
-      { title: 'Situation', field: 'situation' }
+      { title: 'City', field: 'user_city' },
+      { title: 'Country', field: 'user_country' }
     ],
     data: [
       {
@@ -22,16 +18,15 @@ export default function MaterialTableDemo() {
         email: 'pininfarina47@gmail.com',
         firstname: 'kevin',
         lastname: 'parage',
-        birthday: '1988-09-01',
-        address: '33200',
-        situation: 'Concubinage ou pacsé'
+        user_city: 'paname',
+        user_country: 'la france wesh'
       }
     ]
   });
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/api/user/test3')
+      .get('http://localhost:3000/api/user/')
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
@@ -54,16 +49,12 @@ export default function MaterialTableDemo() {
               newData.birthday.getDate();
             axios
               .post(`http://localhost:3000/api/user/new`, {
-                iduser: newData.iduser,
                 avatar: newData.avatar,
                 email: newData.email,
                 firstname: newData.firstname,
                 lastname: newData.lastname,
-                birthday: formatted_date,
-                address: newData.address,
-                city_idcity: newData.city_idcity,
-                country_idcountry: newData.country_idcountry,
-                situation_idsituation: newData.situation_idsituation
+                user_city: newData.user_city,
+                user_country: newData.user_country
               })
               .then(function(response) {
                 console.log(response.data);
@@ -87,16 +78,15 @@ export default function MaterialTableDemo() {
               newData.birthday.getDate();
             axios
               .put(`http://localhost:3000/api/user/${newData.iduser}`, {
-                iduser: newData.iduser,
-                avatar: newData.avatar,
-                email: newData.email,
-                firstname: newData.firstname,
-                lastname: newData.lastname,
-                birthday: formatted_date,
-                address: newData.address,
-                city_idcity: newData.city_idcity,
-                country_idcountry: newData.country_idcountry,
-                situation_idsituation: newData.situation_idsituation
+                info: {
+                  iduser: newData.iduser,
+                  avatar: newData.avatar,
+                  email: newData.email,
+                  firstname: newData.firstname,
+                  lastname: newData.lastname,
+                  user_city: newData.user_city,
+                  user_country: newData.user_country
+                }
               })
               .then(function(response) {
                 console.log(response.data);
