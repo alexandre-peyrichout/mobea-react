@@ -13,7 +13,7 @@ export default function MaterialTableDemo() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/api/city')
+      .get('https://mobea.herokuapp.com/api/city')
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
@@ -29,11 +29,11 @@ export default function MaterialTableDemo() {
         onRowAdd: newData =>
           new Promise(resolve => {
             axios
-              .post('http://localhost:3000/api/city/new', {
+              .post('https://mobea.herokuapp.com/api/city/new', {
                 name: newData.name,
                 country: newData.country
               })
-              .catch(function(error) {
+              .catch(function (error) {
                 console.log(error);
               });
             setTimeout(() => {
@@ -49,12 +49,12 @@ export default function MaterialTableDemo() {
           new Promise(resolve => {
             axios({
               method: 'put',
-              url: `http://localhost:3000/api/city/${newData.idcity}`,
+              url: `https://mobea.herokuapp.com/api/city/${newData.idcity}`,
               data: {
                 name: newData.name,
                 country_idcountry: newData.country
               }
-            }).then(function(response) {
+            }).then(function (response) {
               console.log('wesh', response.newData);
             });
             setTimeout(() => {

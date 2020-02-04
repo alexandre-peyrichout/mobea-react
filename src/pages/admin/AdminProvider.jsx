@@ -18,7 +18,7 @@ export default function MaterialTableDemo() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/api/provider')
+      .get('https://mobea.herokuapp.com/api/provider')
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
@@ -34,7 +34,7 @@ export default function MaterialTableDemo() {
         onRowAdd: newData =>
           new Promise(resolve => {
             axios
-              .post('http://localhost:3000/api/provider/new', {
+              .post('https://mobea.herokuapp.com/api/provider/new', {
                 url: newData.url,
                 description: newData.description,
                 country_idcountry: newData.country_idcountry,
@@ -43,7 +43,7 @@ export default function MaterialTableDemo() {
                 contact: newData.contact,
                 exchanges: newData.exchanges
               })
-              .catch(function(error) {
+              .catch(function (error) {
                 console.log(error);
               });
             setTimeout(() => {
@@ -58,7 +58,7 @@ export default function MaterialTableDemo() {
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
             axios
-              .put(`http://localhost:3000/api/provider/${newData.idprovider}`, {
+              .put(`https://mobea.herokuapp.com/api/provider/${newData.idprovider}`, {
                 url: newData.url,
                 description: newData.description,
                 country_idcountry: newData.country_idcountry,
@@ -67,7 +67,7 @@ export default function MaterialTableDemo() {
                 contact: newData.contact,
                 exchanges: newData.exchanges
               })
-              .then(function(response) {
+              .then(function (response) {
                 console.log(response.data);
               });
             setTimeout(() => {
