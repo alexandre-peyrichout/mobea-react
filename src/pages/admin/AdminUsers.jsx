@@ -5,6 +5,7 @@ import axios from 'axios';
 export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
     columns: [
+      { title: 'id', field: 'iduser' },
       { title: 'Avatar', field: 'avatar' },
       { title: 'Email', field: 'email' },
       { title: 'Prénom', field: 'firstname' },
@@ -14,7 +15,8 @@ export default function MaterialTableDemo() {
     ],
     data: [
       {
-        avatar: '',
+        iduser: 1,
+        avatar: 'gvfcdtgyhjn',
         email: 'pininfarina47@gmail.com',
         firstname: 'kevin',
         lastname: 'parage',
@@ -65,12 +67,6 @@ export default function MaterialTableDemo() {
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
-            let formatted_date =
-              newData.birthday.getFullYear() +
-              '-' +
-              (newData.birthday.getMonth() + 1) +
-              '-' +
-              newData.birthday.getDate();
             axios
               .put(`https://mobea.herokuapp.com/api/user/${newData.iduser}`, {
                 info: {
