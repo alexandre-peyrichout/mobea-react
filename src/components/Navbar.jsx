@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -7,17 +7,19 @@ import logo from '../assets/logo.png';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import { Link as LinkRouter } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+import HomeIcon from '@material-ui/icons/Home';
+import Avatar from '@material-ui/core/Avatar';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
+import ListIcon from '@material-ui/icons/List';
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import Context from '../context/Context';
 
 const useStyles = makeStyles(() => ({
   list: {
@@ -30,36 +32,27 @@ const useStyles = makeStyles(() => ({
     padding: '5px',
     height: '60px',
     margin: 'auto'
+  },
+  logodiv: {
+    margin: 'auto'
+  },
+  titleProfil: {
+    textAlign: 'center'
   }
 }));
 
-const Navbar2 = () => {
+const Navbar2 = ({ history }) => {
+  const { setShow_PROFIL } = useContext(Context);
+  const { setDestinationSelected, setArrayOfBadges, setConnectedUser, setFadeState } = useContext(
+    Context
+  );
+
+  const { setShow_FAQ } = useContext(Context);
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false
   });
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState('paper');
-
-  const handleClickOpen = scrollType => () => {
-    setOpen(true);
-    setScroll(scrollType);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const descriptionElementRef = React.useRef(null);
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -67,6 +60,15 @@ const Navbar2 = () => {
 
   const handleClose1 = () => {
     setAnchorEl(null);
+  };
+
+  const disconnect = () => {
+    setDestinationSelected(null);
+    setArrayOfBadges(null);
+    setConnectedUser(null);
+    setFadeState(false);
+    localStorage.removeItem('token');
+    history.push('/login');
   };
 
   const toggleDrawer = (side, open) => event => {
@@ -85,40 +87,60 @@ const Navbar2 = () => {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Accueil" />
-        </ListItem>
+        <Link underline="none" component={LinkRouter} to="/#">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <HomeIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Accueil" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Ma destination" />
-        </ListItem>
+        <Link underline="none" href="#destination">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <FlightTakeoffIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Ma destination" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Mes listes" />
-        </ListItem>
+        <Link underline="none" href="#card">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <ListIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Mes listes" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Contact" />
-        </ListItem>
+        <Link underline="none" target="_blank" href="mailto:contact@mobea.fr">
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <ContactSupportIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Contact" />
+          </ListItem>
+        </Link>
 
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="FAQ" />
-        </ListItem>
+        <Link underline="none" onClick={() => setShow_FAQ(true)}>
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <QuestionAnswerIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="FAQ" />
+          </ListItem>
+        </Link>
       </List>
     </div>
   );
@@ -137,7 +159,9 @@ const Navbar2 = () => {
         <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
           {sideList('left')}
         </Drawer>
-        <img src={logo} alt="logo" className={classes.logo} />
+        <Link className={classes.logodiv} href="dashboard#top">
+          <img src={logo} alt="logo" className={classes.logo} />
+        </Link>
         <IconButton
           edge="end"
           color="inherit"
@@ -154,41 +178,8 @@ const Navbar2 = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose1}
         >
-          <MenuItem onClick={handleClickOpen('paper')}>Mon profil</MenuItem>
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            scroll={scroll}
-            aria-labelledby="scroll-dialog-title"
-            aria-describedby="scroll-dialog-description"
-          >
-            <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
-            <DialogContent dividers={scroll === 'paper'}>
-              <DialogContentText
-                id="scroll-dialog-description"
-                ref={descriptionElementRef}
-                tabIndex={-1}
-              >
-                {[...new Array(50)]
-                  .map(
-                    () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
-                  )
-                  .join('\n')}
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                Cancel
-              </Button>
-              <Button onClick={handleClose} color="primary">
-                Subscribe
-              </Button>
-            </DialogActions>
-          </Dialog>
-          <MenuItem onClick={handleClose}>Se déconnecter</MenuItem>
+          <MenuItem onClick={() => setShow_PROFIL(true)}>Mon profil</MenuItem>
+          <MenuItem onClick={disconnect}>Se déconnecter</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -11,14 +11,17 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios';
+import Context from '../context/Context';
+
 import Background from '../assets/bg.jpg';
 import Logo from '../assets/logo.png';
 
-function Copyright() {
+function Copyright(props) {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       © Copyright -
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="/">
         Mobea
       </Link>
     </Typography>
@@ -66,15 +69,53 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
+  const {
+    setDestinations,
+    setDestinationSelected,
+    setArrayOfBadges,
+    setConnectedUser
+  } = useContext(Context);
   const classes = useStyles();
+  const [login, setLogin] = useState({
+    email: 'test@test.com',
+    password: 12345
+  });
+
+  useEffect(() => {
+    localStorage.removeItem('token');
+    setDestinations(null);
+    setConnectedUser(null);
+    setDestinationSelected(null);
+    setArrayOfBadges(null);
+    console.log('resseeeeeetttt');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSubmit = () => {
+    axios
+      .post('https://mobea.herokuapp.com/api/user/signin', {
+        email: login.email,
+        password: login.password
+      })
+      .then(res => res.data)
+      .then(data => localStorage.setItem('token', data))
+      .catch(function(error) {
+        console.log(error);
+      })
+      .finally(function() {
+        props.history.push('/dashboard');
+      });
+  };
 
   return (
     <div className={classes.font}>
       <Container className={classes.container} component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <img className={classes.logo} alt="mobea-icon" src={Logo} />
+          <Link underline="none" component={LinkRouter} to="/#">
+            <img className={classes.logo} alt="mobea-icon" src={Logo} />
+          </Link>
           <Typography component="h1" variant="h5">
             Se connecter
           </Typography>
@@ -89,6 +130,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={e => setLogin({ ...login, email: e.target.value })}
             />
             <TextField
               variant="outlined"
@@ -100,17 +142,21 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={e => setLogin({ ...login, password: e.target.value })}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Se souvenir de moi"
             />
+
             <Button
               type="submit"
+              component={LinkRouter}
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={() => handleSubmit()}
             >
               Se connecter
             </Button>
