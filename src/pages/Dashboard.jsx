@@ -38,7 +38,7 @@ export default function FullWidthGrid(props) {
   const { fadeState } = React.useContext(Context);
 
   useEffect(() => {
-    fetch('api/dashboard', {
+    fetch('https://mobea.herokuapp.com/api/dashboard', {
       method: 'POST',
       headers: new Headers({
         Authorization: 'Bearer ' + localStorage.getItem('token')

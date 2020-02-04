@@ -39,14 +39,16 @@ const App = () => {
     connectedUser &&
       axios
         .all([
-          axios.get(`/api/datas/userData?user=${connectedUser}`),
-          axios.get(`/api/datas/userDestinations?user=${connectedUser}`),
-          axios.get(`/api/datas/userChecklists?user=${connectedUser}`),
-          axios.get(`/api/datas/stats?destination=${destinationSelected}`),
-          axios.get(`/api/country`),
-          axios.get(`/api/city`),
-          axios.get(`/api/reason`),
-          axios.get(`/api/situation`)
+          axios.get(`https://mobea.herokuapp.com/api/datas/userData?user=${connectedUser}`),
+          axios.get(`https://mobea.herokuapp.com/api/datas/userDestinations?user=${connectedUser}`),
+          axios.get(`https://mobea.herokuapp.com/api/datas/userChecklists?user=${connectedUser}`),
+          axios.get(
+            `https://mobea.herokuapp.com/api/datas/stats?destination=${destinationSelected}`
+          ),
+          axios.get(`https://mobea.herokuapp.com/api/country`),
+          axios.get(`https://mobea.herokuapp.com/api/city`),
+          axios.get(`https://mobea.herokuapp.com/api/reason`),
+          axios.get(`https://mobea.herokuapp.com/api/situation`)
         ])
         .then(
           axios.spread(

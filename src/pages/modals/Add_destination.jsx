@@ -118,7 +118,7 @@ const Add_destination = () => {
 
   const fetchLastDestination = () => {
     axios
-      .all([axios.get(`/api/destination/last?id=${userData.iduser}`)])
+      .all([axios.get(`https://mobea.herokuapp.com/api/destination/last?id=${userData.iduser}`)])
       .then(
         axios.spread(test => {
           const destination = test.data[0].iddestination;
@@ -131,7 +131,9 @@ const Add_destination = () => {
 
   const InsertAllLists = destination => {
     axios
-      .all([axios.get(`/api/taskHasDestination/generate/${destination}`)])
+      .all([
+        axios.get(`https://mobea.herokuapp.com/api/taskHasDestination/generate/${destination}`)
+      ])
       .then(
         axios.spread(res =>
           setTimeout(() => {
@@ -160,7 +162,7 @@ const Add_destination = () => {
       city_idcity: city
     };
     console.log('données envoyées', newDestination);
-    fetch('/api/destination/new', {
+    fetch('https://mobea.herokuapp.com/api/destination/new', {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json'

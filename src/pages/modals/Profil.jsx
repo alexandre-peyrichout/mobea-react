@@ -26,7 +26,7 @@ const Profil = () => {
   const handleClickSubmit = () => {
     setBackdrop(true);
     console.log(userData);
-    Axios.put(`http://localhost:3000/api/user/${userData.iduser}`, { info })
+    Axios.put(`https://mobea.herokuapp.com/api/user/${userData.iduser}`, { info })
       .then(function(response) {
         // handle success
         console.log(response);
