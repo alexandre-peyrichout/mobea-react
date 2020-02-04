@@ -18,12 +18,15 @@ export default function MaterialTableDemo() {
     ],
     data: [
       {
+        iduser: '1',
         avatar: '',
         email: 'pininfarina47@gmail.com',
         firstname: 'kevin',
         lastname: 'parage',
         birthday: '1988-09-01',
         address: '33200',
+        city: '',
+        country: '',
         situation: 'Concubinage ou pacsé'
       }
     ]
@@ -65,7 +68,7 @@ export default function MaterialTableDemo() {
                 country_idcountry: newData.country_idcountry,
                 situation_idsituation: newData.situation_idsituation
               })
-              .then(function(response) {
+              .then(function (response) {
                 console.log(response.data);
               });
             setTimeout(() => {
@@ -98,7 +101,7 @@ export default function MaterialTableDemo() {
                 country_idcountry: newData.country_idcountry,
                 situation_idsituation: newData.situation_idsituation
               })
-              .then(function(response) {
+              .then(function (response) {
                 console.log(response.data);
               });
             setTimeout(() => {
