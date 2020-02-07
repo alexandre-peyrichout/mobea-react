@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import NotFound from './pages/404';
-import LandingPage from './pages/LandingPage';
-import Context from './context/Context';
-import Admin from './pages/admin/Admin';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import NotFound from "./pages/404";
+import LandingPage from "./pages/LandingPage";
+import Context from "./context/Context";
+import Admin from "./pages/admin/Admin";
+import axios from "axios";
 
 const App = () => {
   const [userData, setUserData] = useState();
@@ -34,25 +34,23 @@ const App = () => {
   const [show_EDIT_DESTINATION, setShow_EDIT_DESTINATION] = useState(false);
 
   //FETCH ALL DATAS
-  useEffect(() => {
-    setBackdrop(true);
-    connectedUser &&
-      axios
-        .all([
-          axios.get(`https://mobea.herokuapp.com/api/datas/userData?user=${connectedUser}`),
-          axios.get(`https://mobea.herokuapp.com/api/datas/userDestinations?user=${connectedUser}`),
-          axios.get(`https://mobea.herokuapp.com/api/datas/userChecklists?user=${connectedUser}`),
-          axios.get(
-            `https://mobea.herokuapp.com/api/datas/stats?destination=${destinationSelected}`
-          ),
-          axios.get(`https://mobea.herokuapp.com/api/country`),
-          axios.get(`https://mobea.herokuapp.com/api/city`),
-          axios.get(`https://mobea.herokuapp.com/api/reason`),
-          axios.get(`https://mobea.herokuapp.com/api/situation`)
-        ])
-        .then(
-          axios.spread(
-            (userData, destinations, checklists, stats, countries, cities, reasons, situations) => {
+  useEffect(
+    () => {
+      setBackdrop(true);
+      connectedUser &&
+        axios
+          .all([
+            axios.get(`https://mobea.herokuapp.com/api/datas/userData?user=${connectedUser}`),
+            axios.get(`https://mobea.herokuapp.com/api/datas/userDestinations?user=${connectedUser}`),
+            axios.get(`https://mobea.herokuapp.com/api/datas/userChecklists?user=${connectedUser}`),
+            axios.get(`https://mobea.herokuapp.com/api/datas/stats?destination=${destinationSelected}`),
+            axios.get(`https://mobea.herokuapp.com/api/country`),
+            axios.get(`https://mobea.herokuapp.com/api/city`),
+            axios.get(`https://mobea.herokuapp.com/api/reason`),
+            axios.get(`https://mobea.herokuapp.com/api/situation`)
+          ])
+          .then(
+            axios.spread((userData, destinations, checklists, stats, countries, cities, reasons, situations) => {
               setCountries(countries.data);
               setCities(cities.data);
               setSituations(situations.data);
@@ -61,24 +59,25 @@ const App = () => {
               setDestinations(destinations.data);
               setChecklists(checklists.data);
               if (destinationSelected) {
-                setArrayOfBadges(stats.data);
+                stats.data.length !== 0 && setArrayOfBadges(stats.data);
               }
               if (destinations.data.length && !destinationSelected) {
                 const lastDest = destinations.data.length - 1;
                 setDestinationSelected(destinations.data[lastDest].id);
               }
-            }
+            })
           )
-        )
-        .finally(
-          setTimeout(() => {
-            setBackdrop(false);
-          }, 500),
-          setTimeout(() => {
-            setFadeState(true);
-          }, 2000)
-        );
-  }, [connectedUser, destinationSelected, reload]);
+          .finally(
+            setTimeout(() => {
+              setBackdrop(false);
+            }, 500),
+            setTimeout(() => {
+              setFadeState(true);
+            }, 2000)
+          );
+    },
+    [connectedUser, destinationSelected, reload]
+  );
 
   return (
     <div>
