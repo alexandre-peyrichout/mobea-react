@@ -31,7 +31,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-function LandingBar() {
+function LandingBar(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false
@@ -72,7 +72,7 @@ function LandingBar() {
         </Link>
       </List>
 
-      <Link underline="none" href="/admin">
+      <Link underline="none" onClick={() => props.history.push("/dashboard")}>
         <ListItem button>
           <ListItemText primary="Admin" />
         </ListItem>
