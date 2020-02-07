@@ -72,7 +72,7 @@ function LandingBar(props) {
         </Link>
       </List>
 
-      <Link underline="none" onClick={() => props.history.push("/dashboard")}>
+      <Link underline="none" onClick={() => props.history.push("/admin")}>
         <ListItem button>
           <ListItemText primary="Admin" />
         </ListItem>
