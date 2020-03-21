@@ -163,7 +163,6 @@ const Add_destination = () => {
     };
     console.log('données envoyées', newDestination);
     axios.post(`${process.env.REACT_APP_API_URL}/api/destination/new`, newDestination)
-      .then(res => console.log(res))
       .catch(err => console.log(err));
     setTimeout(() => {
       fetchLastDestination();

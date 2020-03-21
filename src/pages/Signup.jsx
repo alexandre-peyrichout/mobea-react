@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Background from '../assets/bg.jpg';
 import Logo from '../assets/logo.png';
+import axios from 'axios'
 
 function Copyright() {
   return (
@@ -84,13 +85,7 @@ export default function SignUp() {
   const submitForm = e => {
     e.preventDefault();
     console.log(info);
-    fetch(`${process.env.REACT_APP_API_URL}/api/user/new`, {
-      method: 'POST',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
-      body: JSON.stringify(info)
-    }).then(res => res.json());
+    axios.post(`${process.env.REACT_APP_API_URL}/api/user/new`, info).then(res => res.json());
   };
 
   return (
