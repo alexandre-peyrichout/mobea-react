@@ -13,7 +13,7 @@ export default function MaterialTableDemo() {
 
   useEffect(() => {
     axios
-      .get('https://mobea.herokuapp.com/api/city')
+      .get(`${process.env.REACT_APP_API_URL}/api/city`)
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
@@ -29,7 +29,7 @@ export default function MaterialTableDemo() {
         onRowAdd: newData =>
           new Promise(resolve => {
             axios
-              .post('https://mobea.herokuapp.com/api/city/new', {
+              .post(`${process.env.REACT_APP_API_URL}/api/city/new`, {
                 name: newData.name,
                 country: newData.country
               })
@@ -49,7 +49,7 @@ export default function MaterialTableDemo() {
           new Promise(resolve => {
             axios({
               method: 'put',
-              url: `https://mobea.herokuapp.com/api/city/${newData.idcity}`,
+              url: `${process.env.REACT_APP_API_URL}/api/city/${newData.idcity}`,
               data: {
                 name: newData.name,
                 country_idcountry: newData.country

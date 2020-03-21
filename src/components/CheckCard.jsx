@@ -67,7 +67,7 @@ export default function CheckCard() {
     const value = event.target.checked ? 1 : 0;
 
     axios
-      .put(`https://mobea.herokuapp.com/api/taskHasDestination/${task}/${destinationSelected}/`, {
+      .put(`${process.env.REACT_APP_API_URL}/api/taskHasDestination/${task}/${destinationSelected}/`, {
         isdone: value
       })
       .then((res) => res.data)

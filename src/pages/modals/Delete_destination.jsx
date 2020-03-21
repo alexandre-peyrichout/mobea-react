@@ -21,7 +21,7 @@ const Add_destination = () => {
 
   const deleteDestination = () => {
     axios
-      .delete(`https://mobea.herokuapp.com/api/destination/${destinationSelected}`)
+      .delete(`${process.env.REACT_APP_API_URL}/api/destination/${destinationSelected}`)
       .then(() => setShow_DELETE_DESTINATION(false))
       .then(() => setArrayOfBadges(null))
       .then(() => setDestinationSelected(null));

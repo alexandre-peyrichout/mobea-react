@@ -28,7 +28,7 @@ export default function MaterialTableDemo() {
 
   useEffect(() => {
     axios
-      .get('https://mobea.herokuapp.com/api/user/')
+      .get(`${process.env.REACT_APP_API_URL}/api/user`)
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
@@ -45,7 +45,7 @@ export default function MaterialTableDemo() {
           new Promise(resolve => {
 
             axios
-              .post(`https://mobea.herokuapp.com/api/user/new`, {
+              .post(`${process.env.REACT_APP_API_URL}/api/user/new`, {
                 avatar: newData.avatar,
                 email: newData.email,
                 firstname: newData.firstname,
@@ -68,7 +68,7 @@ export default function MaterialTableDemo() {
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
             axios
-              .put(`https://mobea.herokuapp.com/api/user/${newData.iduser}`, {
+              .put(`${process.env.REACT_APP_API_URL}/api/user/${newData.iduser}`, {
                 info: {
                   iduser: newData.iduser,
                   avatar: newData.avatar,

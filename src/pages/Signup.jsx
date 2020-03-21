@@ -84,7 +84,7 @@ export default function SignUp() {
   const submitForm = e => {
     e.preventDefault();
     console.log(info);
-    fetch('https://mobea.herokuapp.com/api/user/new', {
+    fetch(`${process.env.REACT_APP_API_URL}/api/user/new`, {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json'

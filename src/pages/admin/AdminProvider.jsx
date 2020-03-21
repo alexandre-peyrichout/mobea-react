@@ -18,7 +18,7 @@ export default function MaterialTableDemo() {
 
   useEffect(() => {
     axios
-      .get('https://mobea.herokuapp.com/api/provider')
+      .get(`${process.env.REACT_APP_API_URL}/api/provider`)
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
@@ -34,7 +34,7 @@ export default function MaterialTableDemo() {
         onRowAdd: newData =>
           new Promise(resolve => {
             axios
-              .post('https://mobea.herokuapp.com/api/provider/new', {
+              .post(`${process.env.REACT_APP_API_URL}/api/provider/new`, {
                 url: newData.url,
                 description: newData.description,
                 country_idcountry: newData.country_idcountry,
@@ -58,7 +58,7 @@ export default function MaterialTableDemo() {
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
             axios
-              .put(`https://mobea.herokuapp.com/api/provider/${newData.idprovider}`, {
+              .put(`${process.env.REACT_APP_API_URL}/api/provider/${newData.idprovider}`, {
                 url: newData.url,
                 description: newData.description,
                 country_idcountry: newData.country_idcountry,

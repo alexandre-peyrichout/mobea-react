@@ -40,14 +40,14 @@ const App = () => {
       connectedUser &&
         axios
           .all([
-            axios.get(`https://mobea.herokuapp.com/api/datas/userData?user=${connectedUser}`),
-            axios.get(`https://mobea.herokuapp.com/api/datas/userDestinations?user=${connectedUser}`),
-            axios.get(`https://mobea.herokuapp.com/api/datas/userChecklists?user=${connectedUser}`),
-            axios.get(`https://mobea.herokuapp.com/api/datas/stats?destination=${destinationSelected}`),
-            axios.get(`https://mobea.herokuapp.com/api/country`),
-            axios.get(`https://mobea.herokuapp.com/api/city`),
-            axios.get(`https://mobea.herokuapp.com/api/reason`),
-            axios.get(`https://mobea.herokuapp.com/api/situation`)
+            axios.get(`${process.env.REACT_APP_API_URL}/api/datas/userData?user=${connectedUser}`),
+            axios.get(`${process.env.REACT_APP_API_URL}/api/datas/userDestinations?user=${connectedUser}`),
+            axios.get(`${process.env.REACT_APP_API_URL}/api/datas/userChecklists?user=${connectedUser}`),
+            axios.get(`${process.env.REACT_APP_API_URL}/api/datas/stats?destination=${destinationSelected}`),
+            axios.get(`${process.env.REACT_APP_API_URL}/api/country`),
+            axios.get(`${process.env.REACT_APP_API_URL}/api/city`),
+            axios.get(`${process.env.REACT_APP_API_URL}/api/reason`),
+            axios.get(`${process.env.REACT_APP_API_URL}/api/situation`)
           ])
           .then(
             axios.spread((userData, destinations, checklists, stats, countries, cities, reasons, situations) => {

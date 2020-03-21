@@ -39,6 +39,4 @@
   "devDependencies": {
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "webpack-bundle-analyzer": "^3.6.0"
-  },
-  "proxy": "http://localhost:3000/"
-}
+  }}

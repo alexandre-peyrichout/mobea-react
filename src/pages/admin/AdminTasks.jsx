@@ -20,7 +20,7 @@ export default function MaterialTableDemo() {
 
   useEffect(() => {
     axios
-      .get('https://mobea.herokuapp.com/api/task')
+      .get(`${process.env.REACT_APP_API_URL}/api/task`)
       .then(response => response.data)
       .then(data => setState({ ...state, data: data }))
       .catch(error => console.log(error));
@@ -36,7 +36,7 @@ export default function MaterialTableDemo() {
         onRowAdd: newData =>
           new Promise(resolve => {
             axios
-              .post('https://mobea.herokuapp.com/api/task/new', {
+              .post(`${process.env.REACT_APP_API_URL}/api/task/new`, {
                 content: newData.content,
                 task_type_idtask_type: newData.categorie
               })
@@ -56,7 +56,7 @@ export default function MaterialTableDemo() {
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
             axios
-              .put(`https://mobea.herokuapp.com/api/task/${newData.idtask}`, {
+              .put(`${process.env.REACT_APP_API_URL}/api/task/${newData.idtask}`, {
                 content: newData.content,
                 task_type_idtask_type: newData.categorie
               })
