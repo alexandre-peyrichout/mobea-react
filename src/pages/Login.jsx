@@ -108,6 +108,23 @@ export default function SignIn(props) {
       });
   };
 
+  const handleSubmitGuest = (e) => {
+    e.preventDefault()
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/user/signin`, {
+        email: "pdupont@gmail.com",
+        password: "azerty"
+      })
+      .then(res => res.data)
+      .then(data => localStorage.setItem('token', data))
+      .catch(function(error) {
+        console.log(error);
+      })
+      .finally(function() {
+        props.history.push('/dashboard');
+      });
+  };
+
   return (
     <div className={classes.font}>
       <Container className={classes.container} component="main" maxWidth="xs">
@@ -159,6 +176,12 @@ export default function SignIn(props) {
             >
               Se connecter
             </Button>
+            <hr/>
+            <Button fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={(e) => handleSubmitGuest(e)}>Utiliser le compte invité</Button>
             <Grid container>
               <Grid item xs>
                 <Link href="http://tinytuba.com/" variant="body2">
