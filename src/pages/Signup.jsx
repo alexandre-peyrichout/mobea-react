@@ -93,7 +93,7 @@ export default function SignUp() {
       <Container className={classes.container} component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Link underline="none" component={LinkRouter} to="/#">
+          <Link underline="none" component={LinkRouter} to="#top">
             <img className={classes.logo} alt="mobea-icon" src={Logo} />
           </Link>
           <Typography component="h1" variant="h5">
