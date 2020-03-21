@@ -176,10 +176,10 @@ export default function SignIn(props) {
             >
               Se connecter
             </Button>
-            <hr/>
+            <br/>
             <Button fullWidth
               variant="contained"
-              color="primary"
+              color="secondary"
               className={classes.submit}
               onClick={(e) => handleSubmitGuest(e)}>Utiliser le compte invité</Button>
             <Grid container>
