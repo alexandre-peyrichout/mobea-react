@@ -113,7 +113,7 @@ export default function SignIn(props) {
       <Container className={classes.container} component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Link underline="none" component={LinkRouter} to="/#">
+          <Link underline="none" component={LinkRouter} >
             <img className={classes.logo} alt="mobea-icon" src={Logo} />
           </Link>
           <Typography component="h1" variant="h5">

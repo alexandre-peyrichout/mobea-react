@@ -4,7 +4,6 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/404";
-import LandingPage from "./pages/LandingPage";
 import Context from "./context/Context";
 import Admin from "./pages/admin/Admin";
 import axios from "axios";

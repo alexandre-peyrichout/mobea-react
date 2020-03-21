@@ -79,7 +79,7 @@ export default function Footer() {
           alignContent="center"
           className={classes.flexItemStart}
         >
-          <Link underline="none" component={LinkRouter} to="/#" className={classes.bottomLinks}>
+          <Link underline="none" component={LinkRouter} className={classes.bottomLinks}>
             <img src={logo} alt="logo" className={classes.logo} />
           </Link>
         </Box>
