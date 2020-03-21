@@ -72,7 +72,7 @@ function LandingBar() {
         </Link>
       </List>
 
-      <Link underline="none" href="/#/admin">
+      <Link underline="none" >
         <ListItem button>
           <ListItemText primary="Admin Mobea" />
         </ListItem>
