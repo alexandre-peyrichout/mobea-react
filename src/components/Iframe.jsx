@@ -16,7 +16,7 @@ const Iframe = () => {
   const classes = useStyles();
   return (
     <IframeComp
-      url="https://www.leblogcashpistache.fr/preparer-voyage-au-maroc-meilleurs-conseils-pratiques/"
+      url="https://www.ouest-france.fr/monde/maroc/"
       className={classes.iframe}
     />
   );
