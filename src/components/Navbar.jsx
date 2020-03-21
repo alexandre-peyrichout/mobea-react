@@ -87,7 +87,7 @@ const Navbar2 = ({ history }) => {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <Link underline="none" component={LinkRouter} to="/#">
+        <Link underline="none" component={LinkRouter} >
           <ListItem button>
             <ListItemAvatar>
               <Avatar>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Router, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -122,7 +122,7 @@ const App = () => {
           reasons
         }}
       >
-        <Router>
+        <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
@@ -132,7 +132,7 @@ const App = () => {
             <Route path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>
-        </Router>
+        </BrowserRouter>
       </Context.Provider>
     </div>
   );
