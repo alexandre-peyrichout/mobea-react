@@ -88,7 +88,6 @@ export default function SignIn(props) {
     setConnectedUser(null);
     setDestinationSelected(null);
     setArrayOfBadges(null);
-    console.log('resseeeeeetttt');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

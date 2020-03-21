@@ -46,7 +46,6 @@ export default function FullWidthGrid(props) {
     })
       .then(res => res.json())
       .then(data => setConnectedUser(data.result[0].iduser))
-      .then(console.log('are u gonna setIsLoggedIn'))
       .then(data => setIsLoggedIn('access'))
       .catch(err => setIsLoggedIn('no-access'));
   }, [setConnectedUser]);

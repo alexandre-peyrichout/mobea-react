@@ -162,13 +162,7 @@ const Add_destination = () => {
       city_idcity: city
     };
     console.log('données envoyées', newDestination);
-    fetch(`${process.env.REACT_APP_API_URL}/api/destination/new`, {
-      method: 'POST',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
-      body: JSON.stringify(newDestination)
-    })
+    axios.post(`${process.env.REACT_APP_API_URL}/api/destination/new`, newDestination)
       .then(res => console.log(res))
       .catch(err => console.log(err));
     setTimeout(() => {
