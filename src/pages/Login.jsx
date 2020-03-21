@@ -91,7 +91,8 @@ export default function SignIn(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/user/signin`, {
         email: login.email,
@@ -150,12 +151,11 @@ export default function SignIn(props) {
 
             <Button
               type="submit"
-              component={LinkRouter}
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={() => handleSubmit()}
+              onClick={(e) => handleSubmit(e)}
             >
               Se connecter
             </Button>
