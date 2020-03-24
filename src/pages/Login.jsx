@@ -81,6 +81,8 @@ export default function SignIn(props) {
     email: 'test@test.com',
     password: 12345
   });
+  const [buttonText1, setButtonText1] = useState("Se connecter");
+  const [buttonText2, setButtonText2] = useState("Utiliser le compte invité");
 
   useEffect(() => {
     localStorage.removeItem('token');
@@ -93,6 +95,7 @@ export default function SignIn(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setButtonText1("Connexion en cours...")
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/user/signin`, {
         email: login.email,
@@ -110,6 +113,7 @@ export default function SignIn(props) {
 
   const handleSubmitGuest = (e) => {
     e.preventDefault()
+    setButtonText2("Connexion en cours...")
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/user/signin`, {
         email: "pdupont@gmail.com",
@@ -174,14 +178,14 @@ export default function SignIn(props) {
               className={classes.submit}
               onClick={(e) => handleSubmit(e)}
             >
-              Se connecter
+              {buttonText1}
             </Button>
             <br/>
             <Button fullWidth
               variant="contained"
               color="secondary"
               className={classes.submit}
-              onClick={(e) => handleSubmitGuest(e)}>Utiliser le compte invité</Button>
+              onClick={(e) => handleSubmitGuest(e)}>{buttonText2}</Button>
             <Grid container>
               <Grid item xs>
                 <Link href="http://tinytuba.com/" variant="body2">
